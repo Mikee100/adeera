@@ -6,9 +6,9 @@
 
 @layer base {
   :root {
-    --primary: 217 91% 60%;  
+     --primary: 220 60% 24%;              /* much darker blue */
     --primary-foreground: 210 40% 98%;
-    
+
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
 
@@ -30,8 +30,8 @@
 
    .dark {
     /* ...existing code... */
-    --primary: 217 91% 70%;              /* lighter blue for dark mode */
-    --primary-foreground: 222.2 47.4% 11.2%;
+     --primary: 220 60% 24%;              /* even darker blue for dark mode */
+    --primary-foreground: 210 40% 98%;
 
     --accent: 217 91% 30%;               /* deep blue accent */
     --accent-foreground: 210 40% 98%;
