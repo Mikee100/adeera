@@ -15,6 +15,9 @@ import ScrollToTop from "./components/ScrollToTop";
 import { HelmetProvider } from "react-helmet-async";
 import TermsOfService from "./pages/TermsOfService";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Crm from "./pages/services/Crm";
+import Cloud from "./pages/services/Cloud";
+import Security from "./pages/services/Security";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +40,9 @@ const App = () => (
             <Route path="contact" element={<Contact />} />
             <Route path="privacy" element={<PrivacyPolicy />} />
             <Route path="terms" element={<TermsOfService />} />
+            <Route path="services/crm" element={<Crm />} />
+<Route path="services/cloud" element={<Cloud />} />
+<Route path="services/security" element={<Security />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
