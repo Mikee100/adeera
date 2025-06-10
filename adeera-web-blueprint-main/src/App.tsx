@@ -12,10 +12,16 @@ import Partnerships from "./pages/Partnerships";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
+import { HelmetProvider } from "react-helmet-async";
+import TermsOfService from "./pages/TermsOfService";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 const queryClient = new QueryClient();
 
 const App = () => (
+  <HelmetProvider>
+
+ 
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
@@ -29,12 +35,16 @@ const App = () => (
             <Route path="services" element={<Services />} />
             <Route path="partnerships" element={<Partnerships />} />
             <Route path="contact" element={<Contact />} />
+            <Route path="privacy" element={<PrivacyPolicy />} />
+            <Route path="terms" element={<TermsOfService />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
+
+   </HelmetProvider>
 );
 
 export default App;

@@ -8,8 +8,8 @@ const Partnerships = () => {
     {
       icon: TrendingUp,
       title: 'Authorized Reseller',
-      description: 'Become our official reseller and expand your market reach across Africa',
-      benefits: ['Revenue sharing up to 30%', 'Dedicated marketing support', 'Comprehensive training programs', 'Dedicated account management'],
+      description: 'Expand your market reach across Africa',
+      benefits: ['Dedicated marketing support', 'Comprehensive training programs', 'Dedicated account management'],
       color: 'from-blue-500/20 to-blue-600/20',
       iconColor: 'text-blue-600'
     },
