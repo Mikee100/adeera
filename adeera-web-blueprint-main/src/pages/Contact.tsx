@@ -24,22 +24,31 @@ const Contact = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      console.log('Form submitted:', formData);
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setIsSubmitting(true);
+
+  try {
+    const response = await fetch('http://localhost:5000/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
+    });
+
+    if (response.ok) {
       setSubmitSuccess(true);
       setFormData({ name: '', email: '', company: '', message: '' });
-    } catch (error) {
-      console.error('Submission error:', error);
-    } finally {
-      setIsSubmitting(false);
+    } else {
+      const err = await response.json();
+      console.error('Submission failed:', err);
     }
-  };
+  } catch (error) {
+    console.error('Submission error:', error);
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+
 
   const contactInfo = [
     { icon: Mail, title: 'Email', value: 'contact@adeeraunitech.com', href: 'mailto:contact@adeeraunitech.com' },
