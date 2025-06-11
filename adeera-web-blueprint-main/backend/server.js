@@ -119,7 +119,7 @@ app.post('/contact', async (req, res) => {
     <div class="email-container">
         <!-- Header with Logo & Branding -->
         <div class="email-header">
-            <img src="https://imgur.com/a/DZCs2uS" alt="Adeera Unitech" class="logo">
+           <img src="data:image/jpeg;base64,PASTE_YOUR_BASE64_STRING_HERE" alt="Adeera Unitech" class="logo">
             <h1 class="email-title">New Contact Form Submission</h1>
             <p class="email-subtitle">You've received a new message from your website</p>
         </div>
