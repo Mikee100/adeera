@@ -290,42 +290,64 @@ const Home = () => {
       </section>
 
       {/* Logo Cloud */}
-      <section className="py-12 bg-muted/30">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            <h3 className="text-center text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-8">
-              Trusted by innovative companies across Africa
-            </h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center justify-center">
-              {[
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/MTN_Logo.svg/2560px-MTN_Logo.svg.png",
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2008px-Google_%22G%22_Logo.svg.png",
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Amazon_icon.svg/2500px-Amazon_icon.svg.png",
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Microsoft_logo_%282012%29.svg/2560px-Microsoft_logo_%282012%29.svg.png",
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Airtel_Africa_Logo.svg/1200px-Airtel_Africa_Logo.svg.png",
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/1667px-Apple_logo_black.svg.png"
-              ].map((logo, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  whileHover={{ scale: 1.1 }}
-                  className="flex items-center justify-center"
-                >
-                  <img 
-                    src={logo} 
-                    alt="Partner logo" 
-                    className="h-8 object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"
-                  />
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
+     <section className="py-12 bg-muted/30">
+  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="max-w-7xl mx-auto">
+      <h3 className="text-center text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-8">
+        trustedByInnovativeCompanies
+      </h3>
+      <div
+        className="
+          grid
+          grid-cols-2
+          sm:grid-cols-3
+          md:grid-cols-4
+          lg:grid-cols-6
+          gap-y-8
+          gap-x-4
+          items-center
+          justify-center
+        "
+      >
+        {[
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/MTN_Logo.svg/2560px-MTN_Logo.svg.png",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2008px-Google_%22G%22_Logo.svg.png",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Amazon_icon.svg/2500px-Amazon_icon.svg.png",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Microsoft_logo_%282012%29.svg/2560px-Microsoft_logo_%282012%29.svg.png",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Airtel_Africa_Logo.svg/1200px-Airtel_Africa_Logo.svg.png",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/1667px-Apple_logo_black.svg.png"
+        ].map((logo, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            viewport={{ once: true }}
+            whileHover={{ scale: 1.1 }}
+            className="flex items-center justify-center min-h-[56px] sm:min-h-[64px]"
+          >
+            <img
+              src={logo}
+              alt="Partner logo"
+              className="
+                h-10
+                sm:h-12
+                object-contain
+                grayscale
+                hover:grayscale-0
+                transition-all
+                duration-300
+                opacity-70
+                hover:opacity-100
+                mx-auto
+              "
+            />
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
       {/* Services Preview */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
