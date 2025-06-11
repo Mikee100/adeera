@@ -30,6 +30,20 @@ i18n.use(initReactI18next).init({
         getStarted: "Commencer",
         company: "UNITECH LIMITED",
       }
+    },
+    es: {
+      translation: {
+        home: "Inicio",
+        about: "Acerca de",
+        services: "Servicios",
+        crm: "Soluciones CRM",
+        cloud: "Servicios en la Nube",
+        security: "Ciberseguridad",
+        partnerships: "Alianzas",
+        contact: "Contacto",
+        getStarted: "Comenzar",
+        company: "UNITECH LIMITED",
+      }
     }
   },
   lng: localStorage.getItem('lang') || 'en',

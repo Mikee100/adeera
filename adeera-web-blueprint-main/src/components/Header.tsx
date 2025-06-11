@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 const LANGUAGES = [
   { code: 'en', label: 'EN' },
   { code: 'fr', label: 'FR' },
-  { code: 'sw', label: 'SW' }, // Swahili example
+  { code: 'es', label: 'ES' }, 
 ];
 
 const NAV_ITEMS = [
@@ -33,11 +33,12 @@ const Header = () => {
   const location = useLocation();
   const { t, i18n } = useTranslation();
 
-  const handleLanguageChange = (value: string) => {
-    setLanguage(value);
-    i18n.changeLanguage(value);
-    localStorage.setItem('lang', value);
-  };
+const handleLanguageChange = (value: string) => {
+  setLanguage(value);
+  i18n.changeLanguage(value);
+  localStorage.setItem('lang', value);
+  window.location.reload(); // This will refresh the page
+};
 
   useEffect(() => {
     localStorage.setItem('lang', language);
@@ -62,22 +63,29 @@ const Header = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link 
-            to="/" 
-            className="flex items-center space-x-2 group"
-            aria-label="Home"
-          >
-            <motion.div 
-              className="text-2xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent"
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 10 }}
-            >
-              ADEERA
-            </motion.div>
-            <div className="text-sm text-muted-foreground hidden sm:block transition-colors group-hover:text-primary">
-              UNITECH LIMITED
-            </div>
-          </Link>
+         
+            <Link
+    to="/"
+    className="flex items-center gap-3 group"
+    aria-label="Home"
+  >
+    <img
+      src="/Adeera_logo.jpg"
+      alt="Adeera Logo"
+      className="h-10 w-10 object-contain rounded-full border border-primary/20 shadow-sm bg-white"
+      style={{ minWidth: 40 }}
+    />
+    <div className="flex flex-col leading-tight">
+      <motion.div
+        className="text-2xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent"
+        whileHover={{ scale: 1.05 }}
+        transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+      >
+        ADEERA
+      </motion.div>
+     
+    </div>
+  </Link>
 
           {/* Desktop Navigation */}
      <nav className="hidden md:flex items-center space-x-1">
@@ -121,16 +129,16 @@ const Header = () => {
           </nav>
           {/* Language Switcher (Desktop) */}
           <div className="hidden md:flex items-center mr-4">
-            <select
-              value={language}
-              onChange={e => setLanguage(e.target.value)}
-              className="bg-transparent border-none text-sm text-muted-foreground hover:text-primary focus:outline-none cursor-pointer"
-              aria-label="Select language"
-            >
-              {LANGUAGES.map(lang => (
-                <option key={lang.code} value={lang.code}>{lang.label}</option>
-              ))}
-            </select>
+          <select
+  value={language}
+  onChange={e => handleLanguageChange(e.target.value)}
+  className="bg-transparent border-none text-sm text-muted-foreground hover:text-primary focus:outline-none cursor-pointer"
+  aria-label="Select language"
+>
+  {LANGUAGES.map(lang => (
+    <option key={lang.code} value={lang.code}>{lang.label}</option>
+  ))}
+</select>
           </div>
 
           {/* CTA Button */}

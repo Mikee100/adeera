@@ -5,7 +5,7 @@ import { Shield, Cloud, Users, Globe, ArrowRight, ChevronRight, Check, Zap, BarC
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Helmet } from "react-helmet-async";
-
+import { useTranslation, Trans } from 'react-i18next';
 const AnimatedCard = ({ service, index }) => {
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -47,6 +47,7 @@ const AnimatedCard = ({ service, index }) => {
 };
 
 const FeatureItem = ({ emoji, title, description }) => {
+  const { t } = useTranslation();
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
