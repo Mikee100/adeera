@@ -144,11 +144,7 @@ const Home = () => {
   ];
 
   const stats = [
-    {
-      value: "100+",
-      label: "Satisfied Clients",
-      icon: <Users className="h-6 w-6" />
-    },
+
     {
       value: "24/7",
       label: "Support Availability",
@@ -227,6 +223,7 @@ const Home = () => {
                 </div>
                 
                 {/* Trust badges */}
+                {/**
                 <div className="flex items-center gap-4 pt-4">
                   <div className="flex -space-x-2">
                     {[1, 2, 3, 4].map((i) => (
@@ -250,6 +247,8 @@ const Home = () => {
                     </div>
                   </div>
                 </div>
+
+ */}
               </div>
             </motion.div>
 
@@ -493,6 +492,7 @@ const Home = () => {
       </section>
 
       {/* Testimonials */}
+      {/**
       <section className="py-16 md:py-24 bg-muted/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -566,7 +566,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-
+ */}
       {/* Call to Action */}
       <section className="py-16 md:py-24 bg-gradient-to-br from-primary to-primary/90">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">

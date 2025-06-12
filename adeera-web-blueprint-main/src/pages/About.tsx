@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 
 const About = () => {
   const stats = [
-    { number: '50+', label: 'African Businesses Served', icon: Building2 },
     { number: '15+', label: 'SaaS Solutions Deployed', icon: Target },
     { number: '98%', label: 'Client Satisfaction Rate', icon: Award },
     { number: '24/7', label: 'Support Coverage', icon: Users }
@@ -14,25 +13,25 @@ const About = () => {
 
   const timeline = [
     {
-      year: '2023',
+      year: '2025',
       title: 'Company Founded',
       description: 'ADEERA UNITECH was established with a vision to democratize SaaS access across Africa'
     },
-    {
-      year: '2024',
-      title: 'First Partnerships',
-      description: 'Secured strategic partnerships with leading global SaaS providers'
-    },
-    {
-      year: '2024',
-      title: 'Market Expansion',
-      description: 'Extended services across multiple African countries with localized support'
-    },
-    {
-      year: '2025',
-      title: 'Future Growth',
-      description: 'Planned launch of our comprehensive SaaS marketplace platform'
-    }
+  //  {
+    //  year: '2024',
+    //  title: 'First Partnerships',
+     // description: 'Secured strategic partnerships with leading global SaaS providers'
+   // },
+    //{
+    //  year: '2024',
+     // title: 'Market Expansion',
+     // description: 'Extended services across multiple African countries with localized support'
+    //},
+    //{
+     // year: '2025',
+     // title: 'Future Growth',
+     // description: 'Planned launch of our comprehensive SaaS marketplace platform'
+    //}
   ];
 
   const teamMembers = [
