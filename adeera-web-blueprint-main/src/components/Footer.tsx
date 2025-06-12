@@ -71,7 +71,7 @@ const Footer = () => {
             <h3 className="font-semibold mb-4 text-foreground">Contact Info</h3>
             <ul className="space-y-2 text-muted-foreground">
               <li>
-                <a href="mailto:contact@adeeraunitech.com" className="hover:text-primary transition-colors">
+                <a href="https://mail.google.com/mail/?view=cm&to=info@adeeraunitech.com" className="hover:text-primary transition-colors">
                   📩 contact@adeeraunitech.com
                 </a>
               </li>

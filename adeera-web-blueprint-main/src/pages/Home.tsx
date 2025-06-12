@@ -177,6 +177,21 @@ const Home = () => {
         <meta property="og:image" content="https://www.corporatevision-news.com/wp-content/uploads/2023/04/SaaS-Business.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@adeera" />
+
+        <script type="application/ld+json">
+  {`
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "ADEERA UNITECH LIMITED",
+      "url": "https://yourdomain.com/",
+      "logo": "https://yourdomain.com/Adeera_logo.jpg",
+      "sameAs": [
+        "https://twitter.com/adeera"
+      ]
+    }
+  `}
+</script>
       </Helmet>
 
       {/* Hero Section */}
