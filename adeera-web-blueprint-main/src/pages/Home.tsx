@@ -167,31 +167,50 @@ const Home = () => {
     threshold: 0.1,
   });
 
-  return (
-    <div className="overflow-hidden">
-      <Helmet>
-        <title>Empowering Africa's Digital Future | Adeera</title>
-        <meta name="description" content="ADEERA UNITECH delivers cutting-edge SaaS solutions tailored for Africa's growing businesses." />
-        <meta property="og:title" content="Empowering Africa's Digital Future | Adeera" />
-        <meta property="og:description" content="ADEERA UNITECH delivers cutting-edge SaaS solutions tailored for Africa's growing businesses." />
-        <meta property="og:image" content="https://www.corporatevision-news.com/wp-content/uploads/2023/04/SaaS-Business.jpg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@adeera" />
+  // JSON-LD data
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "ADEERA UNITECH",
+    "url": "https://adeera.vercel.app",
+    "logo": "https://adeera.vercel.app/logo.png",
+    "description": "Enterprise-grade SaaS solutions for African businesses, including CRM, cybersecurity, and cloud services.",
+    "sameAs": [
+      "https://twitter.com/adeera",
+      "https://linkedin.com/company/adeera"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "Kenya",
+      "addressLocality": "Nairobi"
+    },
+    "foundingDate": "2023",
+    "offers": services.map(service => ({
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": service.title,
+        "description": service.description
+      }
+    }))
+  };
 
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <Helmet>
+        <title>ADEERA UNITECH | Enterprise SaaS Solutions for Africa</title>
+        <meta name="description" content="Transform your business with ADEERA's enterprise-grade SaaS solutions — from CRM to cybersecurity — optimized for Africa's unique business landscape." />
+        <meta property="og:title" content="ADEERA UNITECH | Enterprise SaaS Solutions for Africa" />
+        <meta property="og:description" content="Transform your business with ADEERA's enterprise-grade SaaS solutions — from CRM to cybersecurity — optimized for Africa's unique business landscape." />
+        <meta property="og:image" content="https://adeera.vercel.app/og-image.jpg" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="ADEERA UNITECH | Enterprise SaaS Solutions for Africa" />
+        <meta name="twitter:description" content="Transform your business with ADEERA's enterprise-grade SaaS solutions — from CRM to cybersecurity — optimized for Africa's unique business landscape." />
+        <meta name="twitter:image" content="https://adeera.vercel.app/og-image.jpg" />
         <script type="application/ld+json">
-  {`
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "ADEERA UNITECH LIMITED",
-      "url": "https://yourdomain.com/",
-      "logo": "https://yourdomain.com/Adeera_logo.jpg",
-      "sameAs": [
-        "https://twitter.com/adeera"
-      ]
-    }
-  `}
-</script>
+          {JSON.stringify(jsonLd)}
+        </script>
       </Helmet>
 
       {/* Hero Section */}
@@ -303,7 +322,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Logo Cloud */}
+      {/* Logo Cloud 
      <section className="py-12 bg-muted/30">
   <div className="container mx-auto px-4 sm:px-6 lg:px-8">
     <div className="max-w-7xl mx-auto">
@@ -362,6 +381,8 @@ const Home = () => {
     </div>
   </div>
 </section>
+
+*/}
       {/* Services Preview */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -602,11 +623,11 @@ const Home = () => {
                   Get Started Free <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/10" asChild>
-                <Link to="/contact" className="flex items-center">
-                  Talk to an Expert
-                </Link>
-              </Button>
+              <Button size="lg" variant="outline" className="group bg-white text-primary hover:bg-white/90" asChild>
+  <Link to="/contact" className="flex items-center">
+    Talk to an Expert
+  </Link>
+</Button>
             </div>
           </motion.div>
         </div>

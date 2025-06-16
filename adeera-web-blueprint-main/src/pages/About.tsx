@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { Building2, Target, Users, Globe, Award, TrendingUp, MapPin, Calendar, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Helmet } from "react-helmet-async";
 
 const About = () => {
   const stats = [
@@ -43,8 +44,57 @@ const About = () => {
     }
   ];
 
+  // JSON-LD data
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "ADEERA UNITECH",
+      "url": "https://adeera.vercel.app",
+      "logo": "https://adeera.vercel.app/logo.png",
+      "description": "Building Africa's Leading SaaS Enablement Platform. Transforming how African businesses access, implement, and scale with world-class cloud-based software solutions.",
+      "foundingDate": "2023",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "Kenya",
+        "addressLocality": "Nairobi"
+      },
+      "sameAs": [
+        "https://twitter.com/adeera",
+        "https://linkedin.com/company/adeera"
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "100+"
+      },
+      "employee": teamMembers.map(member => ({
+        "@type": "Person",
+        "name": member.name,
+        "jobTitle": member.role,
+        "description": member.description
+      }))
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5">
+      <Helmet>
+        <title>About ADEERA UNITECH | Building Africa's SaaS Future</title>
+        <meta name="description" content="Learn about ADEERA UNITECH's mission to democratize SaaS access across Africa and our journey in transforming African businesses." />
+        <meta property="og:title" content="About ADEERA UNITECH | Building Africa's SaaS Future" />
+        <meta property="og:description" content="Learn about ADEERA UNITECH's mission to democratize SaaS access across Africa and our journey in transforming African businesses." />
+        <meta property="og:image" content="https://adeera.vercel.app/og-image.jpg" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="About ADEERA UNITECH | Building Africa's SaaS Future" />
+        <meta name="twitter:description" content="Learn about ADEERA UNITECH's mission to democratize SaaS access across Africa and our journey in transforming African businesses." />
+        <meta name="twitter:image" content="https://adeera.vercel.app/og-image.jpg" />
+        <script type="application/ld+json">
+          {JSON.stringify(jsonLd)}
+        </script>
+      </Helmet>
       {/* Hero Section */}
       <div className="relative overflow-hidden bg-gradient-to-br from-primary/10 via-primary/5 to-background">
         <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent"></div>

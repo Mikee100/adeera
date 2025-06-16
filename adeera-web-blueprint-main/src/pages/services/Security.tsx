@@ -72,7 +72,7 @@ const faqs = [
     a: "Yes! We help you meet GDPR, POPIA, and other global standards with automated compliance tools and audits.",
   },
   {
-    q: "What happens if there’s a breach?",
+    q: "What happens if there's a breach?",
     a: "Our incident response team acts immediately to contain, investigate, and resolve any security incidents.",
   },
   {
@@ -84,22 +84,88 @@ const faqs = [
 const Security = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
+  // JSON-LD data
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Cybersecurity Services",
+    "description": "Enterprise cybersecurity solutions for African businesses, including threat intelligence, compliance, and incident response.",
+    "provider": {
+      "@type": "Organization",
+      "name": "Adeera",
+      "url": "https://adeera.vercel.app",
+      "logo": "https://adeera.vercel.app/logo.png",
+      "sameAs": [
+        "https://twitter.com/adeera",
+        "https://linkedin.com/company/adeera"
+      ]
+    },
+    "areaServed": {
+      "@type": "Continent",
+      "name": "Africa"
+    },
+    "serviceType": "Cybersecurity",
+    "offers": {
+      "@type": "Offer",
+      "availability": "https://schema.org/InStock"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Security Services",
+      "itemListElement": features.map((feature, index) => ({
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": feature.title,
+          "description": feature.desc
+        }
+      }))
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary/5 to-background">
       <Helmet>
-        <title>Cybersecurity | Adeera</title>
-        <meta name="description" content="Enterprise cybersecurity for African businesses. Protect your data and systems with Adeera." />
+        <title>Cybersecurity Services | Adeera</title>
+        <meta name="description" content="Protect your business with Adeera's advanced cybersecurity solutions tailored for African enterprises." />
+        <meta property="og:title" content="Cybersecurity Services | Adeera" />
+        <meta property="og:description" content="Protect your business with Adeera's advanced cybersecurity solutions tailored for African enterprises." />
+        <meta property="og:image" content="https://adeera.vercel.app/og-image.jpg" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Cybersecurity Services | Adeera" />
+        <meta name="twitter:description" content="Protect your business with Adeera's advanced cybersecurity solutions tailored for African enterprises." />
+        <meta name="twitter:image" content="https://adeera.vercel.app/og-image.jpg" />
+        <script type="application/ld+json">
+          {JSON.stringify(jsonLd)}
+        </script>
       </Helmet>
 
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": "Cybersecurity Services",
+          "provider": {
+            "@type": "Organization",
+            "name": "Adeera",
+            "url": "https://yourdomain.com"
+          },
+          "areaServed": "Africa",
+          "description": "Enterprise cybersecurity solutions for African businesses, including threat intelligence, compliance, and incident response.",
+          "serviceType": "Cybersecurity"
+        })}
+      </script>
+
       {/* Hero Section */}
-      <section className="py-20 md:py-28 bg-gradient-to-r from-primary/10 via-background to-primary/5">
+      <section className="py-20 md:py-8 bg-gradient-to-r from-primary/10 via-background to-primary/5">
         <div className="container mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
           <div className="md:w-1/2 text-center md:text-left">
             <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4 leading-tight">
               Cybersecurity <span className="text-foreground">for Modern African Enterprises</span>
             </h1>
             <p className="text-lg text-muted-foreground mb-8">
-              Protect your business, customers, and reputation with Adeera’s advanced cybersecurity solutions—built for Africa’s digital future.
+              Protect your business, customers, and reputation with Adeera's advanced cybersecurity solutions—built for Africa's digital future.
             </p>
             <Link to="/contact">
               <button className="bg-primary text-white px-8 py-3 rounded-lg font-semibold shadow hover:bg-primary/90 transition">

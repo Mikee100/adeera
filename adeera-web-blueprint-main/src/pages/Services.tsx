@@ -2,6 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { Users, Shield, Cloud, ShoppingCart, ArrowRight, CheckCircle } from 'lucide-react';
+import { Helmet } from "react-helmet-async";
 
 const Services = () => {
   const services = [
@@ -40,8 +41,48 @@ const Services = () => {
     }
   ];
 
+  // JSON-LD data
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": services.map((service, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "item": {
+        "@type": "Service",
+        "name": service.title,
+        "description": service.description,
+        "provider": {
+          "@type": "Organization",
+          "name": "ADEERA UNITECH",
+          "url": "https://adeera.vercel.app"
+        },
+        "offers": {
+          "@type": "Offer",
+          "availability": service.comingSoon ? "https://schema.org/PreOrder" : "https://schema.org/InStock"
+        },
+        "featureList": service.features.join(", ")
+      }
+    }))
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <Helmet>
+        <title>Our Services | ADEERA UNITECH</title>
+        <meta name="description" content="Comprehensive technology services designed specifically for African businesses, including CRM integration, cybersecurity, cloud solutions, and SaaS marketplace." />
+        <meta property="og:title" content="Our Services | ADEERA UNITECH" />
+        <meta property="og:description" content="Comprehensive technology services designed specifically for African businesses, including CRM integration, cybersecurity, cloud solutions, and SaaS marketplace." />
+        <meta property="og:image" content="https://adeera.vercel.app/og-image.jpg" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Our Services | ADEERA UNITECH" />
+        <meta name="twitter:description" content="Comprehensive technology services designed specifically for African businesses, including CRM integration, cybersecurity, cloud solutions, and SaaS marketplace." />
+        <meta name="twitter:image" content="https://adeera.vercel.app/og-image.jpg" />
+        <script type="application/ld+json">
+          {JSON.stringify(jsonLd)}
+        </script>
+      </Helmet>
       <div className="py-4">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}

@@ -92,7 +92,7 @@ const Crm = () => {
       </Helmet>
 
       {/* Hero Section */}
-      <section className="py-20 md:py-28 bg-gradient-to-r from-primary/10 via-background to-primary/5">
+      <section className="py-20 md:py-8 bg-gradient-to-r from-primary/10 via-background to-primary/5">
         <div className="container mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
           <div className="md:w-1/2 text-center md:text-left">
             <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4 leading-tight">

@@ -18,6 +18,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Crm from "./pages/services/Crm";
 import Cloud from "./pages/services/Cloud";
 import Security from "./pages/services/Security";
+import Demo from "./pages/Demo";
 
 const queryClient = new QueryClient();
 
@@ -43,6 +44,7 @@ const App = () => (
             <Route path="services/crm" element={<Crm />} />
 <Route path="services/cloud" element={<Cloud />} />
 <Route path="services/security" element={<Security />} />
+ <Route path="/demo" element={<Demo />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
