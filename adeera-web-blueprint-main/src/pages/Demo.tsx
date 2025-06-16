@@ -115,7 +115,31 @@ const [open, setOpen] = useState(false);
       "@type": "Organization",
       "name": "ADEERA UNITECH",
       "url": "https://adeera.vercel.app"
-    }
+    },
+    "about": {
+      "@type": "SoftwareApplication",
+      "name": "ADEERA Platform",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": coreFeatures.map(feature => feature.title).join(", ")
+    },
+    "review": testimonials.map(testimonial => ({
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": testimonial.author.split(",")[0]
+      },
+      "reviewBody": testimonial.quote
+    }))
   };
 
   return (

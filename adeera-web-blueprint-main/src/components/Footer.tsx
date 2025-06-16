@@ -26,8 +26,11 @@ const socials = [
 
 const Footer = () => {
   return (
-    <footer className="bg-[#f4f7fb] dark:bg-[#181f2a]  border-border/40">
-      <div className="container mx-auto px-4 sm:px-8 py-16">
+    <footer className="relative bg-gradient-to-b from-background to-muted/30 dark:from-background dark:to-muted/10 border-t border-border/40">
+      {/* Pattern overlay */}
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAzNGMwLTIuMjA5IDEuNzkxLTQgNC00czQgMS43OTEgNCA0LTEuNzkxIDQtNCA0LTQtMS43OTEtNC00eiIgZmlsbD0iY3VycmVudENvbG9yIiBmaWxsLW9wYWNpdHk9Ii4wNSIvPjwvZz48L3N2Zz4=')] opacity-5" />
+      
+      <div className="container mx-auto px-4 sm:px-8 py-16 relative">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Brand & Mission */}
           <div className="md:col-span-2 flex flex-col justify-between">
@@ -47,7 +50,7 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className="text-muted-foreground hover:text-primary transition-colors rounded-full p-2 bg-white/60 dark:bg-white/5 shadow-sm"
+                  className="text-muted-foreground hover:text-primary transition-colors rounded-full p-2.5 bg-background/50 dark:bg-background/10 shadow-sm hover:shadow-md border border-border/40 hover:border-primary/30"
                 >
                   {s.icon}
                 </a>
@@ -58,7 +61,7 @@ const Footer = () => {
           {/* Quick Links */}
           <div>
             <h3 className="font-semibold mb-4 text-foreground">Quick Links</h3>
-            <ul className="space-y-2">
+            <ul className="space-y-3">
               <li><Link to="/about" className="text-muted-foreground hover:text-primary transition-colors">About Us</Link></li>
               <li><Link to="/services" className="text-muted-foreground hover:text-primary transition-colors">Services</Link></li>
               <li><Link to="/partnerships" className="text-muted-foreground hover:text-primary transition-colors">Partnerships</Link></li>
@@ -69,20 +72,20 @@ const Footer = () => {
           {/* Contact Info */}
           <div>
             <h3 className="font-semibold mb-4 text-foreground">Contact Info</h3>
-            <ul className="space-y-2 text-muted-foreground">
+            <ul className="space-y-3 text-muted-foreground">
               <li>
-                <a href="https://mail.google.com/mail/?view=cm&to=info@adeeraunitech.com" className="hover:text-primary transition-colors">
-                  📩 contact@adeeraunitech.com
+                <a href="https://mail.google.com/mail/?view=cm&to=info@adeeraunitech.com" className="hover:text-primary transition-colors flex items-center gap-2">
+                  <span className="text-lg">📩</span> contact@adeeraunitech.com
                 </a>
               </li>
               <li>
-                <a href="tel:+254700000000" className="hover:text-primary transition-colors">
-                  📞 +254-700-000000
+                <a href="tel:+254700000000" className="hover:text-primary transition-colors flex items-center gap-2">
+                  <span className="text-lg">📞</span> +254-700-000000
                 </a>
               </li>
               <li>
-                <a href="https://www.adeeraunitech.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
-                  🌐 www.adeeraunitech.com
+                <a href="https://www.adeeraunitech.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors flex items-center gap-2">
+                  <span className="text-lg">🌐</span> www.adeeraunitech.com
                 </a>
               </li>
             </ul>
@@ -93,7 +96,7 @@ const Footer = () => {
           <p className="text-muted-foreground text-sm text-center md:text-left">
             © 2025 ADEERA UNITECH LIMITED. All Rights Reserved.
           </p>
-          <div className="flex space-x-4">
+          <div className="flex space-x-6">
             <Link to="/privacy" className="text-muted-foreground hover:text-primary text-sm transition-colors">
               Privacy Policy
             </Link>

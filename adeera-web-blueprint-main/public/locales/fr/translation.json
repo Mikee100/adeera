@@ -1,0 +1,83 @@
+{
+  "home": {
+    "hero": {
+      "badge": "Solutions SaaS Entreprise",
+      "title": "Transformez Votre Entreprise avec les Solutions ADEERA",
+      "description": "Donnez du pouvoir aux entreprises africaines avec des solutions SaaS de pointe. Optimisez vos opérations, renforcez la sécurité et développez votre entreprise avec notre suite complète d'outils d'entreprise.",
+      "cta": {
+        "demo": "Demander une Démo",
+        "pricing": "Voir les Tarifs"
+      }
+    },
+    "services": {
+      "title": "Nos Services",
+      "subtitle": "Solutions d'entreprise complètes conçues pour les entreprises africaines",
+      "items": {
+        "crm": {
+          "title": "Intégration CRM",
+          "description": "Connectez facilement vos processus métier avec nos solutions CRM avancées"
+        },
+        "security": {
+          "title": "Cybersécurité",
+          "description": "Sécurité de niveau entreprise pour protéger vos données et opérations"
+        },
+        "cloud": {
+          "title": "Solutions Cloud",
+          "description": "Infrastructure cloud évolutive adaptée aux besoins du marché africain"
+        },
+        "marketplace": {
+          "title": "Marketplace SaaS",
+          "description": "Accédez à une sélection d'applications et d'outils métier"
+        }
+      }
+    },
+    "features": {
+      "title": "L'Avantage ADEERA",
+      "subtitle": "Pourquoi choisir nos solutions d'entreprise",
+      "items": {
+        "expertise": {
+          "title": "Expertise du Marché",
+          "description": "Compréhension approfondie des défis et opportunités des entreprises africaines"
+        },
+        "deployment": {
+          "title": "Déploiement Rapide",
+          "description": "Mise en œuvre rapide avec un minimum de perturbation de vos opérations"
+        },
+        "security": {
+          "title": "Sécurité Entreprise",
+          "description": "Mesures de sécurité avancées pour protéger vos données d'entreprise"
+        },
+        "scalable": {
+          "title": "Solutions Évolutives",
+          "description": "Développez votre entreprise avec des solutions qui évoluent avec vos besoins"
+        }
+      }
+    },
+    "stats": {
+      "title": "Résultats Mesurables",
+      "subtitle": "Découvrez l'impact de nos solutions sur votre entreprise",
+      "items": {
+        "support": {
+          "value": "24/7",
+          "label": "Support Disponible"
+        },
+        "uptime": {
+          "value": "99.9%",
+          "label": "Garantie de Disponibilité"
+        },
+        "deployment": {
+          "value": "2x",
+          "label": "Déploiement Plus Rapide"
+        }
+      }
+    },
+    "cta": {
+      "title": "Accélérez Votre Transformation Numérique",
+      "subtitle": "Rejoignez les entreprises africaines leaders dans leur parcours numérique",
+      "buttons": {
+        "start": "Commencer",
+        "expert": "Parler à un Expert"
+      }
+    }
+  }
+} 

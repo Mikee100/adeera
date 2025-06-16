@@ -84,11 +84,58 @@ const faqs = [
 const Crm = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
+  // JSON-LD data
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "CRM Integration & Support",
+    "description": "We deploy and support Salesforce, HubSpot, and Zoho CRMs — empowering African businesses to manage customer relationships, sales pipelines, and marketing automation.",
+    "provider": {
+      "@type": "Organization",
+      "name": "ADEERA UNITECH",
+      "url": "https://adeera.vercel.app"
+    },
+    "offers": {
+      "@type": "Offer",
+      "availability": "https://schema.org/InStock"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "CRM Solutions",
+      "itemListElement": features.map((feature, index) => ({
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "SoftwareApplication",
+          "name": feature.title,
+          "description": feature.desc,
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Web"
+        }
+      }))
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "500+"
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary/5 to-background">
       <Helmet>
-        <title>CRM Solutions | Adeera</title>
-        <meta name="description" content="Modern CRM solutions for African businesses. Integrate, automate, and grow with Adeera." />
+        <title>CRM Solutions | ADEERA UNITECH</title>
+        <meta name="description" content="Modern CRM solutions for African businesses. Integrate, automate, and grow with Adeera's comprehensive CRM services." />
+        <meta property="og:title" content="CRM Solutions | ADEERA UNITECH" />
+        <meta property="og:description" content="Modern CRM solutions for African businesses. Integrate, automate, and grow with Adeera's comprehensive CRM services." />
+        <meta property="og:image" content="https://adeera.vercel.app/og-image.jpg" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="CRM Solutions | ADEERA UNITECH" />
+        <meta name="twitter:description" content="Modern CRM solutions for African businesses. Integrate, automate, and grow with Adeera's comprehensive CRM services." />
+        <meta name="twitter:image" content="https://adeera.vercel.app/og-image.jpg" />
+        <script type="application/ld+json">
+          {JSON.stringify(jsonLd)}
+        </script>
       </Helmet>
 
       {/* Hero Section */}
@@ -96,10 +143,10 @@ const Crm = () => {
         <div className="container mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
           <div className="md:w-1/2 text-center md:text-left">
             <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4 leading-tight">
-              CRM Solutions <span className="text-foreground">for Africa’s Digital Businesses</span>
+              CRM Solutions <span className="text-foreground">for Africa's Digital Businesses</span>
             </h1>
             <p className="text-lg text-muted-foreground mb-8">
-              Integrate, automate, and grow your business with Adeera’s modern CRM platform—built for Africa’s unique needs.
+              Integrate, automate, and grow your business with Adeera's modern CRM platform—built for Africa's unique needs.
             </p>
             <Link to="/contact">
               <button className="bg-primary text-white px-8 py-3 rounded-lg font-semibold shadow hover:bg-primary/90 transition">

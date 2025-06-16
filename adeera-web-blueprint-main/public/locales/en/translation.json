@@ -1,0 +1,83 @@
+{
+  "home": {
+    "hero": {
+      "badge": "Enterprise SaaS Solutions",
+      "title": "Transform Your Business with ADEERA's Enterprise Solutions",
+      "description": "Empowering African businesses with cutting-edge SaaS solutions. Streamline operations, enhance security, and scale your business with our comprehensive suite of enterprise tools.",
+      "cta": {
+        "demo": "Request Demo",
+        "pricing": "View Pricing"
+      }
+    },
+    "services": {
+      "title": "Our Services",
+      "subtitle": "Comprehensive enterprise solutions designed for African businesses",
+      "items": {
+        "crm": {
+          "title": "CRM Integration",
+          "description": "Seamlessly connect your business processes with our advanced CRM solutions"
+        },
+        "security": {
+          "title": "Cybersecurity",
+          "description": "Enterprise-grade security to protect your business data and operations"
+        },
+        "cloud": {
+          "title": "Cloud Solutions",
+          "description": "Scalable cloud infrastructure tailored for African market needs"
+        },
+        "marketplace": {
+          "title": "SaaS Marketplace",
+          "description": "Access a curated selection of business applications and tools"
+        }
+      }
+    },
+    "features": {
+      "title": "The ADEERA Advantage",
+      "subtitle": "Why choose our enterprise solutions",
+      "items": {
+        "expertise": {
+          "title": "Market Expertise",
+          "description": "Deep understanding of African business challenges and opportunities"
+        },
+        "deployment": {
+          "title": "Rapid Deployment",
+          "description": "Quick implementation with minimal disruption to your operations"
+        },
+        "security": {
+          "title": "Enterprise Security",
+          "description": "Advanced security measures to protect your business data"
+        },
+        "scalable": {
+          "title": "Scalable Solutions",
+          "description": "Grow your business with solutions that scale with your needs"
+        }
+      }
+    },
+    "stats": {
+      "title": "Measurable Results",
+      "subtitle": "See the impact of our solutions on your business",
+      "items": {
+        "support": {
+          "value": "24/7",
+          "label": "Support Availability"
+        },
+        "uptime": {
+          "value": "99.9%",
+          "label": "Uptime Guarantee"
+        },
+        "deployment": {
+          "value": "2x",
+          "label": "Faster Deployment"
+        }
+      }
+    },
+    "cta": {
+      "title": "Accelerate Your Digital Transformation",
+      "subtitle": "Join leading African businesses in their digital journey",
+      "buttons": {
+        "start": "Get Started",
+        "expert": "Talk to an Expert"
+      }
+    }
+  }
+} 

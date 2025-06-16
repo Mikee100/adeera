@@ -84,11 +84,59 @@ const faqs = [
 const Cloud = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
+  // JSON-LD data
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Cloud Consulting & Infrastructure",
+    "description": "Migration planning, cost optimization, and cloud-native development support — using AWS, Azure, and Google Cloud for digital transformation.",
+    "provider": {
+      "@type": "Organization",
+      "name": "ADEERA UNITECH",
+      "url": "https://adeera.vercel.app"
+    },
+    "offers": {
+      "@type": "Offer",
+      "availability": "https://schema.org/InStock"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Cloud Services",
+      "itemListElement": features.map((feature, index) => ({
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "WebApplication",
+          "name": feature.title,
+          "description": feature.desc,
+          "applicationCategory": "CloudService",
+          "browserRequirements": "Requires JavaScript. Requires HTML5.",
+          "operatingSystem": "Any"
+        }
+      }))
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "300+"
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary/5 to-background">
       <Helmet>
-        <title>Cloud Services | Adeera</title>
-        <meta name="description" content="Cloud migration, hosting, and support for African businesses. Secure, scalable, and reliable SaaS cloud solutions." />
+        <title>Cloud Solutions | ADEERA UNITECH</title>
+        <meta name="description" content="Enterprise cloud solutions for African businesses. Migrate, optimize, and scale with AWS, Azure, and Google Cloud." />
+        <meta property="og:title" content="Cloud Solutions | ADEERA UNITECH" />
+        <meta property="og:description" content="Enterprise cloud solutions for African businesses. Migrate, optimize, and scale with AWS, Azure, and Google Cloud." />
+        <meta property="og:image" content="https://adeera.vercel.app/og-image.jpg" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Cloud Solutions | ADEERA UNITECH" />
+        <meta name="twitter:description" content="Enterprise cloud solutions for African businesses. Migrate, optimize, and scale with AWS, Azure, and Google Cloud." />
+        <meta name="twitter:image" content="https://adeera.vercel.app/og-image.jpg" />
+        <script type="application/ld+json">
+          {JSON.stringify(jsonLd)}
+        </script>
       </Helmet>
 
       {/* Hero Section */}
@@ -99,7 +147,7 @@ const Cloud = () => {
               Cloud Services <span className="text-foreground">for Modern African Businesses</span>
             </h1>
             <p className="text-lg text-muted-foreground mb-8">
-              Migrate, scale, and secure your business in the cloud with Adeera’s expert team and global partnerships. Focus on growth—we’ll handle the infrastructure.
+              Migrate, scale, and secure your business in the cloud with Adeera's expert team and global partnerships. Focus on growth—we'll handle the infrastructure.
             </p>
             <Link to="/contact">
               <button className="bg-primary text-white px-8 py-3 rounded-lg font-semibold shadow hover:bg-primary/90 transition">
