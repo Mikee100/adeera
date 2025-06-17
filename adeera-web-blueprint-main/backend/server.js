@@ -1,3 +1,32 @@
+import express from 'express';
+import path from 'path';
+import cors from 'cors';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+import nodemailer from 'nodemailer';
+
+const app = express();
+app.use(express.json());
+const PORT = process.env.PORT || 5000;
+app.use(cors({
+  origin: 'http://localhost:8080',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  credentials: true,
+}));
+// Needed for __dirname in ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, 'build')));
+
+// Example API route
+app.get('/api/hello', (req, res) => {
+  res.json({ message: 'Hello from server!' });
+});
+
+
+
 app.post('/contact', async (req, res) => {
   const { name, email, company, message } = req.body;
 
@@ -179,4 +208,8 @@ app.post('/contact', async (req, res) => {
     console.error('Contact form error:', error);
     res.status(500).json({ success: false, message: 'Server error' });
   }
+});
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });

@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async";
+import SEO from '@/components/SEO';
 import { useState } from "react";
 import { CheckCircle, BarChart2, Users, Zap, Shield, MessageCircle, ChevronDown, ChevronUp } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -84,59 +84,46 @@ const faqs = [
 const Crm = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  // JSON-LD data
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "CRM Integration & Support",
-    "description": "We deploy and support Salesforce, HubSpot, and Zoho CRMs — empowering African businesses to manage customer relationships, sales pipelines, and marketing automation.",
-    "provider": {
-      "@type": "Organization",
-      "name": "ADEERA UNITECH",
-      "url": "https://adeera.vercel.app"
-    },
-    "offers": {
-      "@type": "Offer",
-      "availability": "https://schema.org/InStock"
-    },
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "CRM Solutions",
-      "itemListElement": features.map((feature, index) => ({
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "SoftwareApplication",
-          "name": feature.title,
-          "description": feature.desc,
-          "applicationCategory": "BusinessApplication",
-          "operatingSystem": "Web"
-        }
-      }))
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "reviewCount": "500+"
-    }
-  };
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary/5 to-background">
-      <Helmet>
-        <title>CRM Solutions | ADEERA UNITECH</title>
-        <meta name="description" content="Modern CRM solutions for African businesses. Integrate, automate, and grow with Adeera's comprehensive CRM services." />
-        <meta property="og:title" content="CRM Solutions | ADEERA UNITECH" />
-        <meta property="og:description" content="Modern CRM solutions for African businesses. Integrate, automate, and grow with Adeera's comprehensive CRM services." />
-        <meta property="og:image" content="https://adeera.vercel.app/og-image.jpg" />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="CRM Solutions | ADEERA UNITECH" />
-        <meta name="twitter:description" content="Modern CRM solutions for African businesses. Integrate, automate, and grow with Adeera's comprehensive CRM services." />
-        <meta name="twitter:image" content="https://adeera.vercel.app/og-image.jpg" />
-        <script type="application/ld+json">
-          {JSON.stringify(jsonLd)}
-        </script>
-      </Helmet>
+      <SEO 
+        title="CRM Integration Services | Salesforce, HubSpot & Zoho | ADEERA UNITECH"
+        description="Expert CRM integration services for Salesforce, HubSpot, and Zoho. Custom CRM solutions tailored for African business needs with local support and training."
+        keywords="CRM integration, Salesforce Kenya, HubSpot integration, Zoho CRM, CRM consulting, customer relationship management, business automation, Kenya CRM services"
+        url="https://www.adeeraunitech.com/services/crm"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": "CRM Integration Services",
+          "description": "Expert CRM integration for Salesforce, HubSpot, and Zoho",
+          "provider": {
+            "@type": "Organization",
+            "name": "ADEERA UNITECH LIMITED",
+            "url": "https://www.adeeraunitech.com"
+          },
+          "serviceType": "CRM Integration",
+          "areaServed": "KE",
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "CRM Solutions",
+            "itemListElement": features.map((feature, index) => ({
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "SoftwareApplication",
+                "name": feature.title,
+                "description": feature.desc,
+                "applicationCategory": "BusinessApplication",
+                "operatingSystem": "Web"
+              }
+            }))
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "reviewCount": "500+"
+          }
+        }}
+      />
 
       {/* Hero Section */}
       <section className="py-20 md:py-18 bg-gradient-to-r from-primary/10 via-background to-primary/5">

@@ -46,7 +46,7 @@ import {
 } from "lucide-react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { Helmet } from "react-helmet-async";
+import SEO from "@/components/SEO";
 import { useEffect, useState } from "react";
 
 const AnimatedCard = ({ service, index }) => {
@@ -512,94 +512,79 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/5">
-      <Helmet>
-        <title>ADEERA UNITECH | Enterprise SaaS Solutions for Africa</title>
-        <meta
-          name="description"
-          content="Transform your business with ADEERA's enterprise-grade SaaS solutions — from CRM to cybersecurity — optimized for Africa's unique business landscape."
-        />
-        <meta
-          name="keywords"
-          content="SaaS, CRM, cybersecurity, cloud solutions, African business, enterprise software, digital transformation"
-        />
-        <meta name="author" content="ADEERA UNITECH LIMITED" />
-        <meta name="robots" content="index, follow" />
-
-        {/* Open Graph */}
-        <meta
-          property="og:title"
-          content="ADEERA UNITECH | Enterprise SaaS Solutions for Africa"
-        />
-        <meta
-          property="og:description"
-          content="Transform your business with ADEERA's enterprise-grade SaaS solutions — from CRM to cybersecurity — optimized for Africa's unique business landscape."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://adeera.vercel.app" />
-        <meta
-          property="og:image"
-          content="https://adeera.vercel.app/og-image.jpg"
-        />
-        <meta property="og:site_name" content="ADEERA UNITECH" />
-
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@adeera" />
-        <meta
-          name="twitter:title"
-          content="ADEERA UNITECH | Enterprise SaaS Solutions for Africa"
-        />
-        <meta
-          name="twitter:description"
-          content="Transform your business with ADEERA's enterprise-grade SaaS solutions — from CRM to cybersecurity — optimized for Africa's unique business landscape."
-        />
-        <meta
-          name="twitter:image"
-          content="https://adeera.vercel.app/og-image.jpg"
-        />
-
-        {/* Language Alternates */}
-        <link rel="alternate" hrefLang="en" href="https://adeera.vercel.app" />
-        <link
-          rel="alternate"
-          hrefLang="fr"
-          href="https://adeera.vercel.app/fr"
-        />
-        <link rel="canonical" href="https://adeera.vercel.app" />
-
-        {/* JSON-LD */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
+      <SEO 
+        title="ADEERA UNITECH | Enterprise SaaS Solutions for African Businesses"
+        description="Transform your business with ADEERA's enterprise-grade SaaS solutions — CRM integration, cybersecurity, cloud solutions, and SaaS marketplace. Optimized for Africa's unique business landscape. ISO 27001 certified, 24/7 support."
+        keywords="SaaS, CRM, cybersecurity, cloud solutions, African business, enterprise software, digital transformation, Salesforce, HubSpot, AWS, Azure, Kenya, Nairobi, business software, cloud migration, data security, API integration, mobile solutions"
+        url="https://www.adeeraunitech.com/"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "ADEERA UNITECH",
+          "url": "https://www.adeeraunitech.com",
+          "description": "Enterprise SaaS solutions for African businesses",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://www.adeeraunitech.com/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          },
+          "publisher": {
             "@type": "Organization",
-            name: "ADEERA UNITECH LIMITED",
-            url: "https://adeera.vercel.app",
-            logo: "https://adeera.vercel.app/logo.png",
-            description:
-              "Transform your business with ADEERA's enterprise-grade SaaS solutions — from CRM to cybersecurity — optimized for Africa's unique business landscape.",
-            address: {
+            "name": "ADEERA UNITECH LIMITED",
+            "url": "https://www.adeeraunitech.com",
+            "logo": "https://www.adeeraunitech.com/logo.png",
+            "description": "Enterprise SaaS solutions for African businesses",
+            "address": {
               "@type": "PostalAddress",
-              addressCountry: "Kenya",
-              addressLocality: "Nairobi",
+              "addressLocality": "Nairobi",
+              "addressCountry": "KE"
             },
-            sameAs: [
-              "https://twitter.com/adeera",
-              "https://linkedin.com/company/adeera",
-            ],
-            offers: {
-              "@type": "AggregateOffer",
-              offers: services.map((service) => ({
-                "@type": "Offer",
-                itemOffered: {
-                  "@type": "Service",
-                  name: service.title,
-                  description: service.description,
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "contactType": "customer service",
+              "areaServed": "KE"
+            },
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Enterprise SaaS Solutions",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "CRM Integration",
+                    "description": "Seamless Salesforce, HubSpot, and Zoho CRM deployments tailored for African markets"
+                  }
                 },
-              })),
-            },
-          })}
-        </script>
-      </Helmet>
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Cybersecurity",
+                    "description": "Comprehensive protection with endpoint security and threat intelligence"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Cloud Solutions",
+                    "description": "AWS, Azure, and Google Cloud migrations with local support"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "SaaS Marketplace",
+                    "description": "Curated SaaS products for HR, accounting, and e-commerce needs"
+                  }
+                }
+              ]
+            }
+          }
+        }}
+      />
 
       {/* Hero Section */}
       <section className="relative py-20 md:py-26 overflow-hidden bg-gradient-to-br from-background to-primary/5">

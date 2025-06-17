@@ -3,16 +3,62 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://adeera.vercel.app/sitemap.xml
+Sitemap: https://www.adeeraunitech.com/sitemap.xml
 
-# Disallow admin and API routes
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
+# Disallow admin and private areas
 Disallow: /admin/
 Disallow: /api/
 Disallow: /private/
+Disallow: /temp/
+Disallow: /uploads/
+Disallow: /_next/
+Disallow: /node_modules/
 
-# Crawl-delay for specific bots
-User-agent: GPTBot
-Crawl-delay: 10
+# Allow important directories
+Allow: /public/
+Allow: /assets/
+Allow: /images/
 
-User-agent: ChatGPT-User
-Crawl-delay: 10
+# Specific rules for major search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1
+
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 2
+
+User-agent: YandexBot
+Allow: /
+Crawl-delay: 2
+
+# Block bad bots
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /

@@ -2,6 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { Handshake, CheckCircle, Mail, Phone, Globe, ArrowRight, Star, Users, TrendingUp, Shield } from 'lucide-react';
+import SEO from '@/components/SEO';
 
 const Partnerships = () => {
   const partnershipModels = [
@@ -59,6 +60,31 @@ const Partnerships = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5">
+      <SEO 
+        title="Partnerships | Become an ADEERA UNITECH Partner | Kenya Tech Ecosystem"
+        description="Join ADEERA UNITECH's partner network. Collaborate with us to deliver innovative SaaS solutions across Africa. Partnership opportunities for tech companies."
+        keywords="tech partnerships Kenya, SaaS partnerships, business partnerships Africa, technology collaboration, Kenya tech ecosystem, enterprise partnerships"
+        url="https://www.adeeraunitech.com/partnerships"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "ADEERA UNITECH LIMITED",
+          "description": "SaaS solutions provider seeking partnerships",
+          "url": "https://www.adeeraunitech.com/partnerships",
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Partnership Opportunities",
+            "itemListElement": partnershipModels.map((model, index) => ({
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": model.title,
+                "description": model.description
+              }
+            }))
+          }
+        }}
+      />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Hero Section */}
         <div className="max-w-5xl mx-auto text-center mb-20">

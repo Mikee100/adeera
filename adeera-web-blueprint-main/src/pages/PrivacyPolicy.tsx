@@ -1,11 +1,20 @@
-import { Helmet } from "react-helmet-async";
+import SEO from '@/components/SEO';
 
 const PrivacyPolicy = () => (
   <div className="container mx-auto px-4 py-16 max-w-3xl">
-    <Helmet>
-      <title>Privacy Policy | Adeera</title>
-      <meta name="description" content="Read the privacy policy for Adeera SaaS platform." />
-    </Helmet>
+    <SEO 
+      title="Privacy Policy | ADEERA UNITECH | Data Protection & Security"
+      description="ADEERA UNITECH privacy policy. Learn how we protect your data and maintain security standards. ISO 27001 certified data protection practices."
+      keywords="privacy policy, data protection, security policy, Kenya data protection, GDPR compliance, data security, privacy rights"
+      url="https://www.adeeraunitech.com/privacy-policy"
+      structuredData={{
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Privacy Policy",
+        "description": "Data protection and privacy policy",
+        "url": "https://www.adeeraunitech.com/privacy-policy"
+      }}
+    />
     <h1 className="text-3xl font-bold mb-6">Privacy Policy</h1>
     <p className="mb-4">
       At ADEERA UNITECH LIMITED, we are committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you use our SaaS platform and services.

@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async";
+import SEO from '@/components/SEO';
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { Play, Check, Zap, Shield, Users, BarChart2, Cloud, Lock, Mail } from "lucide-react";
@@ -88,97 +88,52 @@ const [open, setOpen] = useState(false);
     console.log("Form submitted:", formData);
   };
 
-  // JSON-LD data
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Event",
-    "name": "ADEERA UNITECH Product Demo",
-    "description": "Experience our enterprise-grade SaaS solutions with a personalized demo. See how our CRM, cybersecurity, and cloud services can transform your business.",
-    "startDate": "2024-01-01T00:00:00Z",
-    "endDate": "2024-12-31T23:59:59Z",
-    "eventStatus": "https://schema.org/EventScheduled",
-    "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
-    "organizer": {
-      "@type": "Organization",
-      "name": "ADEERA UNITECH",
-      "url": "https://adeera.vercel.app"
-    },
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD",
-      "availability": "https://schema.org/InStock",
-      "validFrom": "2024-01-01T00:00:00Z",
-      "url": "https://adeera.vercel.app/demo"
-    },
-    "performer": {
-      "@type": "Organization",
-      "name": "ADEERA UNITECH",
-      "url": "https://adeera.vercel.app"
-    },
-    "about": {
-      "@type": "SoftwareApplication",
-      "name": "ADEERA Platform",
-      "applicationCategory": "BusinessApplication",
-      "operatingSystem": "Web",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "featureList": coreFeatures.map(feature => feature.title).join(", ")
-    },
-    "review": testimonials.map(testimonial => ({
-      "@type": "Review",
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "5"
-      },
-      "author": {
-        "@type": "Person",
-        "name": testimonial.author.split(",")[0]
-      },
-      "reviewBody": testimonial.quote
-    }))
-  };
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
-      <Helmet>
-        <title>Request a Demo | ADEERA UNITECH</title>
-        <meta name="description" content="Experience our enterprise-grade SaaS solutions with a personalized demo. See how our CRM, cybersecurity, and cloud services can transform your business." />
-        <meta property="og:title" content="Request a Demo | ADEERA UNITECH" />
-        <meta property="og:description" content="Experience our enterprise-grade SaaS solutions with a personalized demo. See how our CRM, cybersecurity, and cloud services can transform your business." />
-        <meta property="og:image" content="https://adeera.vercel.app/og-image.jpg" />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Request a Demo | ADEERA UNITECH" />
-        <meta name="twitter:description" content="Experience our enterprise-grade SaaS solutions with a personalized demo. See how our CRM, cybersecurity, and cloud services can transform your business." />
-        <meta name="twitter:image" content="https://adeera.vercel.app/og-image.jpg" />
-        <script type="application/ld+json">
-          {JSON.stringify(jsonLd)}
-        </script>
-      </Helmet>
+      <SEO 
+        title="Request Demo | ADEERA UNITECH SaaS Solutions | Free Consultation"
+        description="Request a free demo of ADEERA's SaaS solutions. Experience our CRM, cybersecurity, and cloud services firsthand. Book your consultation today."
+        keywords="SaaS demo, free consultation, CRM demo, cybersecurity demo, cloud demo, business software demo, Kenya tech demo, enterprise software trial"
+        url="https://www.adeeraunitech.com/demo"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": "SaaS Demo Request",
+          "description": "Free demo and consultation for SaaS solutions",
+          "provider": {
+            "@type": "Organization",
+            "name": "ADEERA UNITECH LIMITED",
+            "url": "https://www.adeeraunitech.com"
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "KES",
+            "description": "Free consultation and demo"
+          },
+          "about": {
+            "@type": "SoftwareApplication",
+            "name": "ADEERA Platform",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Web",
+            "featureList": coreFeatures.map(feature => feature.title).join(", ")
+          },
+          "review": testimonials.map(testimonial => ({
+            "@type": "Review",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5"
+            },
+            "author": {
+              "@type": "Person",
+              "name": testimonial.author.split(",")[0]
+            },
+            "reviewBody": testimonial.quote
+          }))
+        }}
+      />
       
-<>
-  <Dialog open={open} onOpenChange={setOpen}>
-   
-    <DialogContent>
-      <DialogTitle>Quick Tour</DialogTitle>
-      <div className="space-y-3">
-        <p>Welcome! Here's what you can do on Adeera:</p>
-        <ul className="list-disc ml-5">
-          <li>📊 View real-time analytics</li>
-          <li>🔒 Manage your data securely</li>
-          <li>🤝 Collaborate with your team</li>
-          <li>⚡ Get instant support</li>
-        </ul>
-      </div>
-    </DialogContent>
-  </Dialog>
-</>
-      {/* Hero Section */}
-      <section className="py-16 px-4 text-center">
+      <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
         <div className="max-w-4xl mx-auto">
           <span className="inline-block px-3 py-1 text-sm font-medium rounded-full bg-primary/10 text-primary mb-4">
             No credit card required
@@ -225,7 +180,7 @@ const [open, setOpen] = useState(false);
             )}
           </div>
         </div>
-      </section>
+      </div>
 
       {/* Demo Navigation */}
       <div className="sticky top-0 z-10 bg-white border-b">

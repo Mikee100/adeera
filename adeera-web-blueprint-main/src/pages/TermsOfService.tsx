@@ -1,11 +1,20 @@
-import { Helmet } from "react-helmet-async";
+import SEO from '@/components/SEO';
 
 const TermsOfService = () => (
   <div className="container mx-auto px-4 py-16 max-w-3xl">
-    <Helmet>
-      <title>Terms of Service | Adeera</title>
-      <meta name="description" content="Read the terms of service for Adeera SaaS platform." />
-    </Helmet>
+    <SEO 
+      title="Terms of Service | ADEERA UNITECH | Service Agreement"
+      description="ADEERA UNITECH terms of service and service agreement. Understand our service terms, conditions, and user agreements for SaaS solutions."
+      keywords="terms of service, service agreement, user agreement, Kenya business terms, SaaS terms, legal terms, service conditions"
+      url="https://www.adeeraunitech.com/terms-of-service"
+      structuredData={{
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Terms of Service",
+        "description": "Service terms and conditions",
+        "url": "https://www.adeeraunitech.com/terms-of-service"
+      }}
+    />
     <h1 className="text-3xl font-bold mb-6">Terms of Service</h1>
     <p className="mb-4">
       Welcome to ADEERA UNITECH LIMITED. By accessing or using our SaaS platform, you agree to be bound by these Terms of Service.

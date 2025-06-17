@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Mail, Phone, Globe, MapPin, Send, Clock, User, Building } from 'lucide-react';
+import SEO from '@/components/SEO';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -65,6 +66,49 @@ const handleSubmit = async (e: React.FormEvent) => {
 
   return (
     <div className="min-h-screen py-16 md:py-14 bg-gradient-to-b from-background to-muted/20" ref={ref}>
+      <SEO 
+        title="Contact ADEERA UNITECH | Get Expert SaaS Consultation | Kenya"
+        description="Contact ADEERA UNITECH for expert SaaS consultation, CRM integration, cybersecurity, and cloud solutions. Get in touch with our team in Nairobi, Kenya."
+        keywords="contact ADEERA, SaaS consultation Kenya, tech support Kenya, business consultation Nairobi, enterprise software support, Kenya tech company contact"
+        url="https://www.adeeraunitech.com/contact"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          "name": "Contact ADEERA UNITECH",
+          "description": "Get expert SaaS consultation and support",
+          "url": "https://www.adeeraunitech.com/contact",
+          "mainEntity": {
+            "@type": "Organization",
+            "name": "ADEERA UNITECH LIMITED",
+            "url": "https://www.adeeraunitech.com",
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "contactType": "customer service",
+              "areaServed": "KE",
+              "availableLanguage": ["English", "Swahili"],
+              "hoursAvailable": {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                  "Monday",
+                  "Tuesday", 
+                  "Wednesday",
+                  "Thursday",
+                  "Friday"
+                ],
+                "opens": "08:00",
+                "closes": "18:00"
+              },
+              "telephone": "+254-700-000000",
+              "email": "info@adeeraunitech.com"
+            },
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Nairobi",
+              "addressCountry": "KE"
+            }
+          }
+        }}
+      />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
