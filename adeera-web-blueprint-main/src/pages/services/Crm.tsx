@@ -139,7 +139,7 @@ const Crm = () => {
       </Helmet>
 
       {/* Hero Section */}
-      <section className="py-20 md:py-8 bg-gradient-to-r from-primary/10 via-background to-primary/5">
+      <section className="py-20 md:py-18 bg-gradient-to-r from-primary/10 via-background to-primary/5">
         <div className="container mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
           <div className="md:w-1/2 text-center md:text-left">
             <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4 leading-tight">
@@ -154,14 +154,14 @@ const Crm = () => {
               </button>
             </Link>
           </div>
-          <div className="md:w-1/2 flex justify-center">
-            <img
-              src="https://img.freepik.com/free-vector/crm-customer-relationship-management-concept-illustration_114360-16461.jpg?w=700"
-              alt="CRM Illustration"
-              className="rounded-2xl shadow-2xl object-cover w-full max-w-md border border-primary/10"
-              loading="lazy"
-            />
-          </div>
+<div className="md:w-1/2 flex justify-center">
+  <img
+     src="https://img.freepik.com/free-vector/cloud-hosting-concept-illustration_114360-893.jpg?w=700"
+    alt="CRM Illustration"
+    className="rounded-2xl shadow-2xl object-cover w-full max-w-md border border-primary/10"
+    loading="lazy"
+  />
+</div>
         </div>
       </section>
 
