@@ -18,6 +18,7 @@ import Security from "./pages/services/Security";
 import Demo from "@/pages/Demo";
 import { ThemeProvider } from '@/components/theme-provider';
 import ScrollToTop from "@/components/ScrollToTop";
+import { Analytics } from "@vercel/analytics/next"
 
 const queryClient = new QueryClient();
 
@@ -26,6 +27,8 @@ const App = () => (
     <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
+          
+      <Analytics />
           <Router>
             <ScrollToTop />
               <Routes>
