@@ -4,7 +4,6 @@ import cors from 'cors';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import nodemailer from 'nodemailer';
-
 const app = express();
 app.use(express.json());
 const PORT = process.env.PORT || 5000;
