@@ -75,15 +75,10 @@ const AnimatedCard = ({ service, index }) => {
       ref={ref}
       initial={{ opacity: 0, y: 40 }}
       animate={controls}
-      whileHover={{
-        y: -8,
-        transition: { type: "spring", stiffness: 400 },
-      }}
     >
       <Card className="h-full text-center hover:shadow-xl transition-all duration-500 group border border-muted/20 bg-gradient-to-b from-background to-muted/5 hover:to-primary/5">
         <CardHeader className="pb-3">
           <motion.div
-            whileHover={{ rotate: 10, scale: 1.1 }}
             className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors duration-500"
           >
             <service.icon className="h-6 w-6 text-primary" />
@@ -511,7 +506,7 @@ const Home = () => {
   });
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/5">
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5">
       <SEO 
         title="ADEERA UNITECH | Enterprise SaaS Solutions for African Businesses"
         description="Transform your business with ADEERA's enterprise-grade SaaS solutions — CRM integration, cybersecurity, cloud solutions, and SaaS marketplace. Optimized for Africa's unique business landscape. ISO 27001 certified, 24/7 support."
@@ -730,44 +725,60 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="py-16 md:py-24">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-<motion.div
-  initial={{ opacity: 0 }}
-  whileInView={{ opacity: 1 }}
-  transition={{ duration: 0.4, ease: 'easeOut' }}
-  viewport={{ once: true }}
->
-            <span className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary mb-4">
-              <Award className="h-4 w-4 mr-2" />
-              Our Solutions
+      {/* All other sections inside a single container for consistent layout */}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Services Section */}
+       <section className="relative py-16 md:py-24 bg-gradient-to-br from-white via-blue-50 to-blue-100 overflow-hidden">
+  {/* Decorative background shapes */}
+  <div className="absolute -top-20 -left-20 w-72 h-72 bg-primary/10 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
+  <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-primary/20 rounded-full blur-3xl opacity-40 pointer-events-none"></div>
+
+  <motion.div
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5, ease: 'easeOut' }}
+    viewport={{ once: true }}
+    className="text-center mb-12 md:mb-16 max-w-3xl mx-auto"
+  >
+    <span className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary mb-4">
+      <Award className="h-4 w-4 mr-2" />
+      Our Solutions
+    </span>
+    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+      Powerful SaaS for Modern Businesses
+    </h2>
+    <p className="text-muted-foreground mx-auto text-base sm:text-lg">
+      We partner with global leaders to bring world-class software to African enterprises, with local support and customization.
+    </p>
+  </motion.div>
+
+  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+      {services.map((service, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: index * 0.1 }}
+          viewport={{ once: true }}
+          className="bg-white rounded-2xl shadow-lg hover:shadow-2xl border border-primary/10 p-6 flex flex-col items-center text-center transition-all duration-300 group"
+        >
+          <div className="mb-4">
+            {/* Replace with your icon or image */}
+            <span className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary/10 text-primary text-3xl group-hover:bg-primary/20 transition">
+              <service.icon className="w-8 h-8" />
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
-              Powerful SaaS for Modern Businesses
-            </h2>
-            <p className="text-muted-foreground mx-auto text-base sm:text-lg">
-              We partner with global leaders to bring world-class software to
-              African enterprises, with local support and customization.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            {services.map((service, index) => (
-              <AnimatedCard key={index} service={service} index={index} />
-            ))}
           </div>
-        </div>
-      </section>
+          <h3 className="text-lg font-semibold mb-2">{service.title}</h3>
+          <p className="text-muted-foreground text-sm">{service.description}</p>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
 
-      {/* Stats Section */}
-      <section className="relative py-16 md:py-28 overflow-hidden bg-gradient-to-b from-background to-muted/5">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/4 left-[15%] w-80 h-80 bg-primary/10 rounded-full filter blur-[100px] opacity-20 animate-float-slow" />
-          <div className="absolute bottom-1/3 right-[20%] w-96 h-96 bg-secondary/10 rounded-full filter blur-[120px] opacity-15 animate-float-medium" />
-        </div>
-
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Stats Section */}
+        <section className="py-16 md:py-28">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -804,12 +815,10 @@ const Home = () => {
             viewport={{ once: true }}
             className="mt-16 h-1.5 bg-gradient-to-r from-transparent via-primary/30 to-transparent rounded-full"
           />
-        </div>
-      </section>
+        </section>
 
-      {/* Technology Stack Section */}
-      <section className="py-16 md:py-24 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Technology Stack Section */}
+        <section className="py-16 md:py-24">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -832,12 +841,10 @@ const Home = () => {
               <TechStackItem key={index} {...tech} />
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Features Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-b from-background to-muted/5">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Features Section */}
+        <section className="py-16 md:py-24">
           <div className="flex flex-col lg:flex-row gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -40 }}
@@ -881,12 +888,10 @@ const Home = () => {
               </div>
             </motion.div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Case Studies Section */}
-      <section className="py-16 md:py-24 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Case Studies Section */}
+        <section className="py-16 md:py-24">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -912,12 +917,10 @@ const Home = () => {
               <CaseStudyCard key={index} caseStudy={caseStudy} index={index} />
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Testimonials Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-b from-background to-muted/5">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Testimonials Section */}
+        <section className="py-16 md:py-24">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -947,21 +950,17 @@ const Home = () => {
               />
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Newsletter Section */}
-      <section className="py-16 md:py-24 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Newsletter Section */}
+        <section className="py-16 md:py-24">
           <div className="max-w-2xl mx-auto">
             <NewsletterSignup />
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Contact Info Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-b from-background to-muted/5">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Contact Info Section */}
+        <section className="py-16 md:py-24">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -1028,52 +1027,49 @@ const Home = () => {
               </p>
             </motion.div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* CTA Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-primary to-primary/90">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            viewport={{ once: true }}
-            className="max-w-4xl mx-auto text-center text-white"
-          >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">
-              Ready to Accelerate Your Digital Transformation?
-            </h2>
-            <p className="text-primary-foreground/90 mb-6 sm:mb-8 text-base sm:text-lg">
-              Join hundreds of African businesses growing faster with ADEERA's
-              SaaS solutions.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-              <Button
-                size="lg"
-                className="group bg-white text-primary hover:bg-white/90 shadow-lg hover:shadow-xl text-sm sm:text-base"
-                asChild
-              >
-                <Link to="/demo" className="flex items-center">
-                  Get Started Free{" "}
-                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="group border-white/30 bg-transparent text-white hover:bg-white/10 text-sm sm:text-base"
-                asChild
-              >
-                <Link to="/contact" className="flex items-center">
-                  Talk to an Expert{" "}
-                  <Play className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </Button>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+        {/* CTA Section */}
+       <section className="py-16 md:py-24 bg-gradient-to-r from-primary to-blue-700">
+  <motion.div
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+    viewport={{ once: true }}
+    className="max-w-3xl mx-auto text-center text-white px-4"
+  >
+    <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 sm:mb-6 leading-tight drop-shadow">
+      Ready to Accelerate Your Digital Transformation?
+    </h2>
+    <p className="text-lg sm:text-xl mb-8 text-white/90 font-medium">
+      Join hundreds of African businesses growing faster with <span className="font-bold text-yellow-300">ADEERA's SaaS solutions</span>.
+    </p>
+    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+      <Button
+        size="lg"
+        className="group bg-yellow-400 text-primary font-semibold hover:bg-yellow-300 shadow-lg hover:shadow-xl text-base px-8"
+        asChild
+      >
+        <Link to="/demo" className="flex items-center">
+          Get Started Free
+          <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+        </Link>
+      </Button>
+      <Button
+  size="lg"
+  variant="outline"
+  className="group border-primary text-primary hover:bg-primary/10 text-base px-8"
+  asChild
+>
+  <Link to="/contact" className="flex items-center">
+    Talk to an Expert
+    <Play className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+  </Link>
+</Button>
+    </div>
+  </motion.div>
+</section>
+      </div>
     </div>
   );
 };

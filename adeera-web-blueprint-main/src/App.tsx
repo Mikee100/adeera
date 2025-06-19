@@ -18,7 +18,8 @@ import Security from "./pages/services/Security";
 import Demo from "@/pages/Demo";
 import { ThemeProvider } from '@/components/theme-provider';
 import ScrollToTop from "@/components/ScrollToTop";
-import { Analytics } from "@vercel/analytics/next"
+import ScrollToTopOnRouteChange from "./components/ScrollToTopOnRouteChange";
+import CookieConsent from '@/components/CookieConsent';
 
 const queryClient = new QueryClient();
 
@@ -27,27 +28,26 @@ const App = () => (
     <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
-          
-      <Analytics />
+          <CookieConsent />
           <Router>
             <ScrollToTop />
-              <Routes>
-                <Route path="/" element={<Layout />}>
-                  <Route index element={<Home />} />
-                  <Route path="about" element={<About />} />
-                  <Route path="services" element={<Services />} />
-                  <Route path="partnerships" element={<Partnerships />} />
-                  <Route path="contact" element={<Contact />} />
-                  <Route path="privacy" element={<PrivacyPolicy />} />
-                  <Route path="terms" element={<TermsOfService />} />
-                  <Route path="services/crm" element={<Crm />} />
-                  <Route path="services/cloud" element={<Cloud />} />
-                  <Route path="services/security" element={<Security />} />
-                  <Route path="/demo" element={<Demo />} />
-                </Route>
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            
+            <ScrollToTopOnRouteChange />
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                <Route index element={<Home />} />
+                <Route path="about" element={<About />} />
+                <Route path="services" element={<Services />} />
+                <Route path="partnerships" element={<Partnerships />} />
+                <Route path="contact" element={<Contact />} />
+                <Route path="privacy" element={<PrivacyPolicy />} />
+                <Route path="terms" element={<TermsOfService />} />
+                <Route path="services/crm" element={<Crm />} />
+                <Route path="services/cloud" element={<Cloud />} />
+                <Route path="services/security" element={<Security />} />
+                <Route path="/demo" element={<Demo />} />
+              </Route>
+              <Route path="*" element={<NotFound />} />
+            </Routes>
           </Router>
         </TooltipProvider>
       </QueryClientProvider>

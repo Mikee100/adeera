@@ -7,8 +7,14 @@ import nodemailer from 'nodemailer';
 const app = express();
 app.use(express.json());
 const PORT = process.env.PORT || 5000;
+
+const allowedOrigins = [
+  'http://localhost:8080',
+  'https://www.adeeraunitech.com'
+];
+
 app.use(cors({
-  origin: 'http://localhost:8080',
+  origin: allowedOrigins,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   credentials: true,
 }));
