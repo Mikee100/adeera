@@ -52,9 +52,9 @@ const handleSubmit = async (e: React.FormEvent) => {
 
 
   const contactInfo = [
-   { icon: Mail, title: 'Email', value: 'info@adeeraunitech.com', href: 'https://mail.google.com/mail/?view=cm&to=info@adeeraunitech.com' },
+   { icon: Mail, title: 'Email', value: 'adeeraunitech@gmail.com', href: 'https://mail.google.com/mail/?view=cm&to=adeeraunitech@gmail.com' },
     { icon: Phone, title: 'Phone', value: '+254-700-000000', href: 'tel:+254700000000' },
-    { icon: Globe, title: 'Website', value: 'adeeraunitech.com', href: 'https://adeeraunitech.com' },
+    { icon: Globe, title: 'Website', value: 'adeeraunitech.com', href: 'https://www.adeeraunitech.com/' },
     { icon: MapPin, title: 'Location', value: 'Nairobi, Kenya', href: 'https://maps.google.com/?q=Nairobi' }
   ];
 

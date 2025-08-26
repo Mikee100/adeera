@@ -1006,7 +1006,7 @@ const Home = () => {
             >
               <Mail className="h-10 w-10 sm:h-12 sm:w-12 text-primary mx-auto mb-3 sm:mb-4" />
               <h3 className="text-lg sm:text-xl font-semibold mb-2">Email Us</h3>
-              <p className="text-sm sm:text-base text-muted-foreground mb-2">hello@adeera.co.ke</p>
+              <p className="text-sm sm:text-base text-muted-foreground mb-2">adeeraunitech@gmail.com</p>
               <p className="text-xs sm:text-sm text-muted-foreground">
                 We'll respond within 24 hours
               </p>

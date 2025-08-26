@@ -74,8 +74,8 @@ const Footer = () => {
             <h3 className="font-semibold mb-4 text-foreground">Contact Info</h3>
             <ul className="space-y-3 text-muted-foreground">
               <li>
-                <a href="https://mail.google.com/mail/?view=cm&to=info@adeeraunitech.com" className="hover:text-primary transition-colors flex items-center gap-2">
-                  <span className="text-lg">📩</span> contact@adeeraunitech.com
+                <a href="https://mail.google.com/mail/?view=cm&to=adeeraunitech@gmail.com" className="hover:text-primary transition-colors flex items-center gap-2">
+                  <span className="text-lg">📩</span> adeeraunitech@gmail.com
                 </a>
               </li>
               <li>

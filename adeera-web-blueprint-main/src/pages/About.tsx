@@ -190,7 +190,7 @@ const About = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  To democratize access to world-class software solutions across Africa, empowering businesses to compete globally.
+                 To deliver and develop life changing software solutions for small market enterprises and enterprises.
                 </p>
               </CardContent>
             </Card>
@@ -202,7 +202,7 @@ const About = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  To become Africa's leading SaaS enablement platform by 2030, connecting every business to the tools they need.
+                  To  become the leading software solutions provider in Africa and Beyond.
                 </p>
               </CardContent>
             </Card>
