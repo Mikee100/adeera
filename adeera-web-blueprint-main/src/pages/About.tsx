@@ -97,12 +97,13 @@ const About = () => {
                 Building Africa's Leading <span className="text-primary">SaaS Enablement Platform</span>
               </h1>
               <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-                Transforming how African businesses access, implement, and scale with world-class cloud-based software solutions.
+                We build the ADEERA Platform — one system for point of sale, inventory, sales, reports, M-Pesa, and AI. 
+                Built for retail and growing businesses. <Link to="/platform" className="text-primary hover:underline">Explore the platform</Link> or <Link to="/features" className="text-primary hover:underline">see all features</Link>.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button size="lg" className="group" asChild>
-                  <Link to="/services">
-                    Explore Our Services 
+                  <Link to="/platform">
+                    Explore the Platform 
                     <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
                   </Link>
                 </Button>
@@ -309,8 +310,8 @@ const About = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="group" asChild>
-                  <Link to="/services">
-                    Explore Our Solutions 
+                  <Link to="/features">
+                    Explore All Features 
                     <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
                   </Link>
                 </Button>

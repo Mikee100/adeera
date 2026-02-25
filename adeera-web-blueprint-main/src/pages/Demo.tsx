@@ -1,9 +1,12 @@
+import { Link } from "react-router-dom";
 import SEO from '@/components/SEO';
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import { Play, Check, Zap, Shield, Users, BarChart2, Cloud, Lock, Mail } from "lucide-react";
+import { Play, Check, Zap, Users, BarChart2, Cloud, Lock, Mail } from "lucide-react";
 
-import { Dialog, DialogTrigger, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 const Demo = () => {
   const [activeTab, setActiveTab] = useState("features");
@@ -15,85 +18,148 @@ const [open, setOpen] = useState(false);
     name: "",
     email: "",
     company: "",
-    role: ""
+    role: "",
+    message: ""
   });
 
   const coreFeatures = [
     {
       icon: <BarChart2 className="w-6 h-6" />,
-      title: "Real-time Analytics",
-      description: "Get instant insights with our powerful dashboard that updates in real-time.",
-      benefit: "Make data-driven decisions faster"
+      title: "Point of Sale",
+      description: "Fast checkout with cart, receipts, and sales history. Cash, M-Pesa, and credit.",
+      benefit: "Ring up sales in seconds"
     },
     {
       icon: <Users className="w-6 h-6" />,
-      title: "Team Collaboration",
-      description: "Invite unlimited team members with role-based access controls.",
-      benefit: "Improve cross-team productivity"
+      title: "Inventory & Reports",
+      description: "Unified products, suppliers, and 11+ reports from stock levels to valuation.",
+      benefit: "One place for stock and insights"
     },
     {
       icon: <Cloud className="w-6 h-6" />,
-      title: "Cloud Storage",
-      description: "Secure, scalable storage with automatic backups and versioning.",
-      benefit: "Never lose important data again"
+      title: "Dashboard & Analytics",
+      description: "Revenue charts, trends, customer growth, and sales targets at a glance.",
+      benefit: "See how your business is doing"
     },
     {
       icon: <Lock className="w-6 h-6" />,
-      title: "Enterprise Security",
-      description: "SOC 2 compliant with end-to-end encryption and 2FA.",
-      benefit: "Sleep well knowing your data is safe"
+      title: "AI Assistant",
+      description: "Ask questions in plain language. Get answers and charts from your data.",
+      benefit: "Insights without the spreadsheet"
     }
   ];
 
   const useCases = [
     {
-      industry: "E-commerce",
-      solution: "Automated inventory tracking and customer behavior analysis"
+      industry: "Retail & Shops",
+      solution: "POS, inventory, and receipts. M-Pesa and cash at the till."
     },
     {
-      industry: "Healthcare",
-      solution: "HIPAA-compliant patient data management with audit trails"
+      industry: "Multi-Branch",
+      solution: "One platform for all locations. Sales history and stock per branch."
     },
     {
-      industry: "Education",
-      solution: "Student performance tracking and personalized learning plans"
+      industry: "Growing Business",
+      solution: "From Basic to Pro to Enterprise. Add users, branches, and reports as you scale."
     },
     {
-      industry: "Finance",
-      solution: "Real-time financial reporting and forecasting tools"
+      industry: "Reports & Insights",
+      solution: "Dashboard, AI assistant, and 11+ inventory reports. No more guesswork."
     }
   ];
 
   const testimonials = [
     {
-      quote: "Adeera reduced our reporting time by 80% and gave us insights we never knew we needed.",
-      author: "Sarah K., CFO at TechCorp",
-      stats: "3x ROI in first 6 months"
+      quote: "One platform for our till, stock, and reports. M-Pesa and receipts in one place.",
+      author: "Sarah K., Retail Manager",
+      stats: "No more spreadsheets"
     },
     {
-      quote: "The onboarding was seamless and our team adopted it faster than any other tool we've used.",
-      author: "Michael T., Operations Director",
-      stats: "90% team adoption in 2 weeks"
+      quote: "The AI assistant and dashboard gave us visibility we never had. We see trends before they hurt.",
+      author: "Michael T., Multi-branch Owner",
+      stats: "Faster decisions"
     }
   ];
 
-  const handleInputChange = (e) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+    setSubmitError(null);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Submit logic here
-    console.log("Form submitted:", formData);
+    setIsSubmitting(true);
+    setSubmitError(null);
+    try {
+      const response = await fetch('https://api.adeeraunitech.com/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...formData, requestType: 'demo', message: formData.message || `Demo request — ${formData.company || 'N/A'} (${formData.role || 'N/A'})` }),
+      });
+      if (response.ok) {
+        setSubmitSuccess(true);
+        setFormData({ name: '', email: '', company: '', role: '', message: '' } as typeof formData);
+        setTimeout(() => { setOpen(false); setSubmitSuccess(false); }, 2000);
+      } else {
+        const err = await response.json().catch(() => ({}));
+        setSubmitError((err as { message?: string }).message || 'Something went wrong. Please try again or email us.');
+      }
+    } catch {
+      setSubmitError('Network error. Please check your connection or email us at adeeraunitech@gmail.com.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent className="sm:max-w-md">
+          <DialogTitle>Request a demo</DialogTitle>
+          {submitSuccess ? (
+            <div className="py-6 text-center text-green-600 dark:text-green-400">
+              <Check className="h-12 w-12 mx-auto mb-2" />
+              <p className="font-medium">Thank you! We&apos;ll be in touch within 24 hours.</p>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <Label htmlFor="demo-name">Name *</Label>
+                <Input id="demo-name" name="name" value={formData.name} onChange={handleInputChange} required className="mt-1" />
+              </div>
+              <div>
+                <Label htmlFor="demo-email">Email *</Label>
+                <Input id="demo-email" name="email" type="email" value={formData.email} onChange={handleInputChange} required className="mt-1" />
+              </div>
+              <div>
+                <Label htmlFor="demo-company">Company</Label>
+                <Input id="demo-company" name="company" value={formData.company} onChange={handleInputChange} className="mt-1" />
+              </div>
+              <div>
+                <Label htmlFor="demo-role">Role</Label>
+                <Input id="demo-role" name="role" value={formData.role} onChange={handleInputChange} placeholder="e.g. Owner, Manager" className="mt-1" />
+              </div>
+              <div>
+                <Label htmlFor="demo-message">Message (optional)</Label>
+                <textarea id="demo-message" name="message" value={formData.message} onChange={handleInputChange} rows={3} className="mt-1 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" />
+              </div>
+              {submitError && <p className="text-sm text-red-600 dark:text-red-400">{submitError}</p>}
+              <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
+                {isSubmitting ? 'Sending...' : 'Send request'}
+              </Button>
+            </form>
+          )}
+        </DialogContent>
+      </Dialog>
       <SEO 
-        title="Request Demo | ADEERA UNITECH SaaS Solutions | Free Consultation"
-        description="Request a free demo of ADEERA's SaaS solutions. Experience our CRM, cybersecurity, and cloud services firsthand. Book your consultation today."
-        keywords="SaaS demo, free consultation, CRM demo, cybersecurity demo, cloud demo, business software demo, Kenya tech demo, enterprise software trial"
+        title="Request Demo | See the ADEERA Platform | Free Trial"
+        description="See the ADEERA Platform in action: POS, inventory, sales, reports, M-Pesa, and AI. Book a demo or start your free trial."
+        keywords="ADEERA demo, POS demo, platform trial, free trial, book demo, Kenya"
         url="https://www.adeeraunitech.com/demo"
         structuredData={{
           "@context": "https://schema.org",
@@ -139,10 +205,10 @@ const [open, setOpen] = useState(false);
             No credit card required
           </span>
           <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
-            Experience the power of <span className="text-primary"></span>
+            See the <span className="text-primary">ADEERA Platform</span> in action
           </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            See how our platform can streamline your workflows, provide actionable insights, and drive growth for your business.
+            POS, inventory, sales, reports, M-Pesa & AI — one platform. Book a demo or start your free trial.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12">
             <Button size="lg" className="bg-primary hover:bg-primary/90">
@@ -211,9 +277,9 @@ const [open, setOpen] = useState(false);
         {activeTab === "features" && (
           <section>
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Powerful Features Designed for Growth</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">What You Get with the Platform</h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Discover the tools that will help you work smarter, not harder.
+                POS, inventory, reports, M-Pesa, and an AI assistant — all in one place.
               </p>
             </div>
             
@@ -239,7 +305,7 @@ const [open, setOpen] = useState(false);
                   <p className="text-gray-700 mb-4">
                     Our product specialists can walk you through a personalized demo tailored to your business needs.
                   </p>
-                  <Button size="lg" className="bg-primary hover:bg-primary/90">
+                  <Button size="lg" className="bg-primary hover:bg-primary/90" onClick={() => setOpen(true)}>
                     Schedule a Custom Demo
                   </Button>
                 </div>
@@ -270,9 +336,9 @@ const [open, setOpen] = useState(false);
         {activeTab === "usecases" && (
           <section>
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Solutions for Your Industry</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Built for Your Business</h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                See how businesses like yours are achieving remarkable results.
+                Retail, multi-branch, or growing — the platform scales with you.
               </p>
             </div>
             
@@ -340,16 +406,16 @@ const [open, setOpen] = useState(false);
         {/* CTA Section */}
         <section className="mt-24 bg-primary rounded-2xl text-white p-8 md:p-12">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to transform your business?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to run your business from one platform?</h2>
             <p className="text-xl text-primary-foreground/90 mb-8 max-w-3xl mx-auto">
-              Start your free 14-day trial today. No credit card required.
+              Start your free trial or book a demo. No credit card required.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Button size="lg" className="bg-white text-primary hover:bg-white/90">
-                Start Free Trial
+              <Button size="lg" className="bg-white text-primary hover:bg-white/90" asChild>
+                <Link to="/demo">Start Free Trial</Link>
               </Button>
-              <Button size="lg" variant="secondary">
-                <Mail className="w-4 h-4 mr-2" /> Contact Sales
+              <Button size="lg" variant="secondary" asChild>
+                <Link to="/contact"><Mail className="w-4 h-4 mr-2" /> Contact Sales</Link>
               </Button>
             </div>
           </div>

@@ -26,7 +26,7 @@ const tourSteps: TourStep[] = [
   {
     target: '.services-section',
     title: 'Our Services',
-    content: 'From CRM to cybersecurity, we offer end-to-end solutions.',
+    content: 'POS, inventory, sales, M-Pesa, reports, and AI — all in one platform for African businesses.',
     position: 'left'
   }
 ];

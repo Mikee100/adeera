@@ -22,39 +22,61 @@ interface QuickReply {
 }
 
 const AI_RESPONSES: { [key: string]: string } = {
-  hello: "Hello! I'm ADEERA's AI assistant. I can help you with information about our services, pricing, support, and more. How can I assist you today?",
-  hi: "Hi there! Welcome to ADEERA. I'm here to help you explore our enterprise SaaS solutions. What would you like to know?",
-  pricing: "Our pricing is flexible and based on your specific needs. We offer:\n• CRM Integration: Starting at $299/month\n• Cybersecurity: Starting at $499/month\n• Cloud Solutions: Starting at $199/month\n• SaaS Marketplace: Starting at $99/month\n\nWould you like me to connect you with our sales team for a custom quote?",
-  support: "Our support team is available 24/7 across multiple channels:\n• Live Chat (current)\n• Email: support@adeera.co.ke\n• Phone: +254 700 000 000\n• WhatsApp: +254 700 000 000\n\nWhat specific issue are you experiencing?",
-  services: "We offer comprehensive enterprise SaaS solutions:\n\n🔹 **CRM Integration**\nSalesforce, HubSpot, Zoho with local customization\n\n🔹 **Cybersecurity**\nEndpoint protection, threat intelligence, compliance\n\n🔹 **Cloud Solutions**\nAWS, Azure, Google Cloud migrations\n\n🔹 **SaaS Marketplace**\nCurated HR, accounting, e-commerce tools\n\nWhich service interests you most?",
-  contact: "You can reach us through multiple channels:\n\n📞 **Phone**: +254 700 000 000\n📧 **Email**: adeeraunitech@gmail.com\n📍 **Office**: Nairobi, Kenya\n🌐 **Website**: adeera.co.ke\n\nOur team responds within 2 hours during business hours.",
-  demo: "Great! I can help you schedule a demo. We offer:\n• 30-minute overview demo\n• 60-minute detailed walkthrough\n• Custom demo for specific use cases\n\nWhat type of demo would you prefer? I'll connect you with our demo team.",
-  thank: "You're very welcome! 😊 I'm here to help make your digital transformation journey smooth. Is there anything else you'd like to know about ADEERA?",
-  thanks: "You're very welcome! 😊 I'm here to help make your digital transformation journey smooth. Is there anything else you'd like to know about ADEERA?",
-  bye: "Thank you for chatting with ADEERA! Have a wonderful day. Feel free to return anytime - I'm here 24/7 to help! 👋",
-  goodbye: "Thank you for chatting with ADEERA! Have a wonderful day. Feel free to return anytime - I'm here 24/7 to help! 👋",
-  ai: "Yes, I'm an AI assistant powered by advanced language models! I can help with:\n• Service information\n• Pricing queries\n• Support requests\n• Demo scheduling\n• General questions\n\nI'm constantly learning and improving to serve you better! 🤖✨",
-  artificial: "Yes, I'm an AI assistant powered by advanced language models! I can help with:\n• Service information\n• Pricing queries\n• Support requests\n• Demo scheduling\n• General questions\n\nI'm constantly learning and improving to serve you better! 🤖✨",
-  help: "I'm here to help! I can assist with:\n\n📋 **Information**: Services, pricing, features\n🎯 **Support**: Technical issues, account help\n📅 **Demos**: Schedule product demonstrations\n📞 **Contact**: Connect you with our team\n\nWhat do you need help with?",
-  features: "Here are our key features:\n\n🚀 **Rapid Deployment**: 5x faster than traditional solutions\n🔒 **Enterprise Security**: Bank-grade protection\n🌍 **Local Expertise**: African market specialization\n📊 **Analytics**: Real-time insights and reporting\n🔧 **Customization**: Tailored to your business needs\n\nWhich feature would you like to learn more about?",
-  security: "Security is our top priority! We offer:\n\n🔐 **ISO 27001 Certified**\n🛡️ **SOC 2 Compliance**\n🔒 **End-to-end encryption**\n🛡️ **24/7 threat monitoring**\n📋 **GDPR compliance**\n\nYour data is protected with enterprise-grade security protocols.",
-  cloud: "Our cloud solutions include:\n\n☁️ **Multi-cloud strategy**: AWS, Azure, Google Cloud\n⚡ **Edge computing**: Local data processing\n🔄 **Migration services**: Seamless transitions\n📈 **Scalability**: Grow with confidence\n💰 **Cost optimization**: Reduce cloud spend\n\nReady to start your cloud journey?",
-  crm: "Our CRM integration services:\n\n📊 **Salesforce**: Custom deployments\n🎯 **HubSpot**: Marketing automation\n📈 **Zoho**: Complete business suite\n🔗 **API Integration**: Seamless connections\n📱 **Mobile access**: Work anywhere\n\nWhich CRM platform are you using?",
+  hello: "Hello! I'm ADEERA's assistant. I can help you with the ADEERA Platform — POS, inventory, sales, reports, M-Pesa, and AI. What would you like to know?",
+  hi: "Hi! Welcome to ADEERA. We build one platform for POS, inventory, sales, and insights. Ask me about features, pricing, a demo, or logging in.",
+  pricing: "We have three plans:\n\n• **Basic** — Core POS, inventory, sales. Great for getting started.\n• **Pro** — More products, users, branches; full reports, AI, M-Pesa.\n• **Enterprise** — Scale without limits, dedicated support.\n\nVisit our Pricing page or contact us for details. You can also start a free trial.",
+  support: "We're here to help:\n\n• **Email**: adeeraunitech@gmail.com\n• **Phone**: +254 700 000 000\n• **Website**: adeeraunitech.com\n\nFor app access, use the **Log in** link in the header. What do you need help with?",
+  platform: "The ADEERA Platform is one system for your business:\n\n🛒 **POS** — Fast checkout, cash, M-Pesa, credit, receipts\n📦 **Inventory** — Products, suppliers, 11+ reports\n📊 **Reports & Analytics** — Dashboard, trends, sales targets\n🤖 **AI Assistant** — Ask questions, get charts\n💳 **M-Pesa & Billing** — Accept mobile money, Stripe subscriptions\n\nWant a demo or to see a specific feature?",
+  services: "The ADEERA Platform includes:\n\n🛒 **Point of Sale** — Cart, checkout, receipts, multi-branch\n📦 **Inventory & Products** — Stock, suppliers, low-stock alerts, valuation\n📊 **Analytics & AI** — Dashboard, reports, in-app AI assistant\n💳 **Payments** — M-Pesa, Stripe, invoices\n🏢 **Multi-branch** — Users, permissions, one login\n\nCheck the Features or Platform page for the full list.",
+  contact: "Reach us at:\n\n📞 **Phone**: +254 700 000 000\n📧 **Email**: adeeraunitech@gmail.com\n📍 **Nairobi, Kenya**\n🌐 **adeeraunitech.com**\n\nUse **Log in** in the menu to access the app. We respond within 24 hours.",
+  demo: "You can:\n\n• **Book a demo** — Fill the form on our Demo page; we’ll get back to you.\n• **Start a free trial** — Use the **Get Started** or **Log in** link to sign up.\n\nTell me if you want a walkthrough or to try it yourself.",
+  thank: "You're welcome! 😊 Need more on the platform, pricing, or demo? Just ask.",
+  thanks: "You're welcome! 😊 Need more on the platform, pricing, or demo? Just ask.",
+  bye: "Thanks for chatting! For the app, use **Log in** in the header. Come back anytime! 👋",
+  goodbye: "Thanks for chatting! For the app, use **Log in** in the header. Come back anytime! 👋",
+  ai: "I'm here to help with the ADEERA Platform: POS, inventory, reports, M-Pesa, AI, pricing, demos, and how to log in. What would you like to know?",
+  artificial: "I'm here to help with the ADEERA Platform: POS, inventory, reports, M-Pesa, AI, pricing, demos, and how to log in. What would you like to know?",
+  help: "I can help with:\n\n📋 **Platform & features** — POS, inventory, reports, AI, M-Pesa\n💰 **Pricing** — Basic, Pro, Enterprise\n📅 **Demo or trial** — Book a demo or start free trial\n🔐 **Log in** — Use the **Log in** link in the header to open the app\n📞 **Contact** — Email, phone, website\n\nWhat do you need?",
+  features: "Key features of the ADEERA Platform:\n\n🛒 **POS** — Fast sales, cart, receipts, cash/M-Pesa/credit\n📦 **Inventory** — Products, suppliers, 11+ reports (e.g. low stock, valuation)\n📊 **Dashboard & AI** — Revenue, trends, and an in-app AI that can generate charts\n💳 **M-Pesa** — Accept and reconcile mobile money\n🏢 **Multi-branch** — Multiple locations, users, permissions\n\nSee the Features page for the full list.",
+  login: "To open the ADEERA app, click **Log in** in the top-right of this website. That takes you to the platform where you can sign in or start a free trial. If you don’t see it, go to the main menu — it’s there on desktop and mobile.",
+  signin: "To open the ADEERA app, click **Log in** in the top-right of this website. That takes you to the platform where you can sign in or start a free trial.",
+  mpesa: "M-Pesa is built into the ADEERA Platform:\n\n• Accept **M-Pesa** at checkout when you make a sale\n• View **M-Pesa transactions** in the app and reconcile with sales\n• One place for cash, M-Pesa, and credit\n\nPerfect for retail and shops in Kenya. Want a demo?",
+  pos: "Our Point of Sale lets you:\n\n• Search products, add to cart, use variations\n• Pay with **cash**, **M-Pesa**, or **credit**\n• Print or view **receipts**\n• See **sales history** and use **multi-branch**\n\nCheck the POS page for details or book a demo.",
+  trial: "You can start a **free trial** by clicking **Log in** or **Get Started** in the header — that goes to the app where you can sign up. Or fill the form on the **Demo** page and we’ll set you up. No credit card required.",
+  security: "We take security seriously:\n\n🔒 **Multi-tenant** — Your data is isolated\n👥 **Role-based permissions** — Control who sees what\n🛡️ **Secure hosting** — Your business data is protected\n\nNeed more details? Ask about the platform or contact us.",
+  crm: "We focus on the **ADEERA Platform** — POS, inventory, sales, M-Pesa, reports, and AI. CRM integrations are on our roadmap for later. Right now you get one system for checkout, stock, and insights. Want a demo of what we offer today?",
+  cybersecurity: "We focus on the **ADEERA Platform** — POS, inventory, sales, M-Pesa, reports, and AI. Your data is secure with multi-tenant isolation and role-based permissions. Cybersecurity add-ons are on our roadmap. Want to see the platform features?",
+  cloud: "The ADEERA Platform runs in the cloud — access your POS, inventory, and reports from anywhere. One login for multi-branch, M-Pesa, and AI insights. Want a demo or to start a free trial?",
+  marketplace: "We focus on the **ADEERA Platform** — POS, inventory, sales, M-Pesa, reports, and AI. A SaaS marketplace is on our roadmap. Right now you get one integrated system for your business. Check our Features or Pricing page.",
 };
 
 const QUICK_REPLIES: QuickReply[] = [
   { id: '1', text: 'Tell me about pricing', category: 'pricing' },
-  { id: '2', text: 'I need support', category: 'support' },
+  { id: '2', text: 'What is the platform?', category: 'platform' },
   { id: '3', text: 'Schedule a demo', category: 'demo' },
-  { id: '4', text: 'What services do you offer?', category: 'services' },
+  { id: '4', text: 'How do I log in?', category: 'login' },
   { id: '5', text: 'Contact information', category: 'contact' },
-  { id: '6', text: 'Security features', category: 'security' },
+  { id: '6', text: 'M-Pesa & payments', category: 'mpesa' },
 ];
 
 const getAIResponse = (message: string): string => {
   const lower = message.toLowerCase();
   
-  // Check for exact matches first
+  // Check legacy/off-topic terms first – redirect to platform
+  if (lower.includes('crm') || lower.includes('salesforce') || lower.includes('hubspot') || lower.includes('zoho')) {
+    return AI_RESPONSES.crm;
+  }
+  if (lower.includes('cybersecurity') || lower.includes('cyber security')) {
+    return AI_RESPONSES.cybersecurity;
+  }
+  if (lower.includes('cloud')) {
+    return AI_RESPONSES.cloud;
+  }
+  if (lower.includes('marketplace') || lower.includes('market place')) {
+    return AI_RESPONSES.marketplace;
+  }
+
+  // Check for exact/key matches
   for (const key in AI_RESPONSES) {
     if (lower.includes(key)) {
       return AI_RESPONSES[key];
@@ -62,20 +84,32 @@ const getAIResponse = (message: string): string => {
   }
   
   // Check for partial matches and context
-  if (lower.includes('cost') || lower.includes('price') || lower.includes('money')) {
+  if (lower.includes('cost') || lower.includes('price') || lower.includes('money') || lower.includes('plan')) {
     return AI_RESPONSES.pricing;
   }
-  
+  if (lower.includes('login') || lower.includes('log in') || lower.includes('sign in') || lower.includes('app')) {
+    return AI_RESPONSES.login;
+  }
+  if (lower.includes('mpesa') || lower.includes('m-pesa') || lower.includes('mobile money')) {
+    return AI_RESPONSES.mpesa;
+  }
+  if (lower.includes('pos') || lower.includes('point of sale') || lower.includes('checkout')) {
+    return AI_RESPONSES.pos;
+  }
+  if (lower.includes('trial') || lower.includes('free trial') || lower.includes('sign up')) {
+    return AI_RESPONSES.trial;
+  }
   if (lower.includes('problem') || lower.includes('issue') || lower.includes('error')) {
     return AI_RESPONSES.support;
   }
-  
   if (lower.includes('show') || lower.includes('see') || lower.includes('demo')) {
     return AI_RESPONSES.demo;
   }
-  
+  if (lower.includes('platform') || lower.includes('feature') || lower.includes('inventory') || lower.includes('report')) {
+    return AI_RESPONSES.platform;
+  }
   // Default response
-  return "I understand you're asking about something specific. Let me help you better - could you provide more details about what you're looking for? I can assist with pricing, services, support, demos, or general information about ADEERA.";
+  return "I can help with the ADEERA Platform — pricing, features (POS, inventory, reports, M-Pesa, AI), demos, or how to log in. What would you like to know?";
 };
 
 const TypingIndicator = () => (

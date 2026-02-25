@@ -10,9 +10,9 @@ export interface SEOConfig {
 
 export const seoConfig: Record<string, SEOConfig> = {
   home: {
-    title: 'ADEERA UNITECH | Enterprise SaaS Solutions for African Businesses',
-    description: 'Transform your business with ADEERA\'s enterprise-grade SaaS solutions — CRM integration, cybersecurity, cloud solutions, and SaaS marketplace. Optimized for Africa\'s unique business landscape. ISO 27001 certified, 24/7 support.',
-    keywords: 'SaaS, CRM, cybersecurity, cloud solutions, African business, enterprise software, digital transformation, Salesforce, HubSpot, AWS, Azure, Kenya, Nairobi, business software, cloud migration, data security, API integration, mobile solutions',
+    title: 'ADEERA Platform | One System for POS, Inventory, Sales & Insights',
+    description: 'One platform for point of sale, inventory, sales, reports, M-Pesa, and AI. Built for retail and growing businesses. Multi-branch, secure, with plans that scale.',
+    keywords: 'POS, point of sale, inventory management, sales reports, M-Pesa, retail management, business management SaaS, multi-branch, AI assistant, ADEERA Platform, Kenya',
     image: 'https://www.adeeraunitech.com/og-image.jpg',
     url: 'https://www.adeeraunitech.com/',
     type: 'website',
@@ -21,7 +21,7 @@ export const seoConfig: Record<string, SEOConfig> = {
       "@type": "WebSite",
       "name": "ADEERA UNITECH",
       "url": "https://www.adeeraunitech.com",
-      "description": "Enterprise SaaS solutions for African businesses",
+      "description": "One platform for POS, inventory, sales, reports, M-Pesa, and AI",
       "potentialAction": {
         "@type": "SearchAction",
         "target": "https://www.adeeraunitech.com/search?q={search_term_string}",
@@ -47,9 +47,9 @@ export const seoConfig: Record<string, SEOConfig> = {
   },
   
   services: {
-    title: 'Our Services | CRM, Cybersecurity & Cloud Solutions | ADEERA UNITECH',
-    description: 'Comprehensive SaaS services including CRM integration, cybersecurity solutions, cloud migration, and enterprise software development. Tailored for African businesses.',
-    keywords: 'SaaS services, CRM services, cybersecurity services, cloud services, enterprise software services, digital transformation services, Kenya tech services',
+    title: 'Features | POS, Inventory, Sales, Reports & AI | ADEERA Platform',
+    description: 'Every tool in one place: POS, inventory, sales history, M-Pesa, reports, analytics, AI assistant, expenses, credit, multi-branch, and billing.',
+    keywords: 'POS features, inventory reports, sales history, M-Pesa, analytics, AI assistant, multi-branch, ADEERA Platform features',
     image: 'https://www.adeeraunitech.com/services-og.jpg',
     url: 'https://www.adeeraunitech.com/services',
     type: 'website',
@@ -133,10 +133,58 @@ export const seoConfig: Record<string, SEOConfig> = {
     }
   },
   
+  platform: {
+    title: 'The ADEERA Platform | One System for POS, Inventory, Sales & Insights',
+    description: 'The ADEERA Platform is a single, integrated system for point of sale, inventory, sales, reports, M-Pesa, and AI. Multi-tenant, multi-branch, built for growing businesses.',
+    keywords: 'ADEERA Platform, POS, point of sale, inventory management, sales reports, M-Pesa, retail management, multi-branch, AI assistant',
+    image: 'https://www.adeeraunitech.com/og-image.jpg',
+    url: 'https://www.adeeraunitech.com/platform',
+    type: 'website',
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "ADEERA Platform",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "description": "Integrated POS, inventory, sales, reports, and AI for retail and business management",
+      "url": "https://www.adeeraunitech.com/platform",
+      "featureList": "Point of Sale, Inventory Management, Sales History, Reports & Analytics, AI Assistant, M-Pesa, Multi-branch, Billing",
+    }
+  },
+  features: {
+    title: 'Features | POS, Inventory, Sales, Reports & AI | ADEERA Platform',
+    description: 'Every tool you need in one place: POS, inventory, sales history, M-Pesa, reports, analytics, AI assistant, expenses, credit, multi-branch, and billing.',
+    keywords: 'POS features, inventory reports, sales history, M-Pesa, analytics, AI assistant, multi-branch, ADEERA Platform features',
+    image: 'https://www.adeeraunitech.com/og-image.jpg',
+    url: 'https://www.adeeraunitech.com/features',
+    type: 'website',
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "ADEERA Platform",
+      "applicationCategory": "BusinessApplication",
+      "featureList": "Point of Sale, Inventory, Transactions, Reports & Analytics, AI Assistant, Operations, Payments & Billing, Settings",
+    }
+  },
+  pricing: {
+    title: 'Pricing | Plans for Every Business | ADEERA Platform',
+    description: 'ADEERA Platform pricing: Basic, Pro, and Enterprise plans. Start with a free trial. Contact us for custom pricing and limits.',
+    keywords: 'ADEERA pricing, POS pricing, business management SaaS pricing, Basic Pro Enterprise',
+    image: 'https://www.adeeraunitech.com/og-image.jpg',
+    url: 'https://www.adeeraunitech.com/pricing',
+    type: 'website',
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "ADEERA Platform",
+      "description": "POS, inventory, sales, reports, and AI in one platform",
+      "brand": { "@type": "Brand", "name": "ADEERA UNITECH" },
+    }
+  },
   contact: {
-    title: 'Contact ADEERA UNITECH | Get Expert SaaS Consultation | Kenya',
-    description: 'Contact ADEERA UNITECH for expert SaaS consultation, CRM integration, cybersecurity, and cloud solutions. Get in touch with our team in Nairobi, Kenya.',
-    keywords: 'contact ADEERA, SaaS consultation Kenya, tech support Kenya, business consultation Nairobi, enterprise software support, Kenya tech company contact',
+    title: 'Contact ADEERA UNITECH | Get in Touch | Kenya',
+    description: 'Contact ADEERA for the platform, demos, or support. Get in touch with our team in Nairobi, Kenya.',
+    keywords: 'contact ADEERA, platform support Kenya, demo request, Kenya tech company contact',
     image: 'https://www.adeeraunitech.com/contact-og.jpg',
     url: 'https://www.adeeraunitech.com/contact',
     type: 'website',
@@ -159,9 +207,9 @@ export const seoConfig: Record<string, SEOConfig> = {
   },
   
   demo: {
-    title: 'Request Demo | ADEERA UNITECH SaaS Solutions | Free Consultation',
-    description: 'Request a free demo of ADEERA\'s SaaS solutions. Experience our CRM, cybersecurity, and cloud services firsthand. Book your consultation today.',
-    keywords: 'SaaS demo, free consultation, CRM demo, cybersecurity demo, cloud demo, business software demo, Kenya tech demo, enterprise software trial',
+    title: 'Request Demo | See the ADEERA Platform | Free Trial',
+    description: 'See the ADEERA Platform in action: POS, inventory, sales, reports, M-Pesa, and AI. Book a demo or start your free trial.',
+    keywords: 'ADEERA demo, POS demo, platform trial, free trial, book demo, Kenya',
     image: 'https://www.adeeraunitech.com/demo-og.jpg',
     url: 'https://www.adeeraunitech.com/demo',
     type: 'website',

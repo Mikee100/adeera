@@ -38,8 +38,8 @@ const Footer = () => {
               <div className="text-2xl font-bold text-primary mb-2 tracking-tight">ADEERA</div>
               <div className="text-sm text-muted-foreground mb-4">UNITECH LIMITED</div>
               <p className="text-muted-foreground max-w-md mb-6">
-                Empowering Africa's Digital Future with cutting-edge software solutions, 
-                from CRM to cybersecurity and cloud computing.
+                One platform for POS, inventory, sales, reports, M-Pesa & billing. 
+                Built for retail and growing businesses.
               </p>
             </div>
             <div className="flex space-x-4 mt-2">
@@ -62,8 +62,11 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold mb-4 text-foreground">Quick Links</h3>
             <ul className="space-y-3">
+              <li><Link to="/platform" className="text-muted-foreground hover:text-primary transition-colors">Platform</Link></li>
+              <li><Link to="/features" className="text-muted-foreground hover:text-primary transition-colors">Features</Link></li>
+              <li><Link to="/pricing" className="text-muted-foreground hover:text-primary transition-colors">Pricing</Link></li>
+              <li><Link to="/integrations" className="text-muted-foreground hover:text-primary transition-colors">Integrations</Link></li>
               <li><Link to="/about" className="text-muted-foreground hover:text-primary transition-colors">About Us</Link></li>
-              <li><Link to="/services" className="text-muted-foreground hover:text-primary transition-colors">Services</Link></li>
               <li><Link to="/partnerships" className="text-muted-foreground hover:text-primary transition-colors">Partnerships</Link></li>
               <li><Link to="/contact" className="text-muted-foreground hover:text-primary transition-colors">Contact</Link></li>
             </ul>
