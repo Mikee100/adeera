@@ -8,1124 +8,487 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import {
-  Cloud,
-  Users,
-  Globe,
   ArrowRight,
-  ChevronRight,
   Check,
   Zap,
   BarChart,
   Lock,
-  Server,
-  Play,
-  Award,
-  Rocket,
-  Globe2,
-  ShieldCheck,
-  BarChart2,
+  MessageCircle,
+  Smartphone,
+  Building2,
+  TrendingUp,
+  Database,
+  Users,
+  Shield,
+  Layout,
+  Globe,
   Star,
   Quote,
   Mail,
-  Phone,
-  MapPin,
-  Clock,
-  TrendingUp,
-  Database,
-  Cpu,
-  Wifi,
-  Smartphone,
-  Monitor,
-  Headphones,
-  MessageCircle,
-  Calendar,
-  Target,
-  Users2,
-  Building2,
-  Shield,
+  ChevronRight,
+  Award,
+  Play
 } from "lucide-react";
-import { motion, useAnimation } from "framer-motion";
+import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import SEO from "@/components/SEO";
-import { useEffect, useState } from "react";
 
-const AnimatedCard = ({ service, index }) => {
-  const controls = useAnimation();
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.2,
-  });
-
-  useEffect(() => {
-    if (inView) {
-      controls.start({
-        opacity: 1,
-        y: 0,
-        transition: {
-          duration: 0.6,
-          delay: index * 0.15,
-          ease: [0.16, 1, 0.3, 1],
-        },
-      });
-    }
-  }, [controls, inView, index]);
+const FeatureCard = ({ icon: Icon, title, description, delay }) => {
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 40 }}
-      animate={controls}
+      initial={{ opacity: 0, y: 20 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5, delay }}
+      className="group relative p-8 rounded-2xl bg-white border border-border/50 hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-300"
     >
-      <Card className="h-full text-center hover:shadow-xl transition-all duration-500 group border border-muted/20 bg-gradient-to-b from-background to-muted/5 hover:to-primary/5">
-        <CardHeader className="pb-3">
-          <motion.div
-            className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors duration-500"
-          >
-            <service.icon className="h-6 w-6 text-primary" />
-          </motion.div>
-          <CardTitle className="mt-4 text-lg font-semibold text-foreground">
-            {service.title}
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <CardDescription className="text-muted-foreground">
-            {service.description}
-          </CardDescription>
-            <Button
-            variant="link"
-            className="mt-4 text-primary p-0 h-auto group-hover:underline hover:text-primary/80"
-            asChild
-          >
-            <Link to="/features" className="flex items-center justify-center">
-              Learn more{" "}
-              <ChevronRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-          </Button>
-        </CardContent>
-      </Card>
-    </motion.div>
-  );
-};
-
-const FeatureItem = ({ icon, title, description }) => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, x: -20 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      whileHover={{
-        scale: 1.02,
-        transition: { type: "spring", stiffness: 400 },
-      }}
-      className="flex flex-col sm:flex-row items-start gap-4 sm:gap-5 p-4 sm:p-6 rounded-xl bg-background hover:bg-muted/10 transition-colors duration-300 border border-muted/20 shadow-sm"
-    >
-      <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 sm:h-12 sm:w-12 rounded-lg bg-primary/10 text-primary">
-        {icon}
-      </div>
-      <div className="flex-1 min-w-0">
-        <h3 className="font-semibold mb-2 text-base sm:text-lg text-foreground">{title}</h3>
-        <p className="text-sm sm:text-base text-muted-foreground">{description}</p>
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl" />
+      <div className="relative z-10">
+        <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+          <Icon className="w-6 h-6 text-primary" />
+        </div>
+        <h3 className="text-xl font-bold mb-3 tracking-tight">{title}</h3>
+        <p className="text-muted-foreground leading-relaxed">{description}</p>
       </div>
     </motion.div>
   );
 };
 
-const StatCard = ({ value, label, icon, suffix }) => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 30 }}
+const SectionHeader = ({ badge, title, description }) => (
+  <div className="text-center max-w-3xl mx-auto mb-16 px-4">
+    {badge && (
+      <motion.span
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        className="inline-flex items-center rounded-full bg-primary/10 px-4 py-1.5 text-xs font-semibold text-primary mb-4 tracking-wider uppercase"
+      >
+        {badge}
+      </motion.span>
+    )}
+    <motion.h2
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      whileHover={{
-        y: -5,
-        transition: { type: "spring", stiffness: 400 },
-      }}
-      className="bg-background p-6 rounded-xl border border-muted/20 shadow-sm text-center hover:shadow-md transition-all duration-300"
+      transition={{ delay: 0.1 }}
+      className="text-3xl md:text-5xl font-extrabold mb-6 tracking-tight text-gradient"
     >
-      <div className="flex justify-center mb-4">
-        <div className="flex items-center justify-center h-12 w-12 rounded-full bg-primary/10 text-primary">
-          {icon}
-        </div>
-      </div>
-      <h3 className="text-4xl font-bold mb-2 bg-gradient-to-br from-primary to-primary/80 bg-clip-text text-transparent"></h3>
-      <p className="text-muted-foreground">{label}</p>
-    </motion.div>
-  );
-};
-
-const TestimonialCard = ({ testimonial, index }) => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 30 }}
+      {title}
+    </motion.h2>
+    <motion.p
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      whileHover={{
-        y: -5,
-        transition: { type: "spring", stiffness: 400 },
-      }}
-      className="bg-background p-6 rounded-xl border border-muted/20 shadow-sm hover:shadow-md transition-all duration-300"
+      transition={{ delay: 0.2 }}
+      className="text-lg text-muted-foreground leading-relaxed"
     >
-      <div className="flex items-center mb-4">
-        <div className="flex text-yellow-400">
-          {[...Array(5)].map((_, i) => (
-            <Star key={i} className="h-4 w-4 fill-current" />
-          ))}
-        </div>
-      </div>
-      <Quote className="h-8 w-8 text-primary/30 mb-4" />
-      <p className="text-muted-foreground mb-4 italic">"{testimonial.quote}"</p>
-      <div className="flex items-center">
-        <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-3">
-          <Users className="h-5 w-5 text-primary" />
-        </div>
-        <div>
-          <p className="font-semibold text-foreground">{testimonial.name}</p>
-          <p className="text-sm text-muted-foreground">
-            {testimonial.position}
-          </p>
-        </div>
-      </div>
-    </motion.div>
-  );
-};
-
-const TechStackItem = ({ icon: Icon, name, description }) => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, scale: 0.8 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.5 }}
-      whileHover={{
-        scale: 1.05,
-        transition: { type: "spring", stiffness: 400 },
-      }}
-      className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 p-4 rounded-lg bg-muted/10 hover:bg-muted/20 transition-colors duration-300"
-    >
-      <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-        <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
-      </div>
-      <div className="flex-1 min-w-0">
-        <h4 className="font-semibold text-sm sm:text-base text-foreground mb-1">{name}</h4>
-        <p className="text-xs sm:text-sm text-muted-foreground">{description}</p>
-      </div>
-    </motion.div>
-  );
-};
-
-const CaseStudyCard = ({ caseStudy, index }) => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="bg-background rounded-xl border border-muted/20 shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden"
-    >
-      <div className="h-48 bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center">
-        <caseStudy.icon className="h-16 w-16 text-primary" />
-      </div>
-      <div className="p-6">
-        <div className="flex items-center gap-2 mb-3">
-          <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full font-medium">
-            {caseStudy.category}
-          </span>
-          <span className="text-sm text-muted-foreground">
-            {caseStudy.duration}
-          </span>
-        </div>
-        <h3 className="text-xl font-semibold mb-2 text-foreground">
-          {caseStudy.title}
-        </h3>
-        <p className="text-muted-foreground mb-4">{caseStudy.description}</p>
-        <div className="space-y-2">
-          {caseStudy.results.map((result, idx) => (
-            <div key={idx} className="flex items-center gap-2">
-              <Check className="h-4 w-4 text-green-500" />
-              <span className="text-sm text-muted-foreground">{result}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </motion.div>
-  );
-};
-
-const NewsletterSignup = () => {
-  const [email, setEmail] = useState('');
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle newsletter signup
-    console.log('Newsletter signup:', email);
-    setEmail('');
-  };
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-      className="bg-gradient-to-br from-primary/5 to-secondary/5 rounded-2xl p-6 sm:p-8 border border-muted/20"
-    >
-      <div className="text-center mb-6">
-        <Mail className="h-10 w-10 sm:h-12 sm:w-12 text-primary mx-auto mb-4" />
-        <h3 className="text-xl sm:text-2xl font-bold mb-2 text-foreground">Stay Updated</h3>
-        <p className="text-sm sm:text-base text-muted-foreground">Get the latest insights on digital transformation and SaaS trends in Africa</p>
-      </div>
-      <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Enter your email"
-          className="flex-1 px-3 sm:px-4 py-2 sm:py-3 rounded-lg border border-muted/20 bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 text-sm sm:text-base"
-          required
-        />
-        <Button type="submit" className="bg-primary hover:bg-primary/90 text-sm sm:text-base">
-          Subscribe
-        </Button>
-      </form>
-    </motion.div>
-  );
-};
+      {description}
+    </motion.p>
+  </div>
+);
 
 const Home = () => {
-  const services = [
-    {
-      icon: BarChart2,
-      title: "Point of Sale",
-      description:
-        "Fast checkout with cart, receipts, and sales history. Cash, M-Pesa, and credit.",
-    },
-    {
-      icon: Database,
-      title: "Inventory & Products",
-      description:
-        "Unified products, variants, suppliers, and 11+ reports from stock to valuation.",
-    },
-    {
-      icon: BarChart,
-      title: "Reports & Analytics",
-      description:
-        "Dashboard, revenue charts, trends, customer growth, and sales targets.",
-    },
-    {
-      icon: MessageCircle,
-      title: "AI Assistant",
-      description:
-        "In-app chat that answers questions and generates charts from your data.",
-    },
-    {
-      icon: Smartphone,
-      title: "M-Pesa & Billing",
-      description:
-        "Accept M-Pesa at the till. Stripe subscriptions and invoices.",
-    },
-    {
-      icon: Building2,
-      title: "Multi-Branch",
-      description:
-        "Run multiple locations, users, and role-based permissions in one platform.",
-    },
-  ];
-
-  const features = [
-    {
-      icon: <BarChart2 className="h-6 w-6" />,
-      title: "One Platform",
-      description:
-        "POS, inventory, sales, reports, AI, and billing — no more juggling multiple tools",
-    },
-    {
-      icon: <Rocket className="h-6 w-6" />,
-      title: "Built for Growth",
-      description:
-        "From single branch to many. Basic, Pro, and Enterprise plans that scale with you",
-    },
-    {
-      icon: <Lock className="h-6 w-6" />,
-      title: "Secure & Reliable",
-      description:
-        "Multi-tenant, role-based access, and secure hosting so your data stays safe",
-    },
-    {
-      icon: <Globe className="h-6 w-6" />,
-      title: "Ready for Africa",
-      description:
-        "M-Pesa integration and local support. Built for retail and growing businesses",
-    },
-  ];
-
-  const stats = [
-    {
-      value: 100,
-      suffix: "+",
-      label: "Businesses Empowered",
-      icon: <Users className="h-6 w-6" />,
-    },
-    {
-      value: 24,
-      suffix: "/7",
-      label: "Support Availability",
-      icon: <Server className="h-6 w-6" />,
-    },
-    {
-      value: 99.9,
-      suffix: "%",
-      label: "Uptime Guarantee",
-      icon: <BarChart className="h-6 w-6" />,
-    },
-    {
-      value: 5,
-      suffix: "x",
-      label: "Faster Deployment",
-      icon: <Zap className="h-6 w-6" />,
-    },
-  ];
-
-  const testimonials = [
-    {
-      quote:
-        "One platform for our till, stock, and reports. M-Pesa and receipts in one place — no more spreadsheets.",
-      name: "Sarah Mwangi",
-      position: "Retail Manager, Nairobi",
-    },
-    {
-      quote:
-        "The AI assistant and dashboard gave us visibility we never had. We see trends and low stock before it hurts.",
-      name: "David Ochieng",
-      position: "Operations, Multi-branch Store",
-    },
-    {
-      quote:
-        "Multi-branch and role-based access just work. Our team uses one login, we control who sees what.",
-      name: "Grace Akinyi",
-      position: "Owner, Retail Chain",
-    },
-  ];
-
-  const techStack = [
-    {
-      icon: BarChart2,
-      name: "Point of Sale",
-      description: "Fast sales, cart, checkout, receipts, multi-branch",
-    },
-    {
-      icon: Database,
-      name: "Inventory & Reports",
-      description: "Products, suppliers, stock, and 11+ inventory reports",
-    },
-    {
-      icon: BarChart,
-      name: "Analytics & Dashboard",
-      description: "Revenue, trends, customer growth, sales targets",
-    },
-    {
-      icon: Cpu,
-      name: "AI Assistant",
-      description: "Chat, answers, and chart generation from your data",
-    },
-    {
-      icon: Smartphone,
-      name: "M-Pesa & Stripe",
-      description: "Mobile money at checkout, subscriptions and invoices",
-    },
-    {
-      icon: Building2,
-      name: "Multi-Branch",
-      description: "Locations, users, permissions, and role-based access",
-    },
-  ];
-
-  const caseStudies = [
-    {
-      icon: Building2,
-      category: "Retail",
-      duration: "Ongoing",
-      title: "Multi-Branch Retail with One Platform",
-      description:
-        "POS, inventory, and reports across locations. M-Pesa and cash at the till.",
-      results: [
-        "Single system for all branches",
-        "Real-time stock and sales visibility",
-        "M-Pesa reconciled with sales automatically",
-      ],
-    },
-    {
-      icon: BarChart,
-      category: "Analytics",
-      duration: "Ongoing",
-      title: "From Sales to Insights in Seconds",
-      description:
-        "Dashboard and AI assistant for revenue, trends, and targets.",
-      results: [
-        "Revenue and trend charts at a glance",
-        "AI-generated charts from natural language",
-        "Sales targets and low-stock alerts",
-      ],
-    },
-    {
-      icon: Database,
-      category: "Inventory",
-      duration: "Ongoing",
-      title: "Products, Suppliers & 11+ Reports",
-      description: "Unified products, variants, and full inventory reporting.",
-      results: [
-        "One place for products and stock",
-        "Product sales to valuation and aging",
-        "Low-stock and lost-sales reports",
-      ],
-    },
-  ];
-
-  const [heroRef, heroInView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
+  const [heroRef, heroInView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5">
-      <SEO 
-        title="ADEERA Platform | One System for POS, Inventory, Sales & Insights"
-        description="One platform for point of sale, inventory, sales, reports, M-Pesa, and AI. Built for retail and growing businesses. Multi-branch, secure, with plans that scale."
-        keywords="POS, point of sale, inventory management, sales reports, M-Pesa, retail management, business management SaaS, multi-branch, AI assistant, ADEERA Platform, Kenya"
-        url="https://www.adeeraunitech.com/"
-        structuredData={{
-          "@context": "https://schema.org",
-          "@type": "WebSite",
-          "name": "ADEERA UNITECH",
-          "url": "https://www.adeeraunitech.com",
-          "description": "One platform for POS, inventory, sales, reports, M-Pesa, and AI",
-          "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://www.adeeraunitech.com/search?q={search_term_string}",
-            "query-input": "required name=search_term_string"
-          },
-          "publisher": {
-            "@type": "Organization",
-            "name": "ADEERA UNITECH LIMITED",
-            "url": "https://www.adeeraunitech.com",
-            "logo": "https://www.adeeraunitech.com/logo.png",
-            "description": "ADEERA Platform: POS, inventory, sales, reports, M-Pesa, AI for retail and business",
-            "address": {
-              "@type": "PostalAddress",
-              "addressLocality": "Nairobi",
-              "addressCountry": "KE"
-            },
-            "contactPoint": {
-              "@type": "ContactPoint",
-              "contactType": "customer service",
-              "areaServed": "KE"
-            }
-          },
-          "mainEntity": {
-            "@type": "SoftwareApplication",
-            "name": "ADEERA Platform",
-            "applicationCategory": "BusinessApplication",
-            "operatingSystem": "Web",
-            "featureList": "Point of Sale, Inventory, Sales History, Reports & Analytics, AI Assistant, M-Pesa, Multi-branch, Billing"
-          }
-        }}
+    <div className="min-h-screen">
+      <SEO
+        title="ADEERA | Modern SaaS for Retail & Multi-Branch Business"
+        description="Empower your business with ADEERA. The all-in-one POS, inventory, and analytics platform built for growth."
       />
 
       {/* Hero Section */}
-      <section className="relative py-20 md:py-26 overflow-hidden bg-gradient-to-br from-background to-primary/5">
-        {/* Animated background elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-0 left-0 w-64 h-64 bg-primary/10 rounded-full filter blur-[100px] opacity-20 animate-float-slow" />
-          <div className="absolute top-0 right-0 w-96 h-96 bg-secondary/10 rounded-full filter blur-[120px] opacity-20 animate-float-medium" />
-          <div className="absolute bottom-0 left-1/2 w-80 h-80 bg-accent/10 rounded-full filter blur-[80px] opacity-20 animate-float-fast" />
+      <section className="relative pt-32 pb-20 md:pt-56 md:pb-40 overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/20 rounded-full blur-[120px] -mr-48 -mt-48 animate-pulse-slow" />
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px] -ml-24 -mb-24" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-grid-white opacity-20" />
         </div>
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-16">
-            {/* Text Content */}
+        <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
             <motion.div
-              ref={heroRef}
-              initial={{ opacity: 0, x: -40 }}
-              animate={heroInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="w-full lg:w-1/2"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
             >
-              <div className="space-y-6">
-                <motion.span
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={heroInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ delay: 0.2 }}
-                  className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary"
-                >
-                  <Zap className="h-4 w-4 mr-2 animate-pulse" />
-                  One platform for your business
-                </motion.span>
-
-                <motion.h1
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={heroInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ delay: 0.3 }}
-                  className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight"
-                >
-                  POS, Inventory, Sales &{" "}
-                  <span className="bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
-                    Insights in One Place
-                  </span>
-                </motion.h1>
-
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={heroInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ delay: 0.4 }}
-                  className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed"
-                >
-                  The ADEERA Platform brings together point of sale, inventory, sales history,
-                  reports, M-Pesa, and an AI assistant — so you run your business from one system.
-                </motion.p>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={heroInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ delay: 0.5 }}
-                  className="flex flex-col sm:flex-row gap-4 pt-2"
-                >
-                  <Button size="lg" asChild className="group">
-                    <Link to="/demo" className="flex items-center">
-                      Get Free Demo{" "}
-                      <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                  </Button>
-                  <Button size="lg" variant="outline" asChild className="group">
-                    <Link to="/platform" className="flex items-center">
-                      See the Platform{" "}
-                      <ArrowRight className="ml-2 h-4 w-4 opacity-70 group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                  </Button>
-                </motion.div>
-
-                {/* Trust indicators */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={heroInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ delay: 0.6 }}
-                  className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6 pt-4"
-                >
-                  <div className="flex items-center gap-2">
-                    <Check className="h-5 w-5 text-green-500 flex-shrink-0" />
-                    <span className="text-sm text-muted-foreground">
-                      ISO 27001 Certified
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Check className="h-5 w-5 text-green-500 flex-shrink-0" />
-                    <span className="text-sm text-muted-foreground">
-                      24/7 Support
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Check className="h-5 w-5 text-green-500 flex-shrink-0" />
-                    <span className="text-sm text-muted-foreground">
-                      99.9% Uptime
-                    </span>
-                  </div>
-                </motion.div>
+              <div className="inline-flex items-center space-x-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-1.5 mb-8">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                </span>
+                <span className="text-sm font-bold text-primary tracking-wide uppercase">Built for Africa by Africans</span>
               </div>
-            </motion.div>
 
-            {/* Hero Image */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={heroInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{
-                duration: 0.9,
-                delay: 0.2,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              className="w-full lg:w-1/2 flex justify-center relative"
-            >
-              <div className="relative">
-                <img
-                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-                  alt="Digital Africa"
-                  className="rounded-2xl shadow-2xl object-cover aspect-[16/10] w-full max-w-xl border border-border/50"
-                />
-                {/* Floating card element */}
-                <motion.div
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.6, type: "spring" }}
-                  className="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 bg-background p-3 sm:p-4 rounded-xl shadow-lg border border-muted/20 max-w-[200px] sm:max-w-none"
-                >
-                  <div className="flex items-center gap-2 sm:gap-3">
-                    <div className="bg-primary/10 p-1.5 sm:p-2 rounded-lg flex-shrink-0">
-                      <BarChart className="h-4 w-4 sm:h-6 sm:w-6 text-primary" />
-                    </div>
-                    <div className="min-w-0">
-                      <p className="font-medium text-sm sm:text-base">30% Growth</p>
-                      <p className="text-xs sm:text-sm text-muted-foreground">
-                        Average client impact
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
+              <h1 className="text-5xl md:text-8xl font-black mb-8 leading-[1.05] tracking-tight text-gradient">
+                Powering Retail <br />
+                <span className="text-primary">Endless Possibilities.</span>
+              </h1>
+
+              <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">
+                ADEERA is the all-in-one business management software built to streamline your operations, increase sales, and scale your business anywhere.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-6 justify-center">
+                <Button size="lg" className="rounded-full h-16 px-10 text-xl font-black shadow-2xl shadow-primary/30 transition-all hover:scale-105 active:scale-95 group" asChild>
+                  <Link to="/demo">
+                    Book a Free Demo
+                    <ArrowRight className="ml-2 w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </Button>
+                <Button size="lg" variant="outline" className="rounded-full h-16 px-10 text-xl font-bold glass transition-all hover:bg-primary/5 hover:border-primary/30" asChild>
+                  <a href="https://wa.me/yournumber" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                    <MessageCircle className="w-6 h-6 text-primary" />
+                    Chat with Us
+                  </a>
+                </Button>
+              </div>
+
+              <div className="mt-16 flex flex-wrap justify-center items-center gap-x-12 gap-y-6">
+                <div className="flex items-center gap-2 text-muted-foreground font-medium">
+                  <Check className="text-primary w-5 h-5" />
+                  <span>Access Anywhere</span>
+                </div>
+                <div className="flex items-center gap-2 text-muted-foreground font-medium">
+                  <Check className="text-primary w-5 h-5" />
+                  <span>Streamline Operations</span>
+                </div>
+                <div className="flex items-center gap-2 text-muted-foreground font-medium">
+                  <Check className="text-primary w-5 h-5" />
+                  <span>Make More Money</span>
+                </div>
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* All other sections inside a single container for consistent layout */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Services Section */}
-       <section className="relative py-16 md:py-24 bg-gradient-to-br from-white via-blue-50 to-blue-100 overflow-hidden">
-  {/* Decorative background shapes */}
-  <div className="absolute -top-20 -left-20 w-72 h-72 bg-primary/10 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
-  <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-primary/20 rounded-full blur-3xl opacity-40 pointer-events-none"></div>
-
-  <motion.div
-    initial={{ opacity: 0, y: 30 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.5, ease: 'easeOut' }}
-    viewport={{ once: true }}
-    className="text-center mb-12 md:mb-16 max-w-3xl mx-auto"
-  >
-    <span className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary mb-4">
-      <Award className="h-4 w-4 mr-2" />
-      The ADEERA Platform
-    </span>
-    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-      Everything You Need in One System
-    </h2>
-    <p className="text-muted-foreground mx-auto text-base sm:text-lg">
-      Point of sale, inventory, sales history, reports, M-Pesa, and AI — no more juggling multiple tools.
-    </p>
-  </motion.div>
-
-  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-      {services.map((service, index) => (
-        <motion.div
-          key={index}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: index * 0.1 }}
-          viewport={{ once: true }}
-          className="bg-white rounded-2xl shadow-lg hover:shadow-2xl border border-primary/10 p-6 flex flex-col items-center text-center transition-all duration-300 group"
-        >
-          <div className="mb-4">
-            {/* Replace with your icon or image */}
-            <span className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary/10 text-primary text-3xl group-hover:bg-primary/20 transition">
-              <service.icon className="w-8 h-8" />
-            </span>
+      {/* Stats Section */}
+      <section className="relative z-20 -mt-10 mb-20">
+        <div className="container mx-auto px-4">
+          <div className="glass p-8 md:p-12 rounded-[2.5rem] shadow-2xl border-white/40 grid grid-cols-1 md:grid-cols-3 gap-12 text-center items-center">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="flex flex-col gap-2"
+            >
+              <span className="text-5xl md:text-6xl font-black text-primary">20K+</span>
+              <span className="text-lg font-bold text-muted-foreground uppercase tracking-widest">Businesses</span>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="flex flex-col gap-2 border-y md:border-y-0 md:border-x border-border/50 py-8 md:py-0"
+            >
+              <span className="text-5xl md:text-6xl font-black text-primary">5+</span>
+              <span className="text-lg font-bold text-muted-foreground uppercase tracking-widest">Global Reach</span>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="flex flex-col gap-2"
+            >
+              <span className="text-5xl md:text-6xl font-black text-primary">1K+</span>
+              <span className="text-lg font-bold text-muted-foreground uppercase tracking-widest">Resellers</span>
+            </motion.div>
           </div>
-          <h3 className="text-lg font-semibold mb-2">{service.title}</h3>
-          <p className="text-muted-foreground text-sm">{service.description}</p>
-        </motion.div>
-      ))}
-    </div>
-  </div>
-</section>
+        </div>
+      </section>
 
-        {/* Who it's for */}
-        <section className="py-16 md:py-24">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <span className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary mb-4">
-              <Target className="h-4 w-4 mr-2" />
-              Who it&apos;s for
-            </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Built for your business</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">One platform that grows with you — from a single shop to multiple locations.</p>
-          </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {/* Industry Verticals */}
+      <section className="py-24 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <SectionHeader
+            badge="Perfect For"
+            title="Tailored for Your Business."
+            description="Whether you run a single shop or a multi-branch enterprise, ADEERA adapts to your unique workflow."
+          />
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             {[
-              { title: "Retail & shops", desc: "Run your till, stock, and receipts in one place. Accept cash and M-Pesa, print receipts, and see sales history.", icon: BarChart2 },
-              { title: "Multi-branch", desc: "Manage multiple locations with one account. Switch branches, track stock per location, and control who sees what.", icon: Building2 },
-              { title: "Growing businesses", desc: "Start with Basic and scale to Pro or Enterprise. Add users, branches, and reports as you grow.", icon: TrendingUp },
-            ].map((item, i) => (
+              { icon: Smartphone, title: "Pharmacy" },
+              { icon: Layout, title: "Furniture Store" },
+              { icon: Building2, title: "Hardwares" },
+              { icon: Zap, title: "Electronics" },
+              { icon: Star, title: "Fashion & Beauty" }
+            ].map((v, i) => (
               <motion.div
-                key={item.title}
+                key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="p-6 rounded-xl border border-muted/20 bg-card hover:shadow-lg transition-all text-center"
+                className="group p-6 rounded-3xl bg-white border border-border/50 hover:border-primary/30 hover:shadow-xl transition-all text-center"
               >
-                <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                  <item.icon className="h-5 w-5 text-primary" />
+                <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                  <v.icon className="w-7 h-7 text-primary" />
                 </div>
-                <h3 className="font-semibold text-foreground mb-2">{item.title}</h3>
-                <p className="text-sm text-muted-foreground">{item.desc}</p>
+                <h3 className="font-bold text-lg">{v.title}</h3>
               </motion.div>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Stats Section */}
-        <section className="py-16 md:py-28">
+      {/* Dashboard Showcase */}
+      <section className="py-24 md:py-32 overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col items-center text-center mb-16 px-4">
+            <h2 className="text-4xl md:text-6xl font-black mb-8 tracking-tight text-gradient">Your Business at Your Fingertips.</h2>
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
+              Experience the power of ADEERA's intuitive dashboard on any device. Manage sales, track inventory, and get real-time insights from anywhere in the world.
+            </p>
+          </div>
+
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="relative group lg:px-20"
           >
-            <span className="inline-flex items-center rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary mb-4">
-              <Zap className="h-4 w-4 mr-2" />
-              Our Impact
-            </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Driving Digital Transformation</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto text-base sm:text-lg">
-              Measurable results that demonstrate our commitment to African businesses
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            {stats.map((stat, index) => (
-              <StatCard
-                key={index}
-                value={stat.value}
-                label={stat.label}
-                icon={stat.icon}
-                suffix={stat.suffix}
-              />
-            ))}
-          </div>
-
-          <motion.div
-            initial={{ width: 0 }}
-            whileInView={{ width: "100%" }}
-            transition={{ duration: 1.5, delay: 0.3 }}
-            viewport={{ once: true }}
-            className="mt-16 h-1.5 bg-gradient-to-r from-transparent via-primary/30 to-transparent rounded-full"
-          />
-        </section>
-
-        {/* Technology Stack Section */}
-        <section className="py-16 md:py-24">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="text-center mb-12 md:mb-16 max-w-3xl mx-auto"
-          >
-            <span className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary mb-4">
-              <Cpu className="h-4 w-4 mr-2" />
-              Technology Stack
-            </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Built for Real Business</h2>
-            <p className="text-muted-foreground mx-auto text-base sm:text-lg">
-              Every part of the platform is designed to work together: POS, inventory, reports, M-Pesa, and AI in one place.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {techStack.map((tech, index) => (
-              <TechStackItem key={index} {...tech} />
-            ))}
-          </div>
-        </section>
-
-        {/* Features Section */}
-        <section className="py-16 md:py-24">
-          <div className="flex flex-col lg:flex-row gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              viewport={{ once: true }}
-              className="w-full lg:w-1/2"
-            >
+            <div className="absolute inset-0 bg-primary/20 rounded-[3rem] blur-3xl opacity-50 group-hover:opacity-70 transition-opacity" />
+            <div className="relative glass p-4 rounded-[2.5rem] shadow-2xl border-white/40 overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-                alt="Team collaboration"
-                className="rounded-2xl shadow-xl w-full object-cover aspect-video border border-muted/20"
+                src="/hero-dashboard.png"
+                alt="ADEERA Dashboard Preview"
+                className="rounded-[1.5rem] w-full shadow-inner border border-white/20"
               />
+            </div>
+
+            {/* Floating Elements for Premium Feel */}
+            <motion.div
+              animate={{ y: [0, -15, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute -top-10 -right-4 md:right-10 w-32 md:w-48 glass p-4 rounded-2xl shadow-xl border-white/40 hidden md:block"
+            >
+              <div className="flex items-center gap-3 mb-2">
+                <TrendingUp className="text-primary w-5 h-5" />
+                <span className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Daily Sales</span>
+              </div>
+              <div className="text-2xl font-black text-primary">+24.5%</div>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              viewport={{ once: true }}
-              className="w-full lg:w-1/2"
+              animate={{ y: [0, 15, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute -bottom-10 -left-4 md:left-10 w-32 md:w-48 glass p-4 rounded-2xl shadow-xl border-white/40 hidden md:block"
             >
-              <span className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary mb-4">
-                <Check className="h-4 w-4 mr-2" />
-                Why Choose Us
-              </span>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6">Why the ADEERA Platform</h2>
-              <p className="text-muted-foreground mb-8 text-base sm:text-lg">
-                One login, one system. POS, inventory, reports, and M-Pesa together — so you spend less time on tools and more on your business.
-              </p>
+              <div className="flex items-center gap-3 mb-2">
+                <Users className="text-primary w-5 h-5" />
+                <span className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Customers</span>
+              </div>
+              <div className="text-2xl font-black text-primary">1,280</div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
 
-              <div className="space-y-4">
-                {features.map((feature, index) => (
-                  <FeatureItem
-                    key={index}
-                    icon={feature.icon}
-                    title={feature.title}
-                    description={feature.description}
-                  />
+      {/* Trusted By Section */}
+      <section className="py-20 border-y border-border/50 bg-muted/10 overflow-hidden">
+        <div className="container mx-auto px-4">
+          <p className="text-sm font-bold text-center text-muted-foreground uppercase tracking-[0.3em] mb-12">Trusted by 4,000+ businesses globally</p>
+          <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-40 grayscale hover:grayscale-0 transition-all duration-500">
+            <div className="text-2xl md:text-3xl font-black italic tracking-tighter text-foreground">FINTECH.CO</div>
+            <div className="text-2xl md:text-3xl font-black italic tracking-tighter text-foreground">RETAILMAX</div>
+            <div className="text-2xl md:text-3xl font-black italic tracking-tighter text-foreground">SHOPFLOW</div>
+            <div className="text-2xl md:text-3xl font-black italic tracking-tighter text-foreground">PAYSAFE</div>
+            <div className="text-2xl md:text-3xl font-black italic tracking-tighter text-foreground">GROWTHQ</div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Grid */}
+      <section className="py-24 md:py-32 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] -mr-24 -mt-24" />
+
+        <div className="container mx-auto px-4">
+          <SectionHeader
+            badge="Powerful Features"
+            title="Everything You Need to Scale."
+            description="Built to handle the complexity of modern retail, ADEERA provides the tools you need to stay ahead of the competition."
+          />
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <FeatureCard
+              icon={Smartphone}
+              title="Vibrant POS"
+              description="A faster checkout experience with digital receipts, offline mode, and integrated M-Pesa payments."
+              delay={0.1}
+            />
+            <FeatureCard
+              icon={Database}
+              title="Inventory Tracking"
+              description="Never run out of stock. Get real-time alerts and automated purchase orders across all branches."
+              delay={0.2}
+            />
+            <FeatureCard
+              icon={TrendingUp}
+              title="Sales Analytics"
+              description="Beautiful reports that show your profit margins, top-selling items, and staff performance."
+              delay={0.3}
+            />
+            <FeatureCard
+              icon={Users}
+              title="Customer CRM"
+              description="Build lasting relationships. Track purchase history and reward your most loyal customers."
+              delay={0.4}
+            />
+            <FeatureCard
+              icon={Building2}
+              title="Multi-Branch"
+              description="Manage multiple locations from one login. Move stock or check sales in any branch instantly."
+              delay={0.5}
+            />
+            <FeatureCard
+              icon={Shield}
+              title="Bank-Grade Security"
+              description="Your data is safe with us. End-to-end encryption and regular backups ensure peace of mind."
+              delay={0.6}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* High-Impact Feature Highlight */}
+      <section className="py-24 md:py-32 bg-primary text-primary-foreground overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-4xl md:text-6xl font-black mb-8 leading-tight">Master Your Inventory, Everywhere.</h2>
+              <div className="space-y-6 text-white/90">
+                {[
+                  "Real-time sync across all locations",
+                  "Automated stock valuation & aging",
+                  "Supplier management & purchase orders",
+                  "Barcode scanning & label printing"
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-4">
+                    <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">
+                      <Check className="w-4 h-4" />
+                    </div>
+                    <span className="text-xl font-medium">{item}</span>
+                  </div>
                 ))}
               </div>
+              <Button size="lg" variant="secondary" className="mt-12 rounded-full h-14 px-8 font-bold hover:scale-105 transition-transform" asChild>
+                <Link to="/features">Explore Features</Link>
+              </Button>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-white/10 rounded-full blur-[100px] -z-10" />
+              <img
+                src="/inventory-feature.png"
+                alt="Inventory Tracking"
+                className="rounded-3xl shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-700"
+              />
             </motion.div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Case Studies Section */}
-        <section className="py-16 md:py-24">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="text-center mb-12 md:mb-16 max-w-3xl mx-auto"
-          >
-            <span className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary mb-4">
-              <Target className="h-4 w-4 mr-2" />
-              Success Stories
-            </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
-              Real Results, Real Impact
-            </h2>
-            <p className="text-muted-foreground mx-auto text-base sm:text-lg">
-              See how businesses use the ADEERA Platform for POS, inventory, and insights.
-            </p>
-          </motion.div>
+      {/* Testimonials */}
+      <section className="py-24 md:py-32 bg-muted/20 relative overflow-hidden">
+        <div className="absolute top-1/2 left-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[100px] -ml-24 -translate-y-1/2" />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {caseStudies.map((caseStudy, index) => (
-              <CaseStudyCard key={index} caseStudy={caseStudy} index={index} />
-            ))}
-          </div>
-        </section>
+        <div className="container mx-auto px-4 relative z-10">
+          <SectionHeader
+            badge="Customer Stories"
+            title="Trusted by Visionary Owners."
+            description="Join a growing community of entrepreneurs who are scaling their businesses with ADEERA's intuitive platform."
+          />
 
-        {/* Testimonials Section */}
-        <section className="py-16 md:py-24">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="text-center mb-12 md:mb-16 max-w-3xl mx-auto"
-          >
-            <span className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary mb-4">
-              <MessageCircle className="h-4 w-4 mr-2" />
-              Client Testimonials
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              What Our Clients Say
-            </h2>
-            <p className="text-muted-foreground mx-auto text-lg">
-              Hear from businesses using the ADEERA Platform for sales, inventory, and reports.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {testimonials.map((testimonial, index) => (
-              <TestimonialCard
-                key={index}
-                testimonial={testimonial}
-                index={index}
-              />
-            ))}
-          </div>
-        </section>
-
-        {/* FAQ Section */}
-        <section className="py-16 md:py-24">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <span className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary mb-4">
-              <MessageCircle className="h-4 w-4 mr-2" />
-              FAQ
-            </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Common questions</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">Quick answers about the ADEERA Platform.</p>
-          </motion.div>
-          <div className="max-w-3xl mx-auto space-y-4">
+          <div className="grid md:grid-cols-3 gap-8">
             {[
-              { q: "What is the ADEERA Platform?", a: "One system for point of sale, inventory, sales history, reports, M-Pesa, and an AI assistant. You run your business from a single app — no more spreadsheets or multiple tools." },
-              { q: "How does M-Pesa work?", a: "Accept M-Pesa at checkout when you make a sale. All M-Pesa transactions appear in the app so you can reconcile with sales. Cash and credit are also supported." },
-              { q: "Can I use it for multiple branches?", a: "Yes. Multi-branch is built in. Switch between locations, see sales and stock per branch, and manage users and permissions from one account." },
-              { q: "What's the difference between Basic, Pro, and Enterprise?", a: "Basic gets you started with core POS and inventory. Pro adds more products, users, branches, full reports, AI assistant, and M-Pesa. Enterprise scales without limits with dedicated support. Contact us for details." },
-              { q: "Is there a free trial?", a: "Yes. You can start a free trial from our website — use the Get Started or Log in link to sign up. No credit card required." },
-              { q: "How do I get support?", a: "Email us at adeeraunitech@gmail.com or use the contact form. We respond within 24 hours. For app access, use the Log in link in the header." },
-            ].map((faq, i) => (
+              {
+                quote: "Finally a POS that understands the African market. M-Pesa integration is a game-changer for my retail shops.",
+                author: "Muthoni Kamau",
+                role: "CEO, Kamau Retail",
+                initials: "MK"
+              },
+              {
+                quote: "The multi-branch feature saved me hours of manual tracking. I can see what's happening in Eldoret while I'm in Nairobi.",
+                author: "David Ouma",
+                role: "Founder, QuickMart Plus",
+                initials: "DO"
+              },
+              {
+                quote: "The AI insights actually helped me identify slow-moving stock I would have otherwise missed. Highly recommended.",
+                author: "Sarah Juma",
+                role: "Operations, Trendy Threads",
+                initials: "SJ"
+              }
+            ].map((t, i) => (
               <motion.div
-                key={faq.q}
-                initial={{ opacity: 0, y: 10 }}
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                className="p-5 rounded-xl border border-muted/20 bg-card"
+                transition={{ delay: i * 0.1 }}
+                className="bg-white p-10 rounded-[2.5rem] shadow-sm border border-border/50 flex flex-col justify-between hover:shadow-2xl transition-all hover:-translate-y-1"
               >
-                <h3 className="font-semibold text-foreground mb-2">{faq.q}</h3>
-                <p className="text-sm text-muted-foreground">{faq.a}</p>
+                <div>
+                  <div className="flex gap-1 text-primary mb-8">
+                    {[...Array(5)].map((_, j) => <Star key={j} className="w-5 h-5 fill-current" />)}
+                  </div>
+                  <p className="text-xl leading-relaxed italic text-foreground mb-10">"{t.quote}"</p>
+                </div>
+                <div className="flex items-center gap-4 border-t border-border/30 pt-8">
+                  <div className="w-14 h-14 rounded-2xl bg-primary flex items-center justify-center font-bold text-white shadow-lg shadow-primary/20">
+                    {t.initials}
+                  </div>
+                  <div>
+                    <h4 className="font-black text-lg">{t.author}</h4>
+                    <p className="text-sm font-bold text-muted-foreground uppercase tracking-wider">{t.role}</p>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Newsletter Section */}
-        <section className="py-16 md:py-24">
-          <div className="max-w-2xl mx-auto">
-            <NewsletterSignup />
-          </div>
-        </section>
+      {/* Final CTA */}
+      <section className="py-24 md:py-40 relative overflow-hidden">
+        <div className="absolute inset-0 bg-primary -z-20" />
+        <div className="absolute inset-0 bg-grid-white/10 -z-10" />
 
-        {/* Contact Info Section */}
-        <section className="py-16 md:py-24">
+        <div className="container mx-auto px-4 text-center text-primary-foreground">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="text-center mb-12 md:mb-16 max-w-3xl mx-auto"
+            className="max-w-4xl mx-auto"
           >
-            <span className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary mb-4">
-              <Phone className="h-4 w-4 mr-2" />
-              Get In Touch
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Ready to Start Your Journey?
-            </h2>
-            <p className="text-muted-foreground mx-auto text-lg">
-              Our team is here to help you navigate your digital transformation
-              journey.
+            <h2 className="text-5xl md:text-8xl font-black mb-10 tracking-tighter leading-none">Ready to Power <br />Your Business?</h2>
+            <p className="text-xl md:text-2xl opacity-90 mb-14 max-w-2xl mx-auto font-medium leading-relaxed">
+              Start your free demo today and discover why ADEERA is the chosen platform for modern retail across Africa.
             </p>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <Button size="lg" variant="secondary" className="rounded-full h-20 px-12 text-2xl font-black hover:scale-105 transition-transform shadow-2xl" asChild>
+                <Link to="/demo">Try for Free</Link>
+              </Button>
+              <Button size="lg" variant="outline" className="rounded-full h-20 px-12 text-2xl font-black border-4 hover:bg-white/10 border-white/20 text-white transition-all" asChild>
+                <Link to="/contact">Contact Sales</Link>
+              </Button>
+            </div>
+            <p className="mt-12 text-sm opacity-60 font-bold uppercase tracking-widest">No credit card required • Cancel anytime</p>
           </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              viewport={{ once: true }}
-              className="text-center p-4 sm:p-6 rounded-xl bg-background border border-muted/20"
-            >
-              <Phone className="h-10 w-10 sm:h-12 sm:w-12 text-primary mx-auto mb-3 sm:mb-4" />
-              <h3 className="text-lg sm:text-xl font-semibold mb-2">Call Us</h3>
-              <p className="text-sm sm:text-base text-muted-foreground mb-2">+254 700 000 000</p>
-              <p className="text-xs sm:text-sm text-muted-foreground">
-                Mon-Fri 8AM-6PM EAT
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="text-center p-4 sm:p-6 rounded-xl bg-background border border-muted/20"
-            >
-              <Mail className="h-10 w-10 sm:h-12 sm:w-12 text-primary mx-auto mb-3 sm:mb-4" />
-              <h3 className="text-lg sm:text-xl font-semibold mb-2">Email Us</h3>
-              <p className="text-sm sm:text-base text-muted-foreground mb-2">adeeraunitech@gmail.com</p>
-              <p className="text-xs sm:text-sm text-muted-foreground">
-                We'll respond within 24 hours
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              viewport={{ once: true }}
-              className="text-center p-4 sm:p-6 rounded-xl bg-background border border-muted/20 sm:col-span-2 lg:col-span-1"
-            >
-              <MapPin className="h-10 w-10 sm:h-12 sm:w-12 text-primary mx-auto mb-3 sm:mb-4" />
-              <h3 className="text-lg sm:text-xl font-semibold mb-2">Visit Us</h3>
-              <p className="text-sm sm:text-base text-muted-foreground mb-2">Nairobi, Kenya</p>
-              <p className="text-xs sm:text-sm text-muted-foreground">
-                Schedule a meeting
-              </p>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-       <section className="py-16 md:py-24 bg-gradient-to-r from-primary to-blue-700">
-  <motion.div
-    initial={{ opacity: 0, y: 30 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-    viewport={{ once: true }}
-    className="max-w-3xl mx-auto text-center text-white px-4"
-  >
-    <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 sm:mb-6 leading-tight drop-shadow">
-      Ready to Run Your Business from One Platform?
-    </h2>
-    <p className="text-lg sm:text-xl mb-8 text-white/90 font-medium">
-      POS, inventory, reports, M-Pesa & AI in one place. Start with a <span className="font-bold text-yellow-300">free trial</span> or book a demo.
-    </p>
-    <div className="flex flex-col sm:flex-row gap-4 justify-center">
-      <Button
-        size="lg"
-        className="group bg-yellow-400 text-primary font-semibold hover:bg-yellow-300 shadow-lg hover:shadow-xl text-base px-8"
-        asChild
-      >
-        <Link to="/demo" className="flex items-center">
-          Get Started Free
-          <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-        </Link>
-      </Button>
-      <Button
-        size="lg"
-        variant="outline"
-        className="group border-white text-white hover:bg-white/10 text-base px-8"
-        asChild
-      >
-        <Link to="/pricing" className="flex items-center">
-          View Pricing
-          <Play className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-        </Link>
-      </Button>
-    </div>
-  </motion.div>
-</section>
-      </div>
+        </div>
+      </section>
     </div>
   );
 };

@@ -6,48 +6,61 @@
 
 @layer base {
   :root {
-     --primary: 220 60% 24%;              /* much darker blue */
+    --primary: 221 83% 53%;           /* Adeera Blue */
     --primary-foreground: 210 40% 98%;
 
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
 
-    --accent: 210 100% 96%;              /* light blue accent */
-    --accent-foreground: 217 91% 60%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
 
-    --sidebar-background: 213 100% 98%;  /* very light blue */
-    --sidebar-foreground: 217 91% 30%;   /* deep blue for text */
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
 
-    --sidebar-primary: 217 91% 60%;      /* vivid blue */
-    --sidebar-primary-foreground: 0 0% 100%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
 
-    --sidebar-accent: 210 100% 96%;      /* light blue accent */
-    --sidebar-accent-foreground: 217 91% 60%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
 
-    --sidebar-border: 217 91% 90%;       /* light blue border */
-    --sidebar-ring: 217 91% 60%;    
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 221.2 83.2% 53.3%;
+
+    --radius: 0.75rem;
   }
 
-   .dark {
-    /* ...existing code... */
-     --primary: 220 60% 24%;              /* even darker blue for dark mode */
-    --primary-foreground: 210 40% 98%;
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
 
-    --accent: 217 91% 30%;               /* deep blue accent */
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 222 47% 11%;
+
+    --accent: 217.2 32.6% 17.5%;
     --accent-foreground: 210 40% 98%;
 
-    --sidebar-background: 217 91% 15%;   /* dark blue */
-    --sidebar-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
 
-    --sidebar-primary: 217 91% 70%;      /* lighter blue */
-    --sidebar-primary-foreground: 0 0% 100%;
-
-    --sidebar-accent: 217 91% 30%;       /* deep blue accent */
-    --sidebar-accent-foreground: 210 40% 98%;
-
-    --sidebar-border: 217 91% 30%;       /* deep blue border */
-    --sidebar-ring: 217 91% 70%;         /* lighter blue ring */
-    /* ...existing code... */
+    --ring: 221 83% 53%;
   }
 }
 
@@ -57,6 +70,29 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased selection:bg-primary/20;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-background/60 backdrop-blur-md border border-white/20 dark:border-white/10;
+  }
+  
+  .glass-dark {
+    @apply bg-black/40 backdrop-blur-md border border-white/10;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-br from-foreground to-foreground/70 bg-clip-text text-transparent;
+  }
+
+  .bg-grid-white {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(0 0 0 / 0.04)'%3E%3Cpath d='M0 .5H31.5V32'/%3E%3C/svg%3E");
+  }
+
+  .bg-grid-dark {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(255 255 255 / 0.04)'%3E%3Cpath d='M0 .5H31.5V32'/%3E%3C/svg%3E");
   }
 }

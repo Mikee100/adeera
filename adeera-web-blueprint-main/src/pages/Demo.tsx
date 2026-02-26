@@ -11,9 +11,9 @@ import { Label } from "@/components/ui/label";
 const Demo = () => {
   const [activeTab, setActiveTab] = useState("features");
   const [videoPlaying, setVideoPlaying] = useState(false);
-const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
-  
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -117,7 +117,7 @@ const [open, setOpen] = useState(false);
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20 pt-24 md:pt-32">
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="sm:max-w-md">
           <DialogTitle>Request a demo</DialogTitle>
@@ -156,7 +156,7 @@ const [open, setOpen] = useState(false);
           )}
         </DialogContent>
       </Dialog>
-      <SEO 
+      <SEO
         title="Request Demo | See the ADEERA Platform | Free Trial"
         description="See the ADEERA Platform in action: POS, inventory, sales, reports, M-Pesa, and AI. Book a demo or start your free trial."
         keywords="ADEERA demo, POS demo, platform trial, free trial, book demo, Kenya"
@@ -198,8 +198,8 @@ const [open, setOpen] = useState(false);
           }))
         }}
       />
-      
-      <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+
+      <div className="container mx-auto px-4 text-center">
         <div className="max-w-4xl mx-auto">
           <span className="inline-block px-3 py-1 text-sm font-medium rounded-full bg-primary/10 text-primary mb-4">
             No credit card required
@@ -214,17 +214,17 @@ const [open, setOpen] = useState(false);
             <Button size="lg" className="bg-primary hover:bg-primary/90">
               <Play className="w-4 h-4 mr-2" /> Live Demo
             </Button>
-            <Button size="lg" variant="outline"  onClick={() => setOpen(true)}>
+            <Button size="lg" variant="outline" onClick={() => setOpen(true)}>
               <Zap className="w-4 h-4 mr-2" /> Quick Tour
             </Button>
           </div>
-          
-          
+
+
           {/* Interactive Demo Preview */}
           <div className="relative rounded-xl border border-gray-200 bg-white shadow-lg overflow-hidden">
             {!videoPlaying ? (
               <div className="aspect-video bg-gray-100 flex items-center justify-center">
-                <button 
+                <button
                   onClick={() => setVideoPlaying(true)}
                   className="absolute inset-0 flex items-center justify-center"
                 >
@@ -249,7 +249,7 @@ const [open, setOpen] = useState(false);
       </div>
 
       {/* Demo Navigation */}
-      <div className="sticky top-0 z-10 bg-white border-b">
+      <div className="sticky top-[72px] md:top-[80px] z-10 bg-white border-b">
         <div className="max-w-6xl mx-auto px-4">
           <nav className="flex overflow-x-auto py-4">
             {[
@@ -282,7 +282,7 @@ const [open, setOpen] = useState(false);
                 POS, inventory, reports, M-Pesa, and an AI assistant — all in one place.
               </p>
             </div>
-            
+
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
               {coreFeatures.map((feature, index) => (
                 <div key={index} className="bg-white p-6 rounded-xl border border-gray-200 hover:border-primary transition-all shadow-sm hover:shadow-md">
@@ -297,7 +297,7 @@ const [open, setOpen] = useState(false);
                 </div>
               ))}
             </div>
-            
+
             <div className="bg-primary/5 border border-primary/20 rounded-xl p-8">
               <div className="md:flex items-center">
                 <div className="md:w-1/2 mb-6 md:mb-0">
@@ -341,7 +341,7 @@ const [open, setOpen] = useState(false);
                 Retail, multi-branch, or growing — the platform scales with you.
               </p>
             </div>
-            
+
             <div className="grid md:grid-cols-2 gap-8 mb-12">
               {useCases.map((useCase, index) => (
                 <div key={index} className="bg-white p-6 rounded-xl border border-gray-200 hover:shadow-md transition-shadow">
@@ -353,7 +353,7 @@ const [open, setOpen] = useState(false);
                 </div>
               ))}
             </div>
-            
+
             <div className="bg-gray-50 rounded-xl p-8 text-center">
               <h3 className="text-2xl font-bold text-gray-900 mb-3">Don't see your specific use case?</h3>
               <p className="text-gray-700 mb-6 max-w-2xl mx-auto">
@@ -375,7 +375,7 @@ const [open, setOpen] = useState(false);
                 Join thousands of businesses accelerating their growth with our platform.
               </p>
             </div>
-            
+
             <div className="grid md:grid-cols-2 gap-8 mb-12">
               {testimonials.map((testimonial, index) => (
                 <div key={index} className="bg-white p-6 rounded-xl border border-gray-200">
@@ -394,7 +394,7 @@ const [open, setOpen] = useState(false);
                 </div>
               ))}
             </div>
-            
+
             <div className="text-center">
               <Button variant="outline" size="lg">
                 View More Customer Stories

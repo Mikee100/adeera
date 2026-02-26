@@ -1,4 +1,17 @@
 {
+  "features": "Features",
+  "pos": "Point of Sale",
+  "inventory": "Inventory",
+  "analytics": "Analytics",
+  "payments": "Payments",
+  "company": "Company",
+  "about": "About Us",
+  "integrations": "Integrations",
+  "partnerships": "Partnerships",
+  "pricing": "Pricing",
+  "contact": "Contact",
+  "login": "Log In",
+  "getStarted": "Get Started",
   "home": {
     "hero": {
       "badge": "Enterprise SaaS Solutions",

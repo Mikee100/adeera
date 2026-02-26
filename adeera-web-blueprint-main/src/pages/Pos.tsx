@@ -43,7 +43,7 @@ const Pos = () => {
         }}
       />
 
-      <section className="py-20 md:py-28">
+      <section className="pt-32 pb-20 md:pt-40 md:pb-28">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -57,7 +57,7 @@ const Pos = () => {
               Fast, flexible Point of Sale
             </h1>
             <p className="text-lg text-muted-foreground">
-              Ring up sales quickly with product search and variations. Accept cash, M-Pesa, and credit. 
+              Ring up sales quickly with product search and variations. Accept cash, M-Pesa, and credit.
               Print receipts, track every transaction, and run multiple branches from one platform.
             </p>
           </motion.div>
