@@ -22,32 +22,32 @@ interface QuickReply {
 }
 
 const AI_RESPONSES: { [key: string]: string } = {
-  hello: "Hello! I'm ADEERA's assistant. I can help you with the ADEERA Platform — POS, inventory, sales, reports, M-Pesa, and AI. What would you like to know?",
-  hi: "Hi! Welcome to ADEERA. We build one platform for POS, inventory, sales, and insights. Ask me about features, pricing, a demo, or logging in.",
-  pricing: "We have three plans:\n\n• **Basic** — Core POS, inventory, sales. Great for getting started.\n• **Pro** — More products, users, branches; full reports, AI, M-Pesa.\n• **Enterprise** — Scale without limits, dedicated support.\n\nVisit our Pricing page or contact us for details. You can also start a free trial.",
-  support: "We're here to help:\n\n• **Email**: adeeraunitech@gmail.com\n• **Phone**: +254 700 000 000\n• **Website**: adeeraunitech.com\n\nFor app access, use the **Log in** link in the header. What do you need help with?",
-  platform: "The ADEERA Platform is one system for your business:\n\n🛒 **POS** — Fast checkout, cash, M-Pesa, credit, receipts\n📦 **Inventory** — Products, suppliers, 11+ reports\n📊 **Reports & Analytics** — Dashboard, trends, sales targets\n🤖 **AI Assistant** — Ask questions, get charts\n💳 **M-Pesa & Billing** — Accept mobile money, Stripe subscriptions\n\nWant a demo or to see a specific feature?",
-  services: "The ADEERA Platform includes:\n\n🛒 **Point of Sale** — Cart, checkout, receipts, multi-branch\n📦 **Inventory & Products** — Stock, suppliers, low-stock alerts, valuation\n📊 **Analytics & AI** — Dashboard, reports, in-app AI assistant\n💳 **Payments** — M-Pesa, Stripe, invoices\n🏢 **Multi-branch** — Users, permissions, one login\n\nCheck the Features or Platform page for the full list.",
-  contact: "Reach us at:\n\n📞 **Phone**: +254 700 000 000\n📧 **Email**: adeeraunitech@gmail.com\n📍 **Nairobi, Kenya**\n🌐 **adeeraunitech.com**\n\nUse **Log in** in the menu to access the app. We respond within 24 hours.",
-  demo: "You can:\n\n• **Book a demo** — Fill the form on our Demo page; we’ll get back to you.\n• **Start a free trial** — Use the **Get Started** or **Log in** link to sign up.\n\nTell me if you want a walkthrough or to try it yourself.",
-  thank: "You're welcome! 😊 Need more on the platform, pricing, or demo? Just ask.",
-  thanks: "You're welcome! 😊 Need more on the platform, pricing, or demo? Just ask.",
-  bye: "Thanks for chatting! For the app, use **Log in** in the header. Come back anytime! 👋",
-  goodbye: "Thanks for chatting! For the app, use **Log in** in the header. Come back anytime! 👋",
-  ai: "I'm here to help with the ADEERA Platform: POS, inventory, reports, M-Pesa, AI, pricing, demos, and how to log in. What would you like to know?",
-  artificial: "I'm here to help with the ADEERA Platform: POS, inventory, reports, M-Pesa, AI, pricing, demos, and how to log in. What would you like to know?",
-  help: "I can help with:\n\n📋 **Platform & features** — POS, inventory, reports, AI, M-Pesa\n💰 **Pricing** — Basic, Pro, Enterprise\n📅 **Demo or trial** — Book a demo or start free trial\n🔐 **Log in** — Use the **Log in** link in the header to open the app\n📞 **Contact** — Email, phone, website\n\nWhat do you need?",
-  features: "Key features of the ADEERA Platform:\n\n🛒 **POS** — Fast sales, cart, receipts, cash/M-Pesa/credit\n📦 **Inventory** — Products, suppliers, 11+ reports (e.g. low stock, valuation)\n📊 **Dashboard & AI** — Revenue, trends, and an in-app AI that can generate charts\n💳 **M-Pesa** — Accept and reconcile mobile money\n🏢 **Multi-branch** — Multiple locations, users, permissions\n\nSee the Features page for the full list.",
-  login: "To open the ADEERA app, click **Log in** in the top-right of this website. That takes you to the platform where you can sign in or start a free trial. If you don’t see it, go to the main menu — it’s there on desktop and mobile.",
-  signin: "To open the ADEERA app, click **Log in** in the top-right of this website. That takes you to the platform where you can sign in or start a free trial.",
-  mpesa: "M-Pesa is built into the ADEERA Platform:\n\n• Accept **M-Pesa** at checkout when you make a sale\n• View **M-Pesa transactions** in the app and reconcile with sales\n• One place for cash, M-Pesa, and credit\n\nPerfect for retail and shops in Kenya. Want a demo?",
-  pos: "Our Point of Sale lets you:\n\n• Search products, add to cart, use variations\n• Pay with **cash**, **M-Pesa**, or **credit**\n• Print or view **receipts**\n• See **sales history** and use **multi-branch**\n\nCheck the POS page for details or book a demo.",
-  trial: "You can start a **free trial** by clicking **Log in** or **Get Started** in the header — that goes to the app where you can sign up. Or fill the form on the **Demo** page and we’ll set you up. No credit card required.",
-  security: "We take security seriously:\n\n🔒 **Multi-tenant** — Your data is isolated\n👥 **Role-based permissions** — Control who sees what\n🛡️ **Secure hosting** — Your business data is protected\n\nNeed more details? Ask about the platform or contact us.",
-  crm: "We focus on the **ADEERA Platform** — POS, inventory, sales, M-Pesa, reports, and AI. CRM integrations are on our roadmap for later. Right now you get one system for checkout, stock, and insights. Want a demo of what we offer today?",
-  cybersecurity: "We focus on the **ADEERA Platform** — POS, inventory, sales, M-Pesa, reports, and AI. Your data is secure with multi-tenant isolation and role-based permissions. Cybersecurity add-ons are on our roadmap. Want to see the platform features?",
-  cloud: "The ADEERA Platform runs in the cloud — access your POS, inventory, and reports from anywhere. One login for multi-branch, M-Pesa, and AI insights. Want a demo or to start a free trial?",
-  marketplace: "We focus on the **ADEERA Platform** — POS, inventory, sales, M-Pesa, reports, and AI. A SaaS marketplace is on our roadmap. Right now you get one integrated system for your business. Check our Features or Pricing page.",
+  hello: "Hey there! 👋 I'm the ADEERA assistant. I can help you navigate our platform—from POS and inventory all the way to M-Pesa integration and AI reporting. What's on your mind today?",
+  hi: "Hi! Welcome to ADEERA. 🚀 We're building one unified platform for POS, inventory, sales, and analytics. Looking for info on our features, pricing, or maybe a quick demo?",
+  pricing: "We've got three main plans depending on where you're at:\n\n• **Basic** — Great to get started with core POS & inventory.\n• **Pro** — Perfect for scaling with advanced reports, M-Pesa, and AI insights.\n• **Enterprise** — For large operations needing dedicated support.\n\nYou can always check our Pricing page for the fine details, or start a free trial to see for yourself!",
+  support: "We're always here to help out! 🙌\n\nYou can shoot us an email at adeeraunitech@gmail.com, or give us a call at +254 700 000 000. If you just need to jump into the app, hit the **Log in** button at the top.",
+  platform: "The ADEERA Platform is designed to be your all-in-one business hub:\n\n🛒 **POS** — Super fast checkout (Cash, M-Pesa, Credit)\n📦 **Inventory** — Easy stock management and tracking\n📊 **Insights** — Live dashboards and AI charting\n💳 **Payments** — Seamless M-Pesa and Stripe billing\n\nWould you like a demo to see it in action?",
+  services: "Our platform covers all the bases for a growing business: Lightning-fast POS, smart inventory alerts, an AI assistant for deep analytics, and built-in M-Pesa payments. Check out the Features page if you want the full deep dive!",
+  contact: "We'd love to chat! 📞 You can reach us at +254 700 000 000 or email adeeraunitech@gmail.com. We're based right here in Nairobi, Kenya. We usually get back within 24 hours!",
+  demo: "I'd love to show you around! 🎉 \n\nYou can either fill out the quick form on our Demo page, or just dive right in with a free trial by clicking **Get Started** at the top. Which sounds better to you?",
+  thank: "You're so welcome! 😊 Let me know if anything else comes up.",
+  thanks: "Anytime! 😊 I'm right here if you need more help with the platform.",
+  bye: "Catch you later! 👋 Don't forget you can always click **Log in** at the top whenever you're ready to jump into the app. Have a great day!",
+  goodbye: "Catch you later! 👋 Don't forget you can always click **Log in** at the top whenever you're ready to jump into the app. Have a great day!",
+  ai: "I'm the ADEERA AI! I'm here to help you understand our platform, find the right pricing, or figure out how to get started. How can I help you today?",
+  artificial: "I'm the ADEERA AI! I'm here to help you understand our platform, find the right pricing, or figure out how to get started. How can I help you today?",
+  help: "I'm ready to help! I can break down our features (POS, inventory, M-Pesa), explain our pricing plans, guide you to a demo, or help you log in. What are you looking for right now?",
+  features: "Our biggest superpower is bringing everything together: \n\nWe give you a fast POS system, smart inventory tracking with low-stock alerts, fully integrated M-Pesa payments, and a dashboard powered by AI to help you make sense of your sales data. Let me know if you want to explore any of these specific areas!",
+  login: "Ready to get to work? Just hit the **Log in** button at the top-right of the screen. If you're on a phone, you might need to open the menu first. That'll take you straight to your dashboard!",
+  signin: "Ready to get to work? Just hit the **Log in** button at the top-right of the screen. If you're on a phone, you might need to open the menu first. That'll take you straight to your dashboard!",
+  mpesa: "We know how important M-Pesa is. With ADEERA, M-Pesa is completely built into the POS. You can accept payments at checkout and reconcile everything automatically alongside your cash and card sales. It's super smooth!",
+  pos: "Our POS is built for speed. You can search products, manage variations, accept split payments (like cash + M-Pesa), and view full sales histories across multiple branches. Let me know if you want to book a quick demo to see it!",
+  trial: "Awesome! You can jump straight into a free trial—no credit card needed. Just click **Log in** or **Get Started** at the top of the page. Or, if you prefer, we can give you a guided tour first via the Demo page.",
+  security: "Your data's safety is a massive priority for us. 🔒 We use multi-tenant isolation so your data is completely walled off, and we give you granular role-based permissions so your staff only see what they need to see.",
+  crm: "Right now, we are entirely focused on making the core ADEERA Platform incredible—that means world-class POS, inventory, analytics, and M-Pesa. Full CRM integrations are on the roadmap, but right now we're keeping it simple and powerful. Want a demo of the core platform?",
+  cybersecurity: "Right now, we are entirely focused on making the core ADEERA Platform incredible—that means world-class POS, inventory, analytics, and M-Pesa. Your data is extremely secure, but specialized cybersecurity add-ons are on our long-term roadmap.",
+  cloud: "Yep, we're 100% cloud-based! ☁️ That means you can log in and see your live sales, inventory updates, and AI reports from anywhere in the world on any device. Want to start a free trial to test it out?",
+  marketplace: "Currently we're focused laser-sharp on the merchant side—giving you the best POS, inventory, and M-Pesa tools. A SaaS marketplace is something we're exploring for the future though!",
 };
 
 const QUICK_REPLIES: QuickReply[] = [
@@ -61,7 +61,7 @@ const QUICK_REPLIES: QuickReply[] = [
 
 const getAIResponse = (message: string): string => {
   const lower = message.toLowerCase();
-  
+
   // Check legacy/off-topic terms first – redirect to platform
   if (lower.includes('crm') || lower.includes('salesforce') || lower.includes('hubspot') || lower.includes('zoho')) {
     return AI_RESPONSES.crm;
@@ -82,7 +82,7 @@ const getAIResponse = (message: string): string => {
       return AI_RESPONSES[key];
     }
   }
-  
+
   // Check for partial matches and context
   if (lower.includes('cost') || lower.includes('price') || lower.includes('money') || lower.includes('plan')) {
     return AI_RESPONSES.pricing;
@@ -109,7 +109,7 @@ const getAIResponse = (message: string): string => {
     return AI_RESPONSES.platform;
   }
   // Default response
-  return "I can help with the ADEERA Platform — pricing, features (POS, inventory, reports, M-Pesa, AI), demos, or how to log in. What would you like to know?";
+  return "I'm always ready to chat about the ADEERA Platform—whether you're curious about pricing, looking for a demo, or want to understand how our POS and M-Pesa work together. What's on your mind?";
 };
 
 const TypingIndicator = () => (
@@ -179,9 +179,9 @@ export const LiveChat = () => {
 
     // Simulate message sending
     setTimeout(() => {
-      setMessages(prev => 
-        prev.map(msg => 
-          msg.id === userMessage.id 
+      setMessages(prev =>
+        prev.map(msg =>
+          msg.id === userMessage.id
             ? { ...msg, status: 'sent' as const }
             : msg
         )
@@ -189,28 +189,32 @@ export const LiveChat = () => {
     }, 500);
 
     // Simulate AI typing and response
+    const aiResponseText = getAIResponse(userMessage.text);
+    // Calculate a more realistic typing delay based on response length (min 1.5s, max 3.5s)
+    const typingDelay = Math.min(Math.max(aiResponseText.length * 15, 1500), 3500);
+
     setTimeout(() => {
       setIsTyping(false);
       const aiMessage: Message = {
         id: Date.now() + 1,
-        text: getAIResponse(userMessage.text),
+        text: aiResponseText,
         sender: 'ai',
         timestamp: new Date(),
         isAI: true
       };
       setMessages(prev => [...prev, aiMessage]);
-      
+
       // Mark user message as read
       setTimeout(() => {
-        setMessages(prev => 
-          prev.map(msg => 
-            msg.id === userMessage.id 
+        setMessages(prev =>
+          prev.map(msg =>
+            msg.id === userMessage.id
               ? { ...msg, status: 'read' as const }
               : msg
           )
         );
       }, 1000);
-    }, 2000 + Math.random() * 1000);
+    }, typingDelay);
   };
 
   const handleQuickReply = (reply: QuickReply) => {
@@ -226,9 +230,9 @@ export const LiveChat = () => {
     setIsTyping(true);
 
     setTimeout(() => {
-      setMessages(prev => 
-        prev.map(msg => 
-          msg.id === userMessage.id 
+      setMessages(prev =>
+        prev.map(msg =>
+          msg.id === userMessage.id
             ? { ...msg, status: 'sent' as const }
             : msg
         )
@@ -237,15 +241,16 @@ export const LiveChat = () => {
 
     setTimeout(() => {
       setIsTyping(false);
+      const aiResponseText = getAIResponse(reply.text);
       const aiMessage: Message = {
         id: Date.now() + 1,
-        text: getAIResponse(reply.text),
+        text: aiResponseText,
         sender: 'ai',
         timestamp: new Date(),
         isAI: true
       };
       setMessages(prev => [...prev, aiMessage]);
-    }, 2000);
+    }, 1500 + Math.random() * 1000);
   };
 
   const formatTime = (date: Date) => {
@@ -269,7 +274,7 @@ export const LiveChat = () => {
 
   return (
     <>
-         <Button
+      <Button
         onClick={() => setIsOpen(true)}
         className="rounded-full w-12 h-12 shadow-lg"
       >
@@ -303,7 +308,7 @@ export const LiveChat = () => {
                   </div>
                 </div>
                 <div className="flex items-center space-x-1">
-                
+
                   <Button
                     variant="ghost"
                     size="sm"
@@ -346,9 +351,8 @@ export const LiveChat = () => {
                   key={message.id}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className={`flex ${
-                    message.sender === 'user' ? 'justify-end' : 'justify-start'
-                  }`}
+                  className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'
+                    }`}
                 >
                   <div className="flex items-end space-x-2 max-w-[85%]">
                     {message.sender !== 'user' && (
@@ -360,11 +364,10 @@ export const LiveChat = () => {
                       </Avatar>
                     )}
                     <div
-                      className={`rounded-lg p-3 ${
-                        message.sender === 'user'
+                      className={`rounded-lg p-3 ${message.sender === 'user'
                           ? 'bg-primary text-primary-foreground'
                           : 'bg-muted'
-                      }`}
+                        }`}
                     >
                       <p className="text-sm whitespace-pre-wrap">{message.text}</p>
                       <div className="flex items-center justify-between mt-2">
@@ -418,8 +421,8 @@ export const LiveChat = () => {
                     </Button>
                   </div>
                 </div>
-                <Button 
-                  onClick={handleSendMessage} 
+                <Button
+                  onClick={handleSendMessage}
                   disabled={isTyping || !newMessage.trim()}
                   size="sm"
                   className="h-8 w-8 p-0"
@@ -427,7 +430,7 @@ export const LiveChat = () => {
                   <Send className="h-4 w-4" />
                 </Button>
               </div>
-              
+
               {/* Quick Replies */}
               {messages.length > 0 && (
                 <div className="mt-3 flex flex-wrap gap-2">
