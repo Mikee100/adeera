@@ -16,6 +16,11 @@ import {
 } from "lucide-react";
 import SEO from "@/components/SEO";
 import SalesDemo from "@/components/pos/SalesDemo";
+import PosBrowseProducts from "../../images/Screenshot 2026-03-11 201025.png";
+import PosCheckoutScreen from "../../images/Screenshot 2026-03-11 201046.png";
+import PosReceiptScreen from "../../images/Screenshot 2026-03-11 201110.png";
+import PosSaleCompleted from "../../images/Screenshot 2026-03-11 201126.png";
+import PosSettingsScreen from "../../images/Screenshot 2026-03-11 201200.png";
 
 const benefits = [
   { icon: Zap, title: "Fast checkout", desc: "Search products, add to cart, and complete sales in seconds." },
@@ -129,6 +134,72 @@ const Pos = () => {
               </div>
             </div>
             <SalesDemo />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            className="mb-14"
+          >
+            <h2 className="text-xl font-semibold mb-4 text-foreground text-center md:text-left">
+              Real ADEERA POS screens
+            </h2>
+            <p className="text-sm text-muted-foreground mb-6 max-w-3xl">
+              These screenshots show how ADEERA handles product browsing, checkout, receipts, completed sales, and system settings in a real retail environment.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="space-y-2">
+                <img
+                  src={PosBrowseProducts}
+                  alt="ADEERA POS product catalog with variants and stock levels"
+                  className="rounded-xl border border-muted/30 shadow-sm"
+                />
+                <p className="text-xs text-muted-foreground">
+                  Product grid with variants, stock levels, and search.
+                </p>
+              </div>
+              <div className="space-y-2">
+                <img
+                  src={PosCheckoutScreen}
+                  alt="ADEERA POS checkout showing payment methods including cash and M-Pesa"
+                  className="rounded-xl border border-muted/30 shadow-sm"
+                />
+                <p className="text-xs text-muted-foreground">
+                  Checkout flow with cash, M-Pesa, and credit payments.
+                </p>
+              </div>
+              <div className="space-y-2">
+                <img
+                  src={PosReceiptScreen}
+                  alt="ADEERA POS receipt layout with sale summary"
+                  className="rounded-xl border border-muted/30 shadow-sm"
+                />
+                <p className="text-xs text-muted-foreground">
+                  Receipt view ready for print or email.
+                </p>
+              </div>
+              <div className="space-y-2">
+                <img
+                  src={PosSaleCompleted}
+                  alt="ADEERA POS sale completed summary screen"
+                  className="rounded-xl border border-muted/30 shadow-sm"
+                />
+                <p className="text-xs text-muted-foreground">
+                  Completed sale summary with branch and payment info.
+                </p>
+              </div>
+              <div className="space-y-2">
+                <img
+                  src={PosSettingsScreen}
+                  alt="ADEERA POS settings and product catalog sync screen"
+                  className="rounded-xl border border-muted/30 shadow-sm"
+                />
+                <p className="text-xs text-muted-foreground">
+                  Settings and catalog sync controls for your POS.
+                </p>
+              </div>
+            </div>
           </motion.div>
 
           <div className="text-center flex flex-col sm:flex-row gap-4 justify-center">

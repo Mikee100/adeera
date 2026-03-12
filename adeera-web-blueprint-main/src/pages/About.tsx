@@ -4,6 +4,8 @@ import { Separator } from '@/components/ui/separator';
 import { Building2, Target, Users, Globe, Award, TrendingUp, MapPin, Calendar, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '@/components/SEO';
+import HeroOffice from '../../images/Screenshot 2026-03-11 195157.png';
+import TeamWorkspace from '../../images/Screenshot 2026-03-11 195212.png';
 
 const About = () => {
   const stats = [
@@ -40,7 +42,7 @@ const About = () => {
       name: 'CEO & Founder',
       role: 'Visionary Leader',
       description: 'Driving digital transformation across Africa with 10+ years of experience in enterprise software',
-      image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=400&fit=crop&crop=face'
+      image: TeamWorkspace
     }
   ];
 
@@ -115,8 +117,8 @@ const About = () => {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/10 blur-3xl rounded-full"></div>
               <img
-                src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&fit=crop"
-                alt="Modern workspace with laptops showing code"
+                src={HeroOffice}
+                alt="ADEERA retail and dashboard screens in use across devices"
                 className="relative rounded-2xl shadow-2xl w-full h-[400px] object-cover"
               />
             </div>
@@ -167,8 +169,8 @@ const About = () => {
             </div>
             <div className="relative">
               <img
-                src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&h=400&fit=crop"
-                alt="Team collaborating in modern office"
+                src={TeamWorkspace}
+                alt="ADEERA team collaborating over the point of sale and analytics tools"
                 className="rounded-2xl shadow-xl w-full h-[400px] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent rounded-2xl"></div>

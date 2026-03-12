@@ -3,6 +3,10 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { Users, Shield, Cloud, ShoppingCart, ArrowRight, CheckCircle } from 'lucide-react';
 import SEO from '@/components/SEO';
+import CrmScreenshot from '../../images/Screenshot 2026-03-11 195246.png';
+import SecurityScreenshot from '../../images/Screenshot 2026-03-11 195515.png';
+import CloudScreenshot from '../../images/Screenshot 2026-03-11 195536.png';
+import MarketplaceScreenshot from '../../images/Screenshot 2026-03-11 200006.png';
 
 const Services = () => {
   const services = [
@@ -11,7 +15,7 @@ const Services = () => {
       title: 'CRM Integration & Support',
       description: 'We deploy and support Salesforce, HubSpot, and Zoho CRMs — empowering African businesses to manage customer relationships, sales pipelines, and marketing automation.',
       features: ['Salesforce Implementation', 'HubSpot Configuration', 'Zoho CRM Setup', 'Training & Support', 'Custom Integrations'],
-      image: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=600&h=300&fit=crop',
+      image: CrmScreenshot,
       gradient: 'from-blue-500/10 to-blue-600/5'
     },
     {
@@ -19,7 +23,7 @@ const Services = () => {
       title: 'Cybersecurity Solutions',
       description: 'From endpoint protection to threat detection and network security, we aim to partner with leading security vendors to offer tools that protect your data and users.',
       features: ['Endpoint Protection', 'Threat Detection', 'Network Security', 'Security Audits', 'Compliance Support'],
-      image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&h=300&fit=crop',
+      image: SecurityScreenshot,
       gradient: 'from-red-500/10 to-red-600/5'
     },
     {
@@ -27,7 +31,7 @@ const Services = () => {
       title: 'Cloud Consulting & Infrastructure',
       description: 'Migration planning, cost optimization, and cloud-native development support — using AWS, Azure, and Google Cloud for digital transformation.',
       features: ['Cloud Migration', 'Cost Optimization', 'Infrastructure Design', 'DevOps Support', 'Cloud-Native Development'],
-      image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&h=300&fit=crop',
+      image: CloudScreenshot,
       gradient: 'from-purple-500/10 to-purple-600/5'
     },
     {
@@ -35,7 +39,7 @@ const Services = () => {
       title: 'SaaS Marketplace (Coming Soon)',
       description: 'An online hub to access curated SaaS products for HR, accounting, customer support, and e-commerce — all in one place.',
       features: ['HR Solutions', 'Accounting Tools', 'Customer Support', 'E-commerce Platforms', 'One-Stop Shopping'],
-      image: 'https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=600&h=300&fit=crop',
+      image: MarketplaceScreenshot,
       gradient: 'from-green-500/10 to-green-600/5',
       comingSoon: true
     }

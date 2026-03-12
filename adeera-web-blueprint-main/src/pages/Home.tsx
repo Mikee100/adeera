@@ -32,6 +32,8 @@ import {
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import SEO from "@/components/SEO";
+import HeroDashboard from "../../images/Screenshot 2026-03-11 195212.png";
+import InventoryFeature from "../../images/Screenshot 2026-03-11 195157.png";
 
 const FeatureCard = ({ icon: Icon, title, description, delay }) => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
@@ -97,7 +99,7 @@ const Home = () => {
       />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 md:pt-56 md:pb-40 overflow-hidden">
+      <section className="relative pt-16 pb-16 md:pt-28 md:pb-28 overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0 z-0 pointer-events-none">
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/20 rounded-full blur-[120px] -mr-48 -mt-48 animate-pulse-slow" />
@@ -117,29 +119,47 @@ const Home = () => {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
                 </span>
-                <span className="text-sm font-bold text-primary tracking-wide uppercase">Built for Africa by Africans</span>
+                <span className="text-sm font-bold text-primary tracking-wide uppercase">
+                  Retail & POS Platform for African Businesses
+                </span>
               </div>
 
-              <h1 className="text-5xl md:text-8xl font-black mb-8 leading-[1.05] tracking-tight text-gradient">
-                Powering Retail <br />
-                <span className="text-primary">Endless Possibilities.</span>
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-8 leading-[1.05] tracking-tight text-gradient">
+                Run Your Entire Retail Business
+                <br />
+                <span className="text-primary">From One Powerful System.</span>
               </h1>
 
-              <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">
-                ADEERA is the all-in-one business management software built to streamline your operations, increase sales, and scale your business anywhere.
+              <p className="text-lg md:text-2xl text-muted-foreground mb-10 max-w-3xl mx-auto leading-relaxed">
+                ADEERA connects your POS, inventory, branches, and analytics in a single place —
+                so you always know what&apos;s selling, what&apos;s in stock, and how your business is growing.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                <Button size="lg" className="rounded-full h-16 px-10 text-xl font-black shadow-2xl shadow-primary/30 transition-all hover:scale-105 active:scale-95 group" asChild>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button
+                  size="lg"
+                  className="rounded-full h-14 px-10 text-lg md:text-xl font-black shadow-2xl shadow-primary/30 transition-all hover:scale-105 active:scale-95 group"
+                  asChild
+                >
                   <Link to="/demo">
-                    Book a Free Demo
+                    See ADEERA in Action
                     <ArrowRight className="ml-2 w-6 h-6 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </Button>
-                <Button size="lg" variant="outline" className="rounded-full h-16 px-10 text-xl font-bold glass transition-all hover:bg-primary/5 hover:border-primary/30" asChild>
-                  <a href="https://wa.me/yournumber" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="rounded-full h-14 px-10 text-lg md:text-xl font-semibold glass transition-all hover:bg-primary/5 hover:border-primary/30"
+                  asChild
+                >
+                  <a
+                    href="https://wa.me/yournumber"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2"
+                  >
                     <MessageCircle className="w-6 h-6 text-primary" />
-                    Chat with Us
+                    Talk to Our Team
                   </a>
                 </Button>
               </div>
@@ -254,8 +274,8 @@ const Home = () => {
             <div className="absolute inset-0 bg-primary/20 rounded-[3rem] blur-3xl opacity-50 group-hover:opacity-70 transition-opacity" />
             <div className="relative glass p-4 rounded-[2.5rem] shadow-2xl border-white/40 overflow-hidden">
               <img
-                src="/hero-dashboard.png"
-                alt="ADEERA Dashboard Preview"
+                src={HeroDashboard}
+                alt="ADEERA dashboard showing sales, branches, and revenue analytics"
                 className="rounded-[1.5rem] w-full shadow-inner border border-white/20"
               />
             </div>
@@ -391,8 +411,8 @@ const Home = () => {
             >
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-white/10 rounded-full blur-[100px] -z-10" />
               <img
-                src="/inventory-feature.png"
-                alt="Inventory Tracking"
+                src={InventoryFeature}
+                alt="ADEERA inventory tracking screens across multiple branches"
                 className="rounded-3xl shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-700"
               />
             </motion.div>
