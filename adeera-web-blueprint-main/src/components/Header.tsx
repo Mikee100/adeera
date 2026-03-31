@@ -18,9 +18,10 @@ const NAV_ITEMS = [
     key: 'services', 
     href: '/services',
     subItems: [
-      { key: 'crm', href: '/services/crm' },
-      { key: 'cloud', href: '/services/cloud' },
-      { key: 'security', href: '/services/security' }
+      { key: 'pos', href: '/services/pos' },
+      { key: 'inventory', href: '/services/inventory' },
+      { key: 'payments', href: '/services/payments' },
+      { key: 'ai', href: '/services/ai' }
     ]
   },
   { key: 'partnerships', href: '/partnerships' },
@@ -105,7 +106,7 @@ const Header = () => {
                       : 'text-muted-foreground hover:text-foreground'
                   }`}
                 >
-                  {t(item.key)}
+                  {t(`nav.${item.key}`)}
                   {item.subItems && (
                     <ChevronDown className="ml-1 h-4 w-4 transition-transform group-hover:rotate-180" />
                   )}
@@ -124,7 +125,7 @@ const Header = () => {
                               : 'text-muted-foreground hover:bg-muted/50 hover:text-foreground'
                           }`}
                         >
-                          {t(subItem.key)}
+                          {t(`nav.${subItem.key}`)}
                         </Link>
                       ))}
                     </div>
@@ -150,7 +151,7 @@ const Header = () => {
 
           {/* CTA Button */}
           <div className="hidden md:flex items-center">
-            <Button asChild variant="default" className="rounded-full">
+            <Button size="lg" variant="secondary" className="rounded-full px-12 text-lg font-bold shadow-2xl animate-pulse" asChild>
               <Link to="/contact" className="flex items-center gap-1">
                 {t ? t('getStarted') : 'Get Started'}
                 <ArrowRight className="h-4 w-4" />
@@ -197,7 +198,7 @@ const Header = () => {
                       onClick={() => item.subItems ? null : setIsMenuOpen(false)}
                     >
                       <div className="flex items-center gap-3">
-                        {t(item.key)}
+                        {t(`nav.${item.key}`)}
                       </div>
                       {item.subItems && (
                         <ChevronDown className="h-4 w-4 transition-transform duration-200" />
@@ -224,7 +225,7 @@ const Header = () => {
                               }`}
                               onClick={() => setIsMenuOpen(false)}
                             >
-                              {t(subItem.key)}
+                              {t(`nav.${subItem.key}`)}
                             </Link>
                           ))}
                         </div>
@@ -254,7 +255,7 @@ const Header = () => {
 
                 {/* Mobile CTA Button */}
                 <div className="px-4 py-3">
-                  <Button asChild className="w-full rounded-full">
+                  <Button size="lg" className="rounded-full px-12 shadow-2xl font-bold text-lg" asChild>
                     <Link to="/contact" className="flex items-center justify-center gap-2">
                       {t ? t('getStarted') : 'Get Started'}
                       <ArrowRight className="h-4 w-4" />

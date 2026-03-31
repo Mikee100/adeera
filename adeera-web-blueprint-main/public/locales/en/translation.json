@@ -1,83 +1,96 @@
 {
   "home": {
     "hero": {
-      "badge": "Enterprise SaaS Solutions",
-      "title": "Transform Your Business with ADEERA's Enterprise Solutions",
-      "description": "Empowering African businesses with cutting-edge SaaS solutions. Streamline operations, enhance security, and scale your business with our comprehensive suite of enterprise tools.",
+      "badge": "The All-In-One African Business Suite",
+      "title": "Empower Your Business with the Adeera Ecosystem",
+      "description": "The only platform designed for African scale. From Smart POS and real-time inventory to integrated M-Pesa payments and AI-driven growth insights — Adeera is everything your business needs.",
       "cta": {
-        "demo": "Request Demo",
-        "pricing": "View Pricing"
+        "demo": "Book a Free Demo",
+        "pricing": "Explore Plans"
       }
     },
     "services": {
-      "title": "Our Services",
-      "subtitle": "Comprehensive enterprise solutions designed for African businesses",
+      "title": "Our Core Products",
+      "subtitle": "A unified platform built for the modern African entrepreneur",
       "items": {
-        "crm": {
-          "title": "CRM Integration",
-          "description": "Seamlessly connect your business processes with our advanced CRM solutions"
+        "pos": {
+          "title": "Adeera Smart POS",
+          "description": "Seamless sales across desktop and mobile with offline support and barcode scanning."
         },
-        "security": {
-          "title": "Cybersecurity",
-          "description": "Enterprise-grade security to protect your business data and operations"
+        "inventory": {
+          "title": "Real-Time Inventory",
+          "description": "Master your stock across all branches with automated alerts and multi-variation support."
         },
-        "cloud": {
-          "title": "Cloud Solutions",
-          "description": "Scalable cloud infrastructure tailored for African market needs"
+        "payments": {
+          "title": "Integrated Payments",
+          "description": "Accept M-Pesa, Credit Cards, and Cash directly into your business dashboard."
         },
-        "marketplace": {
-          "title": "SaaS Marketplace",
-          "description": "Access a curated selection of business applications and tools"
+        "ai": {
+          "title": "Adeera AI Assistant",
+          "description": "Automate customer bookings and get data-driven insights to scale your operations."
         }
       }
     },
     "features": {
-      "title": "The ADEERA Advantage",
-      "subtitle": "Why choose our enterprise solutions",
+      "title": "Built for Reliability",
+      "subtitle": "Why leading businesses trust Adeera",
       "items": {
         "expertise": {
-          "title": "Market Expertise",
-          "description": "Deep understanding of African business challenges and opportunities"
+          "title": "African Market First",
+          "description": "Deeply integrated with local payment systems and multi-branch business models."
         },
         "deployment": {
-          "title": "Rapid Deployment",
-          "description": "Quick implementation with minimal disruption to your operations"
+          "title": "Instant Onboarding",
+          "description": "Get your store running in minutes with our intuitive, touch-ready interfaces."
         },
         "security": {
-          "title": "Enterprise Security",
-          "description": "Advanced security measures to protect your business data"
+          "title": "Enterprise Reliability",
+          "description": "Bank-grade data protection with automatic backups and high-speed local processing."
         },
-        "scalable": {
-          "title": "Scalable Solutions",
-          "description": "Grow your business with solutions that scale with your needs"
+        "offline": {
+          "title": "Offline-Ready",
+          "description": "Never miss a sale. Continue operations even when connectivity is intermittent."
         }
       }
     },
     "stats": {
-      "title": "Measurable Results",
-      "subtitle": "See the impact of our solutions on your business",
+      "title": "Proven Impact",
+      "subtitle": "Real numbers from our growing community of businesses",
       "items": {
         "support": {
           "value": "24/7",
-          "label": "Support Availability"
+          "label": "Local Support"
         },
         "uptime": {
-          "value": "99.9%",
-          "label": "Uptime Guarantee"
+          "value": "99.99%",
+          "label": "System Reliability"
         },
-        "deployment": {
-          "value": "2x",
-          "label": "Faster Deployment"
+        "efficiency": {
+          "value": "45%+",
+          "label": "Average Efficiency Gain"
         }
       }
     },
     "cta": {
-      "title": "Accelerate Your Digital Transformation",
-      "subtitle": "Join leading African businesses in their digital journey",
+      "title": "Ready to Transform Your Business?",
+      "subtitle": "Join hundreds of businesses scaling with Adeera's unified platform.",
       "buttons": {
-        "start": "Get Started",
-        "expert": "Talk to an Expert"
+        "start": "Get Started Now",
+        "expert": "Schedule a Consultation"
       }
     }
-  }
-} 
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Solutions",
+    "partnerships": "Partnerships",
+    "contact": "Contact",
+    "pos": "Smart POS",
+    "inventory": "Inventory Management",
+    "payments": "Integrated Payments",
+    "ai": "AI Business Assistant"
+  },
+  "company": "UNITECH LIMITED",
+  "getStarted": "Get Started"
+}

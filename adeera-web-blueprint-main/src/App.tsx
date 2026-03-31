@@ -12,9 +12,10 @@ import NotFound from "./pages/NotFound";
 import { HelmetProvider } from "react-helmet-async";
 import TermsOfService from "./pages/TermsOfService";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
-import Crm from "./pages/services/Crm";
-import Cloud from "./pages/services/Cloud";
-import Security from "./pages/services/Security";
+import PosPage from "./pages/services/Pos";
+import InventoryPage from "./pages/services/Inventory";
+import PaymentsPage from "./pages/services/Payments";
+import AiPage from "./pages/services/AiAssistant";
 import Demo from "@/pages/Demo";
 import { ThemeProvider } from '@/components/theme-provider';
 import ScrollToTop from "@/components/ScrollToTop";
@@ -41,9 +42,10 @@ const App = () => (
                 <Route path="contact" element={<Contact />} />
                 <Route path="privacy" element={<PrivacyPolicy />} />
                 <Route path="terms" element={<TermsOfService />} />
-                <Route path="services/crm" element={<Crm />} />
-                <Route path="services/cloud" element={<Cloud />} />
-                <Route path="services/security" element={<Security />} />
+                <Route path="services/pos" element={<PosPage />} />
+                <Route path="services/inventory" element={<InventoryPage />} />
+                <Route path="services/payments" element={<PaymentsPage />} />
+                <Route path="services/ai" element={<AiPage />} />
                 <Route path="/demo" element={<Demo />} />
               </Route>
               <Route path="*" element={<NotFound />} />

@@ -1,9 +1,20 @@
 import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
-import { MessageSquare, X, Send, Bot, User, Clock, Check, CheckCheck, Mic, Paperclip, Smile, MoreVertical } from 'lucide-react';
+import { 
+  X, 
+  Send, 
+  ChevronRight, 
+  MessageCircle,
+  Sparkles,
+  Info,
+  MessageSquareMore,
+  BrainCircuit,
+  Command,
+  CheckCheck,
+  Plus
+} from 'lucide-react';
 import { Input } from '@/components/ui/input';
-import { Badge } from '@/components/ui/badge';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface Message {
@@ -12,7 +23,7 @@ interface Message {
   sender: 'user' | 'ai' | 'support' | 'typing';
   timestamp: Date;
   status?: 'sending' | 'sent' | 'delivered' | 'read';
-  isAI?: boolean;
+  link?: { text: string; url: string; icon?: any };
 }
 
 interface QuickReply {
@@ -22,398 +33,237 @@ interface QuickReply {
 }
 
 const AI_RESPONSES: { [key: string]: string } = {
-  hello: "Hello! I'm ADEERA's AI assistant. I can help you with information about our services, pricing, support, and more. How can I assist you today?",
-  hi: "Hi there! Welcome to ADEERA. I'm here to help you explore our enterprise SaaS solutions. What would you like to know?",
-  pricing: "Our pricing is flexible and based on your specific needs. We offer:\n• CRM Integration: Starting at $299/month\n• Cybersecurity: Starting at $499/month\n• Cloud Solutions: Starting at $199/month\n• SaaS Marketplace: Starting at $99/month\n\nWould you like me to connect you with our sales team for a custom quote?",
-  support: "Our support team is available 24/7 across multiple channels:\n• Live Chat (current)\n• Email: support@adeera.co.ke\n• Phone: +254 700 000 000\n• WhatsApp: +254 700 000 000\n\nWhat specific issue are you experiencing?",
-  services: "We offer comprehensive enterprise SaaS solutions:\n\n🔹 **CRM Integration**\nSalesforce, HubSpot, Zoho with local customization\n\n🔹 **Cybersecurity**\nEndpoint protection, threat intelligence, compliance\n\n🔹 **Cloud Solutions**\nAWS, Azure, Google Cloud migrations\n\n🔹 **SaaS Marketplace**\nCurated HR, accounting, e-commerce tools\n\nWhich service interests you most?",
-  contact: "You can reach us through multiple channels:\n\n📞 **Phone**: +254 700 000 000\n📧 **Email**: adeeraunitech@gmail.com\n📍 **Office**: Nairobi, Kenya\n🌐 **Website**: adeera.co.ke\n\nOur team responds within 2 hours during business hours.",
-  demo: "Great! I can help you schedule a demo. We offer:\n• 30-minute overview demo\n• 60-minute detailed walkthrough\n• Custom demo for specific use cases\n\nWhat type of demo would you prefer? I'll connect you with our demo team.",
-  thank: "You're very welcome! 😊 I'm here to help make your digital transformation journey smooth. Is there anything else you'd like to know about ADEERA?",
-  thanks: "You're very welcome! 😊 I'm here to help make your digital transformation journey smooth. Is there anything else you'd like to know about ADEERA?",
-  bye: "Thank you for chatting with ADEERA! Have a wonderful day. Feel free to return anytime - I'm here 24/7 to help! 👋",
-  goodbye: "Thank you for chatting with ADEERA! Have a wonderful day. Feel free to return anytime - I'm here 24/7 to help! 👋",
-  ai: "Yes, I'm an AI assistant powered by advanced language models! I can help with:\n• Service information\n• Pricing queries\n• Support requests\n• Demo scheduling\n• General questions\n\nI'm constantly learning and improving to serve you better! 🤖✨",
-  artificial: "Yes, I'm an AI assistant powered by advanced language models! I can help with:\n• Service information\n• Pricing queries\n• Support requests\n• Demo scheduling\n• General questions\n\nI'm constantly learning and improving to serve you better! 🤖✨",
-  help: "I'm here to help! I can assist with:\n\n📋 **Information**: Services, pricing, features\n🎯 **Support**: Technical issues, account help\n📅 **Demos**: Schedule product demonstrations\n📞 **Contact**: Connect you with our team\n\nWhat do you need help with?",
-  features: "Here are our key features:\n\n🚀 **Rapid Deployment**: 5x faster than traditional solutions\n🔒 **Enterprise Security**: Bank-grade protection\n🌍 **Local Expertise**: African market specialization\n📊 **Analytics**: Real-time insights and reporting\n🔧 **Customization**: Tailored to your business needs\n\nWhich feature would you like to learn more about?",
-  security: "Security is our top priority! We offer:\n\n🔐 **ISO 27001 Certified**\n🛡️ **SOC 2 Compliance**\n🔒 **End-to-end encryption**\n🛡️ **24/7 threat monitoring**\n📋 **GDPR compliance**\n\nYour data is protected with enterprise-grade security protocols.",
-  cloud: "Our cloud solutions include:\n\n☁️ **Multi-cloud strategy**: AWS, Azure, Google Cloud\n⚡ **Edge computing**: Local data processing\n🔄 **Migration services**: Seamless transitions\n📈 **Scalability**: Grow with confidence\n💰 **Cost optimization**: Reduce cloud spend\n\nReady to start your cloud journey?",
-  crm: "Our CRM integration services:\n\n📊 **Salesforce**: Custom deployments\n🎯 **HubSpot**: Marketing automation\n📈 **Zoho**: Complete business suite\n🔗 **API Integration**: Seamless connections\n📱 **Mobile access**: Work anywhere\n\nWhich CRM platform are you using?",
+  hello: "Habari! I'm your Adeera Guide. I'm here to help you navigate the unified ecosystem for your business. How can I assist you today?",
+  hi: "Hello there! Welcome to Adeera. Ready to scale your business with Africa's most intelligent product suite? What can I tell you about?",
+  pos: "Our **Smart POS** is offline-ready and built for speed. It handles sales, receipts, and X/Z reports seamlessly. It's the heartbeat of your store. Would you like to see the POS features section?",
+  inventory: "Adeera **Inventory Management** synchronizes your stock across all branches in real-time. No more stock-outs or guest-work. It even handles multi-variant products like color/size.",
+  payments: "We offer **Integrated Payments** directly at the checkout. Accept M-Pesa STK push, cards, and cash with instant reconciliation. Bank settlements are T+1.",
+  mpesa: "Our M-Pesa integration is world-class. We support instant STK push—meaning your customers just enter their PIN on their phone. No manual paybill entries required!",
+  ai: "I'm part of the **AI Business Assistant** suite! Beyond our chat, we offer WhatsApp booking automation and predictive sales forecasting for your business.",
+  pricing: "Adeera offers modular pricing, so you only pay for what you use. \n\n• Smart POS: Competitive Monthly/Annual rates\n• Inventory: Scales with branch count\n• AI Assistant: Usage-based\n\nShould I connect you with a specialist for a custom quote?",
+  support: "We provide 24/7 local support based in Nairobi. You can chat with us here, or call us at +254 700 000 000. For complex issues, I recommend our WhatsApp support channel.",
+  whatsapp: "Need to speak with a human? [Click here to chat on WhatsApp](https://wa.me/254700000000) or Type 'Human' and I'll notify my team.",
+  human: "I've alerted our team! In the meantime, you can jump into a live WhatsApp thread here: [Adeera WhatsApp Support](https://wa.me/254700000000).",
+  demo: "I'd love to show you the ecosystem! You can schedule a 1-on-1 demo [here](/contact) or ask me for a quick overview of a specific module.",
+  thank: "You're very welcome! I'm here 24/7 if you need more help growing your business with Adeera. Kwaheri! 😊",
+  thanks: "No problem at all! Feel free to ask anything else about our POS, Inventory, or Payment solutions.",
 };
 
 const QUICK_REPLIES: QuickReply[] = [
-  { id: '1', text: 'Tell me about pricing', category: 'pricing' },
-  { id: '2', text: 'I need support', category: 'support' },
-  { id: '3', text: 'Schedule a demo', category: 'demo' },
-  { id: '4', text: 'What services do you offer?', category: 'services' },
-  { id: '5', text: 'Contact information', category: 'contact' },
-  { id: '6', text: 'Security features', category: 'security' },
+  { id: '1', text: 'Smart POS', category: 'pos' },
+  { id: '2', text: 'M-Pesa Pay', category: 'mpesa' },
+  { id: '3', text: 'Cloud Stock', category: 'inventory' },
+  { id: '4', text: 'Pricing', category: 'pricing' },
+  { id: '5', text: 'Human Support', category: 'human' },
 ];
 
-const getAIResponse = (message: string): string => {
+const getAIResponse = (message: string): { text: string; link?: { text: string; url: string; icon: any } } => {
   const lower = message.toLowerCase();
   
-  // Check for exact matches first
-  for (const key in AI_RESPONSES) {
-    if (lower.includes(key)) {
-      return AI_RESPONSES[key];
-    }
-  }
+  if (lower.includes('pos') || lower.includes('checkout')) return { text: AI_RESPONSES.pos, link: { text: "Learn POS", url: "/services/pos", icon: Info } };
+  if (lower.includes('stock') || lower.includes('inventory')) return { text: AI_RESPONSES.inventory, link: { text: "Stock Sync", url: "/services/inventory", icon: Info } };
+  if (lower.includes('pay') || lower.includes('mpesa')) return { text: AI_RESPONSES.mpesa, link: { text: "M-Pesa Setup", url: "/services/payments", icon: Info } };
+  if (lower.includes('hello') || lower.includes('hi')) return { text: AI_RESPONSES.hello };
+  if (lower.includes('whatsapp') || lower.includes('human')) return { text: AI_RESPONSES.whatsapp, link: { text: "Chat on WhatsApp", url: "https://wa.me/254700000000", icon: MessageCircle } };
   
-  // Check for partial matches and context
-  if (lower.includes('cost') || lower.includes('price') || lower.includes('money')) {
-    return AI_RESPONSES.pricing;
-  }
-  
-  if (lower.includes('problem') || lower.includes('issue') || lower.includes('error')) {
-    return AI_RESPONSES.support;
-  }
-  
-  if (lower.includes('show') || lower.includes('see') || lower.includes('demo')) {
-    return AI_RESPONSES.demo;
-  }
-  
-  // Default response
-  return "I understand you're asking about something specific. Let me help you better - could you provide more details about what you're looking for? I can assist with pricing, services, support, demos, or general information about ADEERA.";
+  return { text: "I'm your Adeera Guide. I can help with POS, Inventory, and Payments. What would you like to explore?" };
 };
-
-const TypingIndicator = () => (
-  <motion.div
-    initial={{ opacity: 0, y: 10 }}
-    animate={{ opacity: 1, y: 0 }}
-    className="flex items-center space-x-2 p-3 bg-muted rounded-lg max-w-[80%]"
-  >
-    <div className="flex space-x-1">
-      <motion.div
-        animate={{ y: [0, -5, 0] }}
-        transition={{ duration: 0.6, repeat: Infinity, delay: 0 }}
-        className="w-2 h-2 bg-primary rounded-full"
-      />
-      <motion.div
-        animate={{ y: [0, -5, 0] }}
-        transition={{ duration: 0.6, repeat: Infinity, delay: 0.2 }}
-        className="w-2 h-2 bg-primary rounded-full"
-      />
-      <motion.div
-        animate={{ y: [0, -5, 0] }}
-        transition={{ duration: 0.6, repeat: Infinity, delay: 0.4 }}
-        className="w-2 h-2 bg-primary rounded-full"
-      />
-    </div>
-    <span className="text-sm text-muted-foreground">AI is typing...</span>
-  </motion.div>
-);
 
 export const LiveChat = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [newMessage, setNewMessage] = useState('');
   const [isTyping, setIsTyping] = useState(false);
-  const [isMinimized, setIsMinimized] = useState(false);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (scrollRef.current) {
+      scrollRef.current.scrollTo({
+        top: scrollRef.current.scrollHeight,
+        behavior: 'smooth'
+      });
+    }
   };
 
   useEffect(() => {
     scrollToBottom();
-  }, [messages]);
+  }, [messages, isTyping]);
 
   useEffect(() => {
-    if (isOpen && inputRef.current) {
-      inputRef.current.focus();
+    if (isOpen && messages.length === 0) {
+      setIsTyping(true);
+      setTimeout(() => {
+        setIsTyping(false);
+        setMessages([{
+          id: Date.now(),
+          text: "Jambo! I'm your Adeera Guide. Ready to scale your business?",
+          sender: 'ai',
+          timestamp: new Date()
+        }]);
+      }, 800);
     }
   }, [isOpen]);
 
-  const handleSendMessage = () => {
-    if (!newMessage.trim()) return;
+  const handleSendMessage = (text?: string) => {
+    const content = text || newMessage;
+    if (!content.trim()) return;
 
-    const userMessage: Message = {
+    const userMsg: Message = {
       id: Date.now(),
-      text: newMessage,
+      text: content,
       sender: 'user',
       timestamp: new Date(),
       status: 'sending'
     };
 
-    setMessages(prev => [...prev, userMessage]);
+    setMessages(prev => [...prev, userMsg]);
     setNewMessage('');
     setIsTyping(true);
 
-    // Simulate message sending
     setTimeout(() => {
-      setMessages(prev => 
-        prev.map(msg => 
-          msg.id === userMessage.id 
-            ? { ...msg, status: 'sent' as const }
-            : msg
-        )
-      );
-    }, 500);
-
-    // Simulate AI typing and response
-    setTimeout(() => {
-      setIsTyping(false);
-      const aiMessage: Message = {
-        id: Date.now() + 1,
-        text: getAIResponse(userMessage.text),
-        sender: 'ai',
-        timestamp: new Date(),
-        isAI: true
-      };
-      setMessages(prev => [...prev, aiMessage]);
-      
-      // Mark user message as read
-      setTimeout(() => {
-        setMessages(prev => 
-          prev.map(msg => 
-            msg.id === userMessage.id 
-              ? { ...msg, status: 'read' as const }
-              : msg
-          )
-        );
-      }, 1000);
-    }, 2000 + Math.random() * 1000);
-  };
-
-  const handleQuickReply = (reply: QuickReply) => {
-    const userMessage: Message = {
-      id: Date.now(),
-      text: reply.text,
-      sender: 'user',
-      timestamp: new Date(),
-      status: 'sending'
-    };
-
-    setMessages(prev => [...prev, userMessage]);
-    setIsTyping(true);
-
-    setTimeout(() => {
-      setMessages(prev => 
-        prev.map(msg => 
-          msg.id === userMessage.id 
-            ? { ...msg, status: 'sent' as const }
-            : msg
-        )
-      );
-    }, 500);
+      setMessages(prev => prev.map(m => m.id === userMsg.id ? { ...m, status: 'read' as const } : m));
+    }, 1000);
 
     setTimeout(() => {
       setIsTyping(false);
-      const aiMessage: Message = {
+      const response = getAIResponse(content);
+      setMessages(prev => [...prev, {
         id: Date.now() + 1,
-        text: getAIResponse(reply.text),
+        text: response.text,
         sender: 'ai',
         timestamp: new Date(),
-        isAI: true
-      };
-      setMessages(prev => [...prev, aiMessage]);
-    }, 2000);
-  };
-
-  const formatTime = (date: Date) => {
-    return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-  };
-
-  const getStatusIcon = (status: string) => {
-    switch (status) {
-      case 'sending':
-        return <Clock className="h-3 w-3" />;
-      case 'sent':
-        return <Check className="h-3 w-3" />;
-      case 'delivered':
-        return <CheckCheck className="h-3 w-3" />;
-      case 'read':
-        return <CheckCheck className="h-3 w-3 text-blue-500" />;
-      default:
-        return null;
-    }
+        link: response.link
+      }]);
+    }, 1500);
   };
 
   return (
-    <>
-         <Button
-        onClick={() => setIsOpen(true)}
-        className="rounded-full w-12 h-12 shadow-lg"
+    <div className="fixed bottom-6 right-6 z-[60]">
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-16 h-16 rounded-full bg-primary shadow-2xl flex items-center justify-center text-white border-2 border-white/20 relative z-[70]"
       >
-        <MessageSquare className="h-6 w-6" />
-      </Button>
+        <div className="absolute inset-0 bg-gradient-to-tr from-primary to-blue-600 rounded-full"></div>
+        {isOpen ? <X className="h-7 w-7 relative z-10" /> : <MessageSquareMore className="h-7 w-7 relative z-10" />}
+      </motion.button>
 
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            initial={{ opacity: 0, scale: 0.9, y: 20, transformOrigin: 'bottom right' }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.8, y: 20 }}
-            className="fixed bottom-0 right-16 z-50 w-96 h-[500px] bg-background rounded-xl shadow-2xl border border-border/50 flex flex-col"
+            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+            className="fixed bottom-24 right-10 w-[420px] max-w-[calc(100vw-40px)] h-[min(680px,80vh)] bg-white dark:bg-slate-950 rounded-[2.5rem] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.2)] border border-slate-200 dark:border-slate-800 flex flex-col overflow-hidden backdrop-blur-2xl z-[65]"
           >
-            {/* Header */}
-            <div className="p-4 border-b bg-gradient-to-r from-primary/5 to-secondary/5 rounded-t-xl">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-3">
-                  <Avatar className="h-8 w-8">
-                    <AvatarImage src="/bot-avatar.png" />
-                    <AvatarFallback className="bg-primary text-primary-foreground">
-                      <Bot className="h-4 w-4" />
-                    </AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <h3 className="font-semibold text-sm">ADEERA AI Assistant</h3>
-                    <div className="flex items-center space-x-2">
-                      <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                      <span className="text-xs text-muted-foreground">Online</span>
-                    </div>
+            {/* Slim Header */}
+            <div className="px-6 py-4 bg-gradient-to-r from-primary to-blue-600 flex items-center gap-4 text-white">
+               <div className="relative">
+                  <div className="p-2 bg-white/20 rounded-xl backdrop-blur-md border border-white/20">
+                     <BrainCircuit className="h-6 w-6" />
                   </div>
-                </div>
-                <div className="flex items-center space-x-1">
-                
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => setIsOpen(false)}
-                    className="h-8 w-8 p-0"
-                  >
-                    <X className="h-4 w-4" />
-                  </Button>
-                </div>
-              </div>
+                  <span className="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-green-400 rounded-full border-2 border-primary"></span>
+               </div>
+               <div>
+                  <h3 className="font-bold text-lg leading-tight">Adeera Guide</h3>
+                  <div className="flex items-center gap-1.5 opacity-80">
+                     <span className="text-[10px] font-bold uppercase tracking-widest">Always Online</span>
+                  </div>
+               </div>
+               <button onClick={() => setIsOpen(false)} className="ml-auto opacity-60 hover:opacity-100 transition-opacity">
+                  <X className="h-5 w-5" />
+               </button>
             </div>
 
-            {/* Messages */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gradient-to-b from-background to-muted/5">
-              {messages.length === 0 && (
-                <div className="text-center py-8">
-                  <Bot className="h-12 w-12 text-primary mx-auto mb-4" />
-                  <h4 className="font-semibold mb-2">Welcome to ADEERA!</h4>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    I'm your AI assistant. How can I help you today?
-                  </p>
-                  <div className="grid grid-cols-1 gap-2">
-                    {QUICK_REPLIES.map((reply) => (
-                      <Button
-                        key={reply.id}
-                        variant="outline"
-                        size="sm"
-                        onClick={() => handleQuickReply(reply)}
-                        className="justify-start text-left h-auto p-3"
-                      >
-                        {reply.text}
-                      </Button>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {messages.map(message => (
+            {/* Scrollable Chat Area */}
+            <div 
+              ref={scrollRef}
+              className="flex-1 overflow-y-auto px-6 py-8 space-y-6 scroll-smooth scrollbar-thin scrollbar-thumb-slate-200 dark:scrollbar-thumb-slate-800"
+            >
+              {messages.map((msg) => (
                 <motion.div
-                  key={message.id}
+                  key={msg.id}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className={`flex ${
-                    message.sender === 'user' ? 'justify-end' : 'justify-start'
-                  }`}
+                  className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
-                  <div className="flex items-end space-x-2 max-w-[85%]">
-                    {message.sender !== 'user' && (
-                      <Avatar className="h-6 w-6 flex-shrink-0">
-                        <AvatarImage src="/bot-avatar.png" />
-                        <AvatarFallback className="bg-primary text-primary-foreground text-xs">
-                          <Bot className="h-3 w-3" />
-                        </AvatarFallback>
-                      </Avatar>
-                    )}
-                    <div
-                      className={`rounded-lg p-3 ${
-                        message.sender === 'user'
-                          ? 'bg-primary text-primary-foreground'
-                          : 'bg-muted'
-                      }`}
-                    >
-                      <p className="text-sm whitespace-pre-wrap">{message.text}</p>
-                      <div className="flex items-center justify-between mt-2">
-                        <span className="text-xs opacity-70">
-                          {formatTime(message.timestamp)}
-                        </span>
-                        {message.sender === 'user' && message.status && (
-                          <div className="flex items-center space-x-1">
-                            {getStatusIcon(message.status)}
-                          </div>
-                        )}
-                      </div>
+                  <div className="max-w-[85%]">
+                    <div className={`p-4 rounded-3xl text-sm leading-relaxed ${
+                      msg.sender === 'user'
+                        ? 'bg-primary text-white rounded-tr-none'
+                        : 'bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-100 rounded-tl-none border border-slate-200/50 dark:border-slate-800'
+                    }`}>
+                      {msg.text}
+                      {msg.link && (
+                         <a href={msg.link.url} className="mt-3 flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 hover:shadow-md transition-all group">
+                            <div className="flex items-center gap-2">
+                               <msg.link.icon className="h-4 w-4 text-primary" />
+                               <span className="text-xs font-bold">{msg.link.text}</span>
+                            </div>
+                            <ChevronRight className="h-4 w-4 text-slate-400 group-hover:translate-x-0.5 transition-transform" />
+                         </a>
+                      )}
                     </div>
-                    {message.sender === 'user' && (
-                      <Avatar className="h-6 w-6 flex-shrink-0">
-                        <AvatarFallback className="bg-secondary text-secondary-foreground text-xs">
-                          <User className="h-3 w-3" />
-                        </AvatarFallback>
-                      </Avatar>
-                    )}
+                    <div className="flex items-center gap-1.5 mt-1.5 px-1 opacity-40 text-[10px]">
+                       <span>{msg.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+                       {msg.sender === 'user' && msg.status === 'read' && <CheckCheck className="h-3 w-3" />}
+                    </div>
                   </div>
                 </motion.div>
               ))}
+              
+              {isTyping && (
+                <div className="flex gap-1.5 px-4 py-3 bg-slate-100 rounded-2xl w-14 h-9 items-center justify-center">
+                   {[0,1,2].map(i => <motion.div key={i} animate={{ scale: [1, 1.4, 1] }} transition={{ repeat: Infinity, duration: 1, delay: i*0.2 }} className="w-1 h-1 bg-slate-400 rounded-full" />)}
+                </div>
+              )}
 
-              {isTyping && <TypingIndicator />}
-              <div ref={messagesEndRef} />
+              {/* In-Body Quick Replies */}
+              {!isTyping && messages.length > 0 && messages[messages.length - 1].sender === 'ai' && (
+                <div className="flex flex-wrap gap-2 pt-4">
+                   {QUICK_REPLIES.map(reply => (
+                     <button
+                       key={reply.id}
+                       onClick={() => handleSendMessage(reply.text)}
+                       className="px-4 py-2 border border-slate-200 dark:border-slate-800 rounded-full text-xs font-bold bg-white dark:bg-slate-900 hover:border-primary hover:text-primary transition-all shadow-sm"
+                     >
+                       {reply.text}
+                     </button>
+                   ))}
+                </div>
+              )}
+              <div className="h-4" /> {/* Bottom Spacing */}
             </div>
 
-            {/* Input Area */}
-            <div className="p-4 border-t bg-background rounded-b-xl">
-              <div className="flex items-center space-x-2">
-                <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
-                  <Paperclip className="h-4 w-4" />
-                </Button>
-                <div className="flex-1 relative">
+            {/* Seamless Floating Input */}
+            <div className="p-6 pt-2 bg-gradient-to-t from-white dark:from-slate-950 via-white dark:via-slate-950 to-transparent">
+               <div className="relative flex items-center gap-2 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-1.5 rounded-3xl focus-within:ring-2 focus-within:ring-primary/20 transition-all">
+                  <button className="p-2.5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors">
+                     <Plus className="h-5 w-5" />
+                  </button>
                   <Input
                     ref={inputRef}
                     value={newMessage}
-                    onChange={(e) => setNewMessage(e.target.value)}
-                    placeholder="Type your message..."
-                    onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
-                    disabled={isTyping}
-                    className="pr-20"
+                    onChange={e => setNewMessage(e.target.value)}
+                    placeholder="Type a message..."
+                    className="border-none shadow-none focus-visible:ring-0 bg-transparent h-10 text-sm"
+                    onKeyDown={e => e.key === 'Enter' && handleSendMessage()}
                   />
-                  <div className="absolute right-2 top-1/2 transform -translate-y-1/2 flex items-center space-x-1">
-                    <Button variant="ghost" size="sm" className="h-6 w-6 p-0">
-                      <Smile className="h-3 w-3" />
-                    </Button>
-                    <Button variant="ghost" size="sm" className="h-6 w-6 p-0">
-                      <Mic className="h-3 w-3" />
-                    </Button>
-                  </div>
-                </div>
-                <Button 
-                  onClick={handleSendMessage} 
-                  disabled={isTyping || !newMessage.trim()}
-                  size="sm"
-                  className="h-8 w-8 p-0"
-                >
-                  <Send className="h-4 w-4" />
-                </Button>
-              </div>
-              
-              {/* Quick Replies */}
-              {messages.length > 0 && (
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {QUICK_REPLIES.slice(0, 3).map((reply) => (
-                    <Button
-                      key={reply.id}
-                      variant="outline"
-                      size="sm"
-                      onClick={() => handleQuickReply(reply)}
-                      className="text-xs h-7 px-2"
-                    >
-                      {reply.text}
-                    </Button>
-                  ))}
-                </div>
-              )}
+                  <Button 
+                    onClick={() => handleSendMessage()}
+                    disabled={!newMessage.trim() || isTyping}
+                    className="w-10 h-10 p-0 rounded-2xl shadow-lg shrink-0"
+                  >
+                    <Send className="h-5 w-5" />
+                  </Button>
+               </div>
+               <p className="mt-4 text-center text-[10px] font-bold text-slate-300 dark:text-slate-700 uppercase tracking-[0.2em]">Adeera Unified AI</p>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </div>
   );
 };

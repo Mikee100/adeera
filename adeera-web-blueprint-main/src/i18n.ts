@@ -5,44 +5,53 @@ i18n.use(initReactI18next).init({
   resources: {
     en: {
       translation: {
-        home: "Home",
-        about: "About",
-        services: "Services",
-        crm: "CRM Solutions",
-        cloud: "Cloud Services",
-        security: "Cybersecurity",
-        partnerships: "Partnerships",
-        contact: "Contact",
-        getStarted: "Get Started",
+        nav: {
+          home: "Home",
+          about: "About",
+          services: "Solutions",
+          partnerships: "Partnerships",
+          contact: "Contact",
+          pos: "Smart POS",
+          inventory: "Inventory Management",
+          payments: "Integrated Payments",
+          ai: "AI Business Assistant"
+        },
         company: "UNITECH LIMITED",
+        getStarted: "Get Started",
       }
     },
     fr: {
       translation: {
-        home: "Accueil",
-        about: "À propos",
-        services: "Services",
-        crm: "Solutions CRM",
-        cloud: "Services Cloud",
-        security: "Cybersécurité",
-        partnerships: "Partenariats",
-        contact: "Contact",
-        getStarted: "Commencer",
+        nav: {
+          home: "Accueil",
+          about: "À propos",
+          services: "Solutions",
+          partnerships: "Partenariats",
+          contact: "Contact",
+          pos: "Smart POS",
+          inventory: "Gestion des stocks",
+          payments: "Paiements Intégrés",
+          ai: "Assistant IA Business"
+        },
         company: "UNITECH LIMITED",
+        getStarted: "Commencer",
       }
     },
     es: {
       translation: {
-        home: "Inicio",
-        about: "Acerca de",
-        services: "Servicios",
-        crm: "Soluciones CRM",
-        cloud: "Servicios en la Nube",
-        security: "Ciberseguridad",
-        partnerships: "Alianzas",
-        contact: "Contacto",
-        getStarted: "Comenzar",
+        nav: {
+          home: "Inicio",
+          about: "Acerca de",
+          services: "Soluciones",
+          partnerships: "Alianzas",
+          contact: "Contacto",
+          pos: "Smart POS",
+          inventory: "Gestión de Inventario",
+          payments: "Pagos Integrados",
+          ai: "Asistente AI Business"
+        },
         company: "UNITECH LIMITED",
+        getStarted: "Comenzar",
       }
     }
   },
