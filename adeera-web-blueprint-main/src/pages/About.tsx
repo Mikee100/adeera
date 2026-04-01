@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
-import { Building2, Target, Users, Globe, Award, TrendingUp, MapPin, Calendar, ArrowRight } from 'lucide-react';
+import { Building2, Target, Users, Globe, Award, TrendingUp, MapPin, Calendar, ArrowRight, Wallet, Cpu, ShieldCheck, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '@/components/SEO';
 import HeroOffice from '../../images/Screenshot 2026-03-11 195157.png';
@@ -9,32 +9,33 @@ import TeamWorkspace from '../../images/Screenshot 2026-03-11 195212.png';
 
 const About = () => {
   const stats = [
-    { number: '15+', label: 'SaaS Solutions Deployed', icon: Target },
-    { number: '98%', label: 'Client Satisfaction Rate', icon: Award },
-    { number: '24/7', label: 'Support Coverage', icon: Users }
+    { number: '100+', label: 'Businesses Scaled', icon: TrendingUp },
+    { number: '99.99%', label: 'System Uptime', icon: Target },
+    { number: '24/7', label: 'Local Support', icon: Users },
+    { number: 'M-Pesa', label: 'Deep Integration', icon: Wallet }
   ];
 
   const timeline = [
     {
-      year: '2025',
-      title: 'Company Founded',
-      description: 'ADEERA UNITECH was established with a vision to democratize SaaS access across Africa'
+      year: '2023',
+      title: 'Adeera Unitech Founded',
+      description: 'Launched with a mission to build the first truly unified business suite for the African market.'
     },
-    //  {
-    //  year: '2024',
-    //  title: 'First Partnerships',
-    // description: 'Secured strategic partnerships with leading global SaaS providers'
-    // },
-    //{
-    //  year: '2024',
-    // title: 'Market Expansion',
-    // description: 'Extended services across multiple African countries with localized support'
-    //},
-    //{
-    // year: '2025',
-    // title: 'Future Growth',
-    // description: 'Planned launch of our comprehensive SaaS marketplace platform'
-    //}
+    {
+      year: '2024',
+      title: 'The POS Revolution',
+      description: 'Deployed our flagship Smart POS system, bringing real-time inventory and sales to hundreds of retailers.'
+    },
+    {
+      year: '2024',
+      title: 'Seamless Payments',
+      description: 'Full M-Pesa and card processing integration, allowing businesses to accept payments directly in-flow.'
+    },
+    {
+      year: '2025',
+      title: 'AI-Powered Business Assistant',
+      description: 'Introduced the Adeera AI Assistant, automating customer bookings and providing data-driven growth insights.'
+    }
   ];
 
   const teamMembers = [
@@ -95,12 +96,11 @@ const About = () => {
         <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20 md:pt-40">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h1 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">
-                Building Africa's Leading <span className="text-primary">SaaS Enablement Platform</span>
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">
+                Unified Tech for <span className="text-primary text-glow">African Growth</span>
               </h1>
-              <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-                We build the ADEERA Platform — one system for point of sale, inventory, sales, reports, M-Pesa, and AI.
-                Built for retail and growing businesses. <Link to="/platform" className="text-primary hover:underline">Explore the platform</Link> or <Link to="/features" className="text-primary hover:underline">see all features</Link>.
+              <p className="text-xl text-muted-foreground leading-relaxed mb-8">
+                Adeera is building the future of African commerce. We're breaking down technology silos with a single, high-performance ecosystem designed to help you manage, pay, and scale.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button size="lg" className="group" asChild>
@@ -116,10 +116,10 @@ const About = () => {
             </div>
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/10 blur-3xl rounded-full"></div>
-              <img
-                src={HeroOffice}
-                alt="ADEERA retail and dashboard screens in use across devices"
-                className="relative rounded-2xl shadow-2xl w-full h-[400px] object-cover"
+              <img 
+                src={HeroOffice} 
+                alt="Adeera Vision: Unified African Business Tech"
+                className="relative rounded-3xl shadow-2xl w-full h-[450px] object-cover border border-primary/20"
               />
             </div>
           </div>
@@ -150,11 +150,11 @@ const About = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-2xl md:text-3xl font-bold mb-6">Our Story</h2>
-              <p className="text-muted-foreground leading-relaxed mb-6">
-                ADEERA UNITECH LIMITED was born from a simple yet powerful observation: African businesses deserve access to the same cutting-edge tools that drive global enterprises. Founded with a passion for digital inclusion, we bridge the gap between world-class SaaS solutions and the unique needs of African markets.
+              <p className="text-muted-foreground text-lg leading-relaxed mb-6">
+                ADEERA UNITECH LIMITED was born from a simple yet powerful observation: African businesses deserve more than fragmented tools. We saw retailers struggling to bridge their sales, stock, and payments—and we decided to fix it.
               </p>
-              <p className="text-muted-foreground leading-relaxed mb-6">
-                As a founder-led startup, every decision we make is guided by our deep understanding of local business challenges and our commitment to practical, scalable solutions that drive real growth and transformation.
+              <p className="text-muted-foreground text-lg leading-relaxed mb-6">
+                Based in Nairobi, we are building a world-class technology suite that understands the local landscape. We're not just providing software; we're providing a foundation for scalable, data-driven entrepreneurship across the continent.
               </p>
               <div className="flex items-center space-x-4 text-sm text-muted-foreground">
                 <div className="flex items-center space-x-2">
@@ -205,7 +205,7 @@ const About = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  To  become the leading software solutions provider in Africa and Beyond.
+                  To become the leading software solutions provider in Africa and Beyond.
                 </p>
               </CardContent>
             </Card>
@@ -312,7 +312,7 @@ const About = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="group" asChild>
-                  <Link to="/features">
+                  <Link to="/platform">
                     Explore All Features
                     <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
                   </Link>

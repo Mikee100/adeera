@@ -16,10 +16,10 @@ const NAV_ITEMS = [
     key: 'features',
     href: '/features',
     subItems: [
-      { key: 'pos', href: '/pos' },
-      { key: 'inventory', href: '/inventory' },
-      { key: 'analytics', href: '/analytics' },
-      { key: 'payments', href: '/payments' }
+      { key: 'pos', href: '/services/pos' },
+      { key: 'inventory', href: '/services/inventory' },
+      { key: 'payments', href: '/services/payments' },
+      { key: 'ai', href: '/services/ai' }
     ]
   },
   {
@@ -110,7 +110,7 @@ const Header = () => {
                     : 'text-foreground/70 hover:text-primary hover:bg-primary/5'
                     }`}
                 >
-                  {t(item.key)}
+                  {t(`nav.${item.key}`)}
                   {item.subItems && (
                     <ChevronDown className="ml-1 h-3 w-3 transition-transform group-hover:rotate-180" />
                   )}
@@ -128,7 +128,7 @@ const Header = () => {
                             : 'text-muted-foreground hover:bg-primary/5 hover:text-primary'
                             }`}
                         >
-                          {t(subItem.key)}
+                          {t(`nav.${subItem.key}`)}
                         </Link>
                       ))}
                     </div>
@@ -150,18 +150,19 @@ const Header = () => {
                 <option key={lang.code} value={lang.code}>{lang.label}</option>
               ))}
             </select>
+          </div>
 
-            <div className="flex items-center gap-2">
-              <Button asChild variant="ghost" className="rounded-full font-bold px-6">
-                <Link to="/contact">Log in</Link>
-              </Button>
-              <Button asChild className="rounded-full px-8 font-bold shadow-lg shadow-primary/20 hover:scale-105 active:scale-95 transition-all">
-                <Link to="/demo">
-                  Book a free demo
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-            </div>
+          {/* CTA Button */}
+          <div className="hidden md:flex items-center gap-4">
+            <Button asChild variant="ghost" className="rounded-full font-bold px-6">
+              <Link to="/contact">Log in</Link>
+            </Button>
+            <Button size="lg" variant="secondary" className="rounded-full px-12 text-lg font-bold shadow-2xl animate-pulse" asChild>
+              <Link to="/contact" className="flex items-center gap-1">
+                {t ? t('getStarted') : 'Get Started'}
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </Button>
           </div>
 
           {/* Mobile menu button */}
@@ -203,7 +204,7 @@ const Header = () => {
                       onClick={() => item.subItems ? null : setIsMenuOpen(false)}
                     >
                       <div className="flex items-center gap-3">
-                        {t(item.key)}
+                        {t(`nav.${item.key}`)}
                       </div>
                       {item.subItems && (
                         <ChevronDown className="h-4 w-4 transition-transform duration-200" />
@@ -229,7 +230,7 @@ const Header = () => {
                                 }`}
                               onClick={() => setIsMenuOpen(false)}
                             >
-                              {t(subItem.key)}
+                              {t(`nav.${subItem.key}`)}
                             </Link>
                           ))}
                         </div>
@@ -257,15 +258,15 @@ const Header = () => {
                   </div>
                 </div>
 
-                {/* Mobile: Log in + CTA */}
-                <div className="px-4 py-3 space-y-2">
+                {/* Mobile CTA Button */}
+                <div className="px-4 py-3 space-y-3">
                   {import.meta.env.VITE_APP_URL && (
                     <a href={`${String(import.meta.env.VITE_APP_URL).replace(/\/$/, '')}/login`} target="_blank" rel="noopener noreferrer" className="block w-full text-center py-2.5 text-sm font-medium text-muted-foreground hover:text-foreground" onClick={() => setIsMenuOpen(false)}>
                       {t ? t('login') : 'Log in'}
                     </a>
                   )}
-                  <Button asChild className="w-full rounded-full">
-                    <Link to="/demo" className="flex items-center justify-center gap-2" onClick={() => setIsMenuOpen(false)}>
+                  <Button size="lg" className="w-full rounded-full px-12 shadow-2xl font-bold text-lg" asChild>
+                    <Link to="/contact" className="flex items-center justify-center gap-2" onClick={() => setIsMenuOpen(false)}>
                       {t ? t('getStarted') : 'Get Started'}
                       <ArrowRight className="h-4 w-4" />
                     </Link>
