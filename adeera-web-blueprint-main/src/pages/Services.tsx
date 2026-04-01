@@ -1,8 +1,12 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
-import { Smartphone, Database, Zap, Cpu, ArrowRight, CheckCircle, BarChart3, Receipt, Wallet, Users, LayoutDashboard, Settings } from 'lucide-react';
+import { Smartphone, Database, Zap, Cpu, ArrowRight, CheckCircle, BarChart3, Receipt, Wallet, Users, LayoutDashboard, Settings, Shield, Cloud, ShoppingCart } from 'lucide-react';
 import SEO from '@/components/SEO';
+import CrmScreenshot from '../../images/Screenshot 2026-03-11 195246.png';
+import SecurityScreenshot from '../../images/Screenshot 2026-03-11 195515.png';
+import CloudScreenshot from '../../images/Screenshot 2026-03-11 195536.png';
+import MarketplaceScreenshot from '../../images/Screenshot 2026-03-11 200006.png';
 
 const Services = () => {
   const coreProducts = [
@@ -12,7 +16,7 @@ const Services = () => {
       title: 'Adeera Smart POS',
       description: 'The heartbeat of your retail operation. A high-performance, touch-optimized sales interface that works seamlessly on desktop and mobile.',
       features: ['Offline Sales Support', 'Barcode & QR Scanning', 'Thermal Receipt Printing', 'Quick Checkout Tiles', 'Multi-payment Reconciliation'],
-      image: '/services-pos.png',
+      image: 'https://images.unsplash.com/photo-1556742049-360e206037f5?w=600&h=300&fit=crop',
       gradient: 'from-blue-600/10 to-blue-700/5'
     },
     {
@@ -30,7 +34,7 @@ const Services = () => {
       title: 'Integrated Payments',
       description: 'Deep M-Pesa and card integration that brings all your revenue into a single, unified business dashboard.',
       features: ['Direct M-Pesa STK Push', 'Credit & Debit Cards', 'Cash Management', 'Transaction Auto-Matching', 'Settlement Analytics'],
-      image: 'https://images.unsplash.com/photo-1556742049-360e206037f5?w=600&h=300&fit=crop',
+      image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=300&fit=crop',
       gradient: 'from-green-500/10 to-green-600/5'
     },
     {
@@ -68,6 +72,34 @@ const Services = () => {
     }
   ];
 
+  const extendedServices = [
+    {
+      icon: Shield,
+      title: 'Cybersecurity Solutions',
+      description: 'Endpoint protection and threat detection to protect your business data and users.',
+      features: ['Endpoint Protection', 'Threat Detection', 'Security Audits'],
+      image: SecurityScreenshot,
+      gradient: 'from-red-500/10 to-red-600/5'
+    },
+    {
+      icon: Cloud,
+      title: 'Cloud Consulting',
+      description: 'Migration planning and cost optimization using AWS, Azure, and Google Cloud.',
+      features: ['Cloud Migration', 'Cost Optimization', 'Infrastructure Design'],
+      image: CloudScreenshot,
+      gradient: 'from-purple-500/10 to-purple-600/5'
+    },
+    {
+      icon: ShoppingCart,
+      title: 'SaaS Marketplace',
+      description: 'A curated hub for HR, accounting, and customer support tools (Coming Soon).',
+      features: ['HR Solutions', 'Accounting Tools', 'One-Stop Shopping'],
+      image: MarketplaceScreenshot,
+      gradient: 'from-green-500/10 to-green-600/5',
+      comingSoon: true
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
       <SEO 
@@ -101,7 +133,7 @@ const Services = () => {
           }
         }}
       />
-      <div className="py-4">
+      <div className="py-12">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="max-w-4xl mx-auto text-center mb-20">
@@ -183,6 +215,34 @@ const Services = () => {
                     ))}
                   </ul>
                 </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Extended Services (from origin/main) */}
+          <div className="mb-24">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold mb-4">Enterprise Consulting & Solutions</h2>
+              <p className="text-muted-foreground text-lg">World-class support for established businesses across the continent</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {extendedServices.map((service, index) => (
+                <Card key={index} className="overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-300 group">
+                  <div className="h-40 overflow-hidden relative">
+                    <img src={service.image} alt={service.title} className="w-full h-full object-cover transition-transform group-hover:scale-105" />
+                    <div className={`absolute inset-0 bg-gradient-to-r ${service.gradient} opacity-90`}></div>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <service.icon className="h-12 w-12 text-white/90" />
+                    </div>
+                    {service.comingSoon && (
+                      <span className="absolute top-4 right-4 bg-primary text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-tighter shadow-lg z-10 animate-pulse">Coming Soon</span>
+                    )}
+                  </div>
+                  <CardHeader className="p-6">
+                    <CardTitle className="text-xl font-bold mb-2">{service.title}</CardTitle>
+                    <CardDescription className="text-sm line-clamp-2">{service.description}</CardDescription>
+                  </CardHeader>
+                </Card>
               ))}
             </div>
           </div>

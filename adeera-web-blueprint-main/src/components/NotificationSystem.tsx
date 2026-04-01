@@ -27,7 +27,7 @@ export const NotificationSystem = () => {
       {
         id: '1',
         title: 'New Feature Available',
-        message: 'Check out our latest CRM integration features!',
+        message: 'New: Product variations, M-Pesa, and AI reports in the platform!',
         type: 'info',
         timestamp: new Date(),
         read: false,
@@ -35,7 +35,7 @@ export const NotificationSystem = () => {
       {
         id: '2',
         title: 'Security Update',
-        message: 'We heve enhanced our security protocols.',
+        message: 'We have enhanced our security protocols.',
         type: 'warning',
         timestamp: new Date(Date.now() - 3600000),
         read: false,

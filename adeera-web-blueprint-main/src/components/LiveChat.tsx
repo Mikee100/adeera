@@ -5,16 +5,13 @@ import {
   Send, 
   ChevronRight, 
   MessageCircle,
-  Sparkles,
-  Info,
-  MessageSquareMore,
   BrainCircuit,
-  Command,
+  MessageSquareMore,
   CheckCheck,
-  Plus
+  Plus,
+  Info
 } from 'lucide-react';
 import { Input } from '@/components/ui/input';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface Message {
@@ -47,6 +44,10 @@ const AI_RESPONSES: { [key: string]: string } = {
   demo: "I'd love to show you the ecosystem! You can schedule a 1-on-1 demo [here](/contact) or ask me for a quick overview of a specific module.",
   thank: "You're very welcome! I'm here 24/7 if you need more help growing your business with Adeera. Kwaheri! 😊",
   thanks: "No problem at all! Feel free to ask anything else about our POS, Inventory, or Payment solutions.",
+  security: "Your data's safety is a massive priority for us. 🔒 We use multi-tenant isolation so your data is completely walled off, and we give you granular role-based permissions so your staff only see what they need to see.",
+  cloud: "Yep, we're 100% cloud-based! ☁️ That means you can log in and see your live sales, inventory updates, and AI reports from anywhere in the world on any device.",
+  marketplace: "Currently we're focused laser-sharp on the merchant side—giving you the best POS, inventory, and M-Pesa tools. A SaaS marketplace is something we're exploring for the future though!",
+  platform: "The ADEERA Platform is designed to be your all-in-one business hub: Smart POS, Cloud Inventory, and Integrated Payments. Everything reconciled in one place."
 };
 
 const QUICK_REPLIES: QuickReply[] = [
@@ -63,8 +64,12 @@ const getAIResponse = (message: string): { text: string; link?: { text: string; 
   if (lower.includes('pos') || lower.includes('checkout')) return { text: AI_RESPONSES.pos, link: { text: "Learn POS", url: "/services/pos", icon: Info } };
   if (lower.includes('stock') || lower.includes('inventory')) return { text: AI_RESPONSES.inventory, link: { text: "Stock Sync", url: "/services/inventory", icon: Info } };
   if (lower.includes('pay') || lower.includes('mpesa')) return { text: AI_RESPONSES.mpesa, link: { text: "M-Pesa Setup", url: "/services/payments", icon: Info } };
+  if (lower.includes('security')) return { text: AI_RESPONSES.security };
+  if (lower.includes('cloud')) return { text: AI_RESPONSES.cloud };
   if (lower.includes('hello') || lower.includes('hi')) return { text: AI_RESPONSES.hello };
   if (lower.includes('whatsapp') || lower.includes('human')) return { text: AI_RESPONSES.whatsapp, link: { text: "Chat on WhatsApp", url: "https://wa.me/254700000000", icon: MessageCircle } };
+  if (lower.includes('pricing') || lower.includes('cost')) return { text: AI_RESPONSES.pricing };
+  if (lower.includes('demo')) return { text: AI_RESPONSES.demo, link: { text: "Schedule Demo", url: "/contact", icon: Info } };
   
   return { text: "I'm your Adeera Guide. I can help with POS, Inventory, and Payments. What would you like to explore?" };
 };

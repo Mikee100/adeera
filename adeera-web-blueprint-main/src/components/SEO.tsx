@@ -19,9 +19,9 @@ interface SEOProps {
 }
 
 const SEO: React.FC<SEOProps> = ({
-  title = 'ADEERA UNITECH | Enterprise SaaS Solutions for African Businesses',
-  description = 'Transform your business with ADEERA\'s enterprise-grade SaaS solutions — CRM integration, cybersecurity, cloud solutions, and SaaS marketplace. Optimized for Africa\'s unique business landscape.',
-  keywords = 'SaaS, CRM, cybersecurity, cloud solutions, African business, enterprise software, digital transformation, Salesforce, HubSpot, AWS, Azure, Kenya, Nairobi, business software, cloud migration, data security, API integration, mobile solutions',
+  title = 'ADEERA Platform | One System for POS, Inventory, Sales & Insights',
+  description = 'One platform for point of sale, inventory, sales, reports, M-Pesa, and AI. Built for retail and growing businesses. Multi-branch, secure, with plans that scale.',
+  keywords = 'POS, point of sale, inventory management, sales reports, M-Pesa, retail management, business management SaaS, multi-branch, AI assistant, ADEERA Platform, Kenya',
   image = 'https://www.adeeraunitech.com/og-image.jpg',
   url = 'https://www.adeeraunitech.com',
   type = 'website',
@@ -46,7 +46,7 @@ const SEO: React.FC<SEOProps> = ({
     "name": "ADEERA UNITECH LIMITED",
     "url": "https://www.adeeraunitech.com",
     "logo": "https://www.adeeraunitech.com/logo.png",
-    "description": "Enterprise SaaS solutions for African businesses",
+    "description": "ADEERA Platform: POS, inventory, sales, reports, M-Pesa, AI for retail and business",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Nairobi",

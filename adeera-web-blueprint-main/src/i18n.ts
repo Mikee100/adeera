@@ -7,8 +7,17 @@ i18n.use(initReactI18next).init({
       translation: {
         nav: {
           home: "Home",
-          about: "About",
-          services: "Solutions",
+          platform: "Platform",
+        features: "Features",
+        pos: "POS",
+        inventory: "Inventory",
+        analytics: "Analytics",
+        payments: "Payments",
+        about: "About",
+          demo: "Demo",
+        pricing: "Pricing",
+        integrations: "Integrations",
+        services: "Solutions",
           partnerships: "Partnerships",
           contact: "Contact",
           pos: "Smart POS",
@@ -16,6 +25,7 @@ i18n.use(initReactI18next).init({
           payments: "Integrated Payments",
           ai: "AI Business Assistant"
         },
+        login: "Log in",
         company: "UNITECH LIMITED",
         getStarted: "Get Started",
       }
@@ -24,8 +34,16 @@ i18n.use(initReactI18next).init({
       translation: {
         nav: {
           home: "Accueil",
-          about: "À propos",
-          services: "Solutions",
+          platform: "Plateforme",
+        features: "Fonctionnalités",
+        pos: "PDV",
+        inventory: "Stock",
+        analytics: "Analytiques",
+        payments: "Paiements",
+        about: "À propos",
+          demo: "Démo",
+        pricing: "Tarifs",
+        services: "Solutions",
           partnerships: "Partenariats",
           contact: "Contact",
           pos: "Smart POS",
@@ -33,6 +51,7 @@ i18n.use(initReactI18next).init({
           payments: "Paiements Intégrés",
           ai: "Assistant IA Business"
         },
+        login: "Connexion",
         company: "UNITECH LIMITED",
         getStarted: "Commencer",
       }
@@ -41,8 +60,17 @@ i18n.use(initReactI18next).init({
       translation: {
         nav: {
           home: "Inicio",
-          about: "Acerca de",
-          services: "Soluciones",
+          platform: "Plataforma",
+        features: "Funcionalidades",
+        pos: "TPV",
+        inventory: "Inventario",
+        analytics: "Analíticas",
+        payments: "Pagos",
+        about: "Acerca de",
+          demo: "Demo",
+        pricing: "Precios",
+        integrations: "Integraciones",
+        services: "Soluciones",
           partnerships: "Alianzas",
           contact: "Contacto",
           pos: "Smart POS",
@@ -50,6 +78,7 @@ i18n.use(initReactI18next).init({
           payments: "Pagos Integrados",
           ai: "Asistente AI Business"
         },
+        login: "Iniciar sesión",
         company: "UNITECH LIMITED",
         getStarted: "Comenzar",
       }

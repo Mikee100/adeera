@@ -205,6 +205,10 @@ const Footer = () => {
             <Link to="/privacy" className="text-xs text-slate-400 font-medium hover:text-slate-950 transition-colors">Privacy Policy</Link>
             <Link to="/terms" className="text-xs text-slate-400 font-medium hover:text-slate-950 transition-colors">Terms of Service</Link>
           </div>
+          <div className="flex items-center gap-2 text-sm text-muted-foreground font-medium">
+            <Globe className="w-4 h-4 text-primary" />
+            <span>Region: East Africa</span>
+          </div>
         </div>
       </div>
     </footer>

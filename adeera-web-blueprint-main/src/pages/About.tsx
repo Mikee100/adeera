@@ -4,6 +4,8 @@ import { Separator } from '@/components/ui/separator';
 import { Building2, Target, Users, Globe, Award, TrendingUp, MapPin, Calendar, ArrowRight, Wallet, Cpu, ShieldCheck, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '@/components/SEO';
+import HeroOffice from '../../images/Screenshot 2026-03-11 195157.png';
+import TeamWorkspace from '../../images/Screenshot 2026-03-11 195212.png';
 
 const About = () => {
   const stats = [
@@ -41,13 +43,13 @@ const About = () => {
       name: 'CEO & Founder',
       role: 'Visionary Leader',
       description: 'Driving digital transformation across Africa with 10+ years of experience in enterprise software',
-      image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=400&fit=crop&crop=face'
+      image: TeamWorkspace
     }
   ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5">
-      <SEO 
+      <SEO
         title="About ADEERA UNITECH | Leading SaaS Solutions Provider in Africa"
         description="Discover ADEERA UNITECH's mission to empower African businesses through innovative SaaS solutions. Learn about our expertise in CRM, cybersecurity, and cloud technologies."
         keywords="about ADEERA, African tech company, SaaS provider Kenya, enterprise software Africa, digital transformation Kenya, tech innovation Africa"
@@ -91,7 +93,7 @@ const About = () => {
       {/* Hero Section */}
       <div className="relative overflow-hidden bg-gradient-to-br from-primary/10 via-primary/5 to-background">
         <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent"></div>
-        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20 md:pt-40">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">
@@ -102,8 +104,8 @@ const About = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button size="lg" className="group" asChild>
-                  <Link to="/services">
-                    Explore Our Services 
+                  <Link to="/platform">
+                    Explore the Platform
                     <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
                   </Link>
                 </Button>
@@ -115,7 +117,7 @@ const About = () => {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/10 blur-3xl rounded-full"></div>
               <img 
-                src="/about-vision.png" 
+                src={HeroOffice} 
                 alt="Adeera Vision: Unified African Business Tech"
                 className="relative rounded-3xl shadow-2xl w-full h-[450px] object-cover border border-primary/20"
               />
@@ -166,9 +168,9 @@ const About = () => {
               </div>
             </div>
             <div className="relative">
-              <img 
-                src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&h=400&fit=crop" 
-                alt="Team collaborating in modern office"
+              <img
+                src={TeamWorkspace}
+                alt="ADEERA team collaborating over the point of sale and analytics tools"
                 className="rounded-2xl shadow-xl w-full h-[400px] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent rounded-2xl"></div>
@@ -182,7 +184,7 @@ const About = () => {
             <h2 className="text-2xl md:text-3xl font-bold mb-4">Our Foundation</h2>
             <p className="text-muted-foreground">The core principles that guide everything we do</p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <Card className="text-center border-0 shadow-lg hover:shadow-xl transition-all duration-300 group">
               <CardHeader className="pb-4">
@@ -191,7 +193,7 @@ const About = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                 To deliver and develop life changing software solutions for small market enterprises and enterprises.
+                  To deliver and develop life changing software solutions for small market enterprises and enterprises.
                 </p>
               </CardContent>
             </Card>
@@ -203,7 +205,7 @@ const About = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  To  become the leading software solutions provider in Africa and Beyond.
+                  To become the leading software solutions provider in Africa and Beyond.
                 </p>
               </CardContent>
             </Card>
@@ -240,11 +242,11 @@ const About = () => {
             <h2 className="text-2xl md:text-3xl font-bold mb-4">Our Journey</h2>
             <p className="text-muted-foreground">Key milestones in our mission to transform African business technology</p>
           </div>
-          
+
           <div className="max-w-3xl mx-auto">
             <div className="relative">
               <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-primary to-primary/30"></div>
-              
+
               {timeline.map((item, index) => (
                 <div key={index} className={`relative flex items-center mb-12 ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}>
                   <div className={`w-1/2 ${index % 2 === 0 ? 'pr-8 text-right' : 'pl-8 text-left'}`}>
@@ -256,9 +258,9 @@ const About = () => {
                       </CardContent>
                     </Card>
                   </div>
-                  
+
                   <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background shadow-lg"></div>
-                  
+
                   <div className="w-1/2"></div>
                 </div>
               ))}
@@ -272,15 +274,15 @@ const About = () => {
             <h2 className="text-2xl md:text-3xl font-bold mb-4">Leadership Team</h2>
             <p className="text-muted-foreground">Experienced leaders driving innovation across Africa</p>
           </div>
-          
+
           <div className="max-w-2xl mx-auto">
             {teamMembers.map((member, index) => (
               <Card key={index} className="border-0 shadow-lg">
                 <CardContent className="p-8">
                   <div className="flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-8">
                     <div className="relative">
-                      <img 
-                        src={member.image} 
+                      <img
+                        src={member.image}
                         alt={member.name}
                         className="w-32 h-32 rounded-full object-cover shadow-xl"
                       />
@@ -310,8 +312,8 @@ const About = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="group" asChild>
-                  <Link to="/services">
-                    Explore Our Solutions 
+                  <Link to="/platform">
+                    Explore All Features
                     <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
                   </Link>
                 </Button>
