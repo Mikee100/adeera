@@ -106,11 +106,11 @@ const Header = () => {
             ))}
           </nav>
 
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-3">
             <select
               value={language}
               onChange={e => handleLanguageChange(e.target.value)}
-              className="bg-transparent text-sm text-muted-foreground hover:text-foreground focus:outline-none cursor-pointer"
+              className="bg-transparent text-sm text-muted-foreground hover:text-foreground focus:outline-none cursor-pointer mr-1"
               aria-label="Select language"
             >
               {LANGUAGES.map(lang => (
@@ -122,8 +122,11 @@ const Header = () => {
                 {t('login')}
               </a>
             </Button>
+            <Button variant="outline" size="sm" asChild>
+              <Link to="/demo">Book demo</Link>
+            </Button>
             <Button size="sm" asChild>
-              <Link to="/demo">{t('getStarted')}</Link>
+              <Link to="/demo">Start free</Link>
             </Button>
           </div>
 
@@ -172,7 +175,7 @@ const Header = () => {
                 </a>
               </Button>
               <Button size="sm" className="flex-1" asChild>
-                <Link to="/demo" onClick={() => setIsMenuOpen(false)}>{t('getStarted')}</Link>
+                <Link to="/demo" onClick={() => setIsMenuOpen(false)}>Start free</Link>
               </Button>
             </div>
           </nav>
