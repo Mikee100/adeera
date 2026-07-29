@@ -226,7 +226,7 @@ const SalesDemo = () => {
                       {product.variants.map((v) => (
                         <Button
                           key={v.id}
-                          size="xs"
+                          size="sm"
                           variant="outline"
                           className="h-7 rounded-full px-2.5 text-[11px]"
                           onClick={() => addToCart(product, v)}

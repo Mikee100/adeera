@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
 import {
   LayoutDashboard,
   ShoppingCart,
@@ -9,11 +8,8 @@ import {
   Bot,
   CreditCard,
   Settings,
-  Building2,
   ArrowRight,
   Check,
-  Shield,
-  Users,
 } from "lucide-react";
 import SEO from "@/components/SEO";
 
@@ -56,7 +52,7 @@ const platformVideos = [
 
 const Platform = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5">
+    <div>
       <SEO
         title="The ADEERA Platform | One System for POS, Inventory, Sales & Insights"
         description="The ADEERA Platform is a single, integrated system for point of sale, inventory, sales, reports, M-Pesa, and AI. Multi-tenant, multi-branch, built for growing businesses."
@@ -74,72 +70,42 @@ const Platform = () => {
         }}
       />
 
-      <section className="relative py-20 md:py-28 overflow-hidden">
+      <section className="pt-32 pb-16 md:pt-40">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-3xl mx-auto text-center mb-16"
-          >
-            <span className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary mb-4">
-              One platform, everything you need
-            </span>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-foreground">
+          <div className="mx-auto max-w-xl text-center mb-16">
+            <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight text-foreground">
               The ADEERA Platform
             </h1>
-            <p className="text-lg text-muted-foreground">
-              A single, integrated system for point of sale, inventory, sales, reports, M-Pesa, and AI. 
-              Built for retail and growing businesses — multi-tenant, multi-branch, and secure.
+            <p className="mt-4 text-lg text-muted-foreground">
+              One system for point of sale, inventory, sales, reports, M-Pesa, and AI —
+              multi-tenant, multi-branch, and secure.
             </p>
-          </motion.div>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-            {modules.map((mod, i) => (
-              <motion.div
-                key={mod.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: i * 0.08 }}
-                className="p-6 rounded-xl border border-muted/20 bg-card hover:shadow-lg transition-all"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                    <mod.icon className="h-6 w-6 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-foreground">{mod.title}</h3>
-                    <p className="text-sm text-muted-foreground mt-1">{mod.desc}</p>
-                  </div>
-                </div>
-              </motion.div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10 mb-20">
+            {modules.map((mod) => (
+              <div key={mod.title}>
+                <mod.icon className="h-5 w-5 text-primary" strokeWidth={1.75} />
+                <h3 className="mt-4 text-sm font-semibold text-foreground">{mod.title}</h3>
+                <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">{mod.desc}</p>
+              </div>
             ))}
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="rounded-2xl border border-muted/20 bg-card p-8 md:p-10 mb-16"
-          >
-            <h2 className="text-xl font-semibold mb-6 text-foreground">Platform capabilities</h2>
+          <div className="mb-20 border-t border-border pt-10">
+            <h2 className="text-lg font-semibold mb-6 text-foreground">Platform capabilities</h2>
             <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {platformFeatures.map((f, i) => (
-                <li key={i} className="flex items-center gap-2 text-muted-foreground">
+                <li key={i} className="flex items-center gap-2 text-sm text-muted-foreground">
                   <Check className="h-4 w-4 text-primary flex-shrink-0" />
                   {f}
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.35 }}
-            className="mb-16"
-          >
-            <h2 className="text-xl font-semibold mb-4 text-foreground text-center md:text-left">
+          <div className="mb-16 border-t border-border pt-10">
+            <h2 className="text-lg font-semibold mb-2 text-foreground">
               The real dashboard
             </h2>
             <p className="text-sm text-muted-foreground mb-6 max-w-3xl">
@@ -148,35 +114,30 @@ const Platform = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {dashboardScreens.map((s) => (
                 <div key={s.src} className="space-y-2">
-                  <img src={s.src} alt={s.alt} className="rounded-xl border border-muted/30 shadow-sm w-full" />
+                  <img src={s.src} alt={s.alt} className="rounded-xl border border-border shadow-sm w-full" />
                   <p className="text-xs text-muted-foreground">{s.caption}</p>
                 </div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="mb-4"
-          >
-            <h2 className="text-xl font-semibold mb-6 text-foreground text-center md:text-left">
+          <div className="mb-4 border-t border-border pt-10">
+            <h2 className="text-lg font-semibold mb-6 text-foreground">
               Video tours
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {platformVideos.map((v) => (
                 <div key={v.src} className="space-y-2">
-                  <video controls poster={v.poster} className="w-full rounded-xl border border-muted/30 shadow-sm">
+                  <video controls poster={v.poster} className="w-full rounded-xl border border-border shadow-sm">
                     <source src={v.src} type="video/mp4" />
                   </video>
                   <p className="text-xs font-medium text-foreground">{v.title}</p>
                 </div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
-          <div className="mt-12 text-center flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="mt-16 text-center flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" asChild>
               <Link to="/features" className="flex items-center gap-2">
                 See all features <ArrowRight className="h-4 w-4" />
