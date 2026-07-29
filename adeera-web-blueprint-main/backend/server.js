@@ -1,9 +1,19 @@
+import 'dotenv/config';
 import express from 'express';
 import path from 'path';
 import cors from 'cors';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import nodemailer from 'nodemailer';
+
+const { CONTACT_EMAIL_USER, CONTACT_EMAIL_PASS, CONTACT_EMAIL_TO } = process.env;
+if (!CONTACT_EMAIL_USER || !CONTACT_EMAIL_PASS) {
+  console.error(
+    'Missing CONTACT_EMAIL_USER / CONTACT_EMAIL_PASS environment variables. ' +
+    'The /contact endpoint will fail until these are set (see .env.example).'
+  );
+}
+
 const app = express();
 app.use(express.json());
 const PORT = process.env.PORT || 5000;
@@ -39,14 +49,14 @@ app.post('/contact', async (req, res) => {
     const transporter = nodemailer.createTransport({
       service: 'Gmail',
       auth: {
-        user: 'mikekariuki10028@gmail.com',
-        pass: 'qvfk dcie sjop hcxb',
+        user: CONTACT_EMAIL_USER,
+        pass: CONTACT_EMAIL_PASS,
       },
     });
 
     await transporter.sendMail({
       from: `"${name}" <${email}>`,
-      to: 'contact@adeeraunitech.com',
+      to: CONTACT_EMAIL_TO || 'contact@adeeraunitech.com',
       subject: `📩 New Contact Message from ${name}`,
       html: `
 <!DOCTYPE html>
