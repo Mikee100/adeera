@@ -34,7 +34,6 @@ const featureSections = [
   },
   {
     title: "Inventory & Products",
-    href: "/inventory",
     icon: Package,
     description: "One place for products, variants, suppliers, and stock.",
     items: [
@@ -57,7 +56,6 @@ const featureSections = [
   },
   {
     title: "Reports & Analytics",
-    href: "/analytics",
     icon: BarChart3,
     description: "Dashboard, analytics, and business intelligence.",
     items: [
@@ -90,7 +88,7 @@ const featureSections = [
   },
   {
     title: "Payments & Billing",
-    href: "/payments",
+    href: "/pricing",
     icon: DollarSign,
     description: "M-Pesa and Stripe — pay and get paid.",
     items: [

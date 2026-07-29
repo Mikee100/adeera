@@ -96,14 +96,20 @@
   "nav": {
     "home": "Home",
     "about": "About",
+    "platform": "Platform",
+    "features": "Features",
     "services": "Solutions",
     "partnerships": "Partnerships",
     "contact": "Contact",
-    "pos": "Smart POS",
+    "pos": "POS",
+    "posRetail": "Retail Till",
+    "posRestaurant": "Restaurant Till",
+    "integrations": "Integrations",
     "inventory": "Inventory Management",
     "payments": "Integrated Payments",
     "ai": "AI Business Assistant"
   },
   "company": "UNITECH LIMITED",
-  "getStarted": "Get Started"
+  "getStarted": "Get Started",
+  "login": "Log in"
 }

@@ -79,5 +79,24 @@
         "expert": "Parler à un Expert"
       }
     }
-  }
+  },
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "platform": "Plateforme",
+    "features": "Fonctionnalités",
+    "services": "Solutions",
+    "partnerships": "Partenariats",
+    "contact": "Contact",
+    "pos": "Caisse (POS)",
+    "posRetail": "Caisse Commerce",
+    "posRestaurant": "Caisse Restaurant",
+    "integrations": "Intégrations",
+    "inventory": "Gestion des Stocks",
+    "payments": "Paiements Intégrés",
+    "ai": "Assistant IA"
+  },
+  "company": "UNITECH LIMITED",
+  "getStarted": "Commencer",
+  "login": "Connexion"
 } 

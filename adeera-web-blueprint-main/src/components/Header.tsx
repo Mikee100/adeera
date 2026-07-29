@@ -12,16 +12,16 @@ const LANGUAGES = [
 ];
 
 const NAV_ITEMS = [
+  { key: 'platform', href: '/platform' },
   {
-    key: 'features',
-    href: '/features',
+    key: 'pos',
+    href: '/pos',
     subItems: [
-      { key: 'pos', href: '/services/pos' },
-      { key: 'inventory', href: '/services/inventory' },
-      { key: 'payments', href: '/services/payments' },
-      { key: 'ai', href: '/services/ai' }
+      { key: 'posRetail', href: '/pos' },
+      { key: 'posRestaurant', href: '/pos#restaurant' },
     ]
   },
+  { key: 'features', href: '/features' },
   {
     key: 'company',
     href: '#',

@@ -1,18 +1,18 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Separator } from '@/components/ui/separator';
-import { Building2, Target, Users, Globe, Award, TrendingUp, MapPin, Calendar, ArrowRight, Wallet, Cpu, ShieldCheck, Zap } from 'lucide-react';
+import { Building2, Target, Users, Globe, MapPin, Calendar, ArrowRight, Wallet, WifiOff, TrendingUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '@/components/SEO';
-import HeroOffice from '../../images/Screenshot 2026-03-11 195157.png';
-import TeamWorkspace from '../../images/Screenshot 2026-03-11 195212.png';
+
+const DashboardShot = "/screenshots/adeera/dashboard-trends.png";
+const InventoryShot = "/screenshots/adeera/inventory.png";
 
 const About = () => {
   const stats = [
-    { number: '100+', label: 'Businesses Scaled', icon: TrendingUp },
-    { number: '99.99%', label: 'System Uptime', icon: Target },
-    { number: '24/7', label: 'Local Support', icon: Users },
-    { number: 'M-Pesa', label: 'Deep Integration', icon: Wallet }
+    { number: 'M-Pesa', label: 'Native Integration', icon: Wallet },
+    { number: 'Offline', label: 'POS Keeps Working', icon: WifiOff },
+    { number: 'Multi-branch', label: 'One Account, Many Locations', icon: Building2 },
+    { number: 'Nairobi', label: 'Built & Supported Locally', icon: MapPin }
   ];
 
   const timeline = [
@@ -38,34 +38,25 @@ const About = () => {
     }
   ];
 
-  const teamMembers = [
-    {
-      name: 'CEO & Founder',
-      role: 'Visionary Leader',
-      description: 'Driving digital transformation across Africa with 10+ years of experience in enterprise software',
-      image: TeamWorkspace
-    }
-  ];
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5">
       <SEO
-        title="About ADEERA UNITECH | Leading SaaS Solutions Provider in Africa"
-        description="Discover ADEERA UNITECH's mission to empower African businesses through innovative SaaS solutions. Learn about our expertise in CRM, cybersecurity, and cloud technologies."
-        keywords="about ADEERA, African tech company, SaaS provider Kenya, enterprise software Africa, digital transformation Kenya, tech innovation Africa"
+        title="About ADEERA UNITECH | POS & Business OS for African Retail"
+        description="ADEERA UNITECH builds the POS and business management platform African retailers actually use — offline-ready checkout, real-time inventory, and M-Pesa built in from day one."
+        keywords="about ADEERA, African tech company, POS provider Kenya, business management software Africa, digital transformation Kenya"
         url="https://www.adeeraunitech.com/about"
         structuredData={{
           "@context": "https://schema.org",
           "@type": "AboutPage",
           "name": "About ADEERA UNITECH",
-          "description": "Leading SaaS solutions provider in Africa",
+          "description": "POS and business management platform for African retail",
           "url": "https://www.adeeraunitech.com/about",
           "mainEntity": {
             "@type": "Organization",
             "name": "ADEERA UNITECH LIMITED",
             "url": "https://www.adeeraunitech.com",
             "logo": "https://www.adeeraunitech.com/logo.png",
-            "description": "Building Africa's Leading SaaS Enablement Platform. Transforming how African businesses access, implement, and scale with world-class cloud-based software solutions.",
+            "description": "ADEERA builds POS, inventory, and business management software for African retail and hospitality businesses.",
             "foundingDate": "2023",
             "address": {
               "@type": "PostalAddress",
@@ -75,18 +66,7 @@ const About = () => {
             "sameAs": [
               "https://twitter.com/adeeraunitech",
               "https://linkedin.com/company/adeeraunitech"
-            ],
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "4.9",
-              "reviewCount": "100+"
-            },
-            "employee": teamMembers.map(member => ({
-              "@type": "Person",
-              "name": member.name,
-              "jobTitle": member.role,
-              "description": member.description
-            }))
+            ]
           }
         }}
       />
@@ -116,9 +96,9 @@ const About = () => {
             </div>
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/10 blur-3xl rounded-full"></div>
-              <img 
-                src={HeroOffice} 
-                alt="Adeera Vision: Unified African Business Tech"
+              <img
+                src={DashboardShot}
+                alt="Real ADEERA dashboard showing branch sales comparison"
                 className="relative rounded-3xl shadow-2xl w-full h-[450px] object-cover border border-primary/20"
               />
             </div>
@@ -169,8 +149,8 @@ const About = () => {
             </div>
             <div className="relative">
               <img
-                src={TeamWorkspace}
-                alt="ADEERA team collaborating over the point of sale and analytics tools"
+                src={InventoryShot}
+                alt="Real ADEERA products and inventory screen"
                 className="rounded-2xl shadow-xl w-full h-[400px] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent rounded-2xl"></div>
@@ -268,38 +248,6 @@ const About = () => {
           </div>
         </div>
 
-        {/* Team Section */}
-        <div className="mb-20">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">Leadership Team</h2>
-            <p className="text-muted-foreground">Experienced leaders driving innovation across Africa</p>
-          </div>
-
-          <div className="max-w-2xl mx-auto">
-            {teamMembers.map((member, index) => (
-              <Card key={index} className="border-0 shadow-lg">
-                <CardContent className="p-8">
-                  <div className="flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-8">
-                    <div className="relative">
-                      <img
-                        src={member.image}
-                        alt={member.name}
-                        className="w-32 h-32 rounded-full object-cover shadow-xl"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent rounded-full"></div>
-                    </div>
-                    <div className="text-center md:text-left flex-1">
-                      <h3 className="text-xl font-bold mb-2">{member.name}</h3>
-                      <div className="text-primary font-semibold mb-4">{member.role}</div>
-                      <p className="text-muted-foreground leading-relaxed">{member.description}</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-
         {/* Call to Action */}
         <div className="text-center">
           <Card className="border-0 shadow-2xl max-w-3xl mx-auto relative overflow-hidden">
@@ -308,7 +256,7 @@ const About = () => {
               <TrendingUp className="h-12 w-12 text-primary mx-auto mb-6" />
               <h2 className="text-2xl md:text-3xl font-bold mb-6">Ready to Transform Your Business?</h2>
               <p className="text-muted-foreground mb-8 leading-relaxed">
-                Join hundreds of African businesses that have already started their digital transformation journey with us.
+                See the platform for yourself — retail till, restaurant till, and the dashboard that ties it together.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="group" asChild>
