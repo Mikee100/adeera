@@ -36,6 +36,24 @@ const platformFeatures = [
   "Scalable plans — Basic, Pro, and Enterprise",
 ];
 
+const dashboardScreens = [
+  { src: "/screenshots/adeera/dashboard.png", alt: "ADEERA dashboard with today's revenue and priorities", caption: "Today at a glance — revenue, sales, low-stock items, and priorities." },
+  { src: "/screenshots/adeera/dashboard-trends.png", alt: "ADEERA branch sales comparison chart", caption: "Branch sales comparison over time." },
+  { src: "/screenshots/adeera/sales-targets.png", alt: "ADEERA sales targets by day, week, and month", caption: "Daily, weekly, and monthly sales targets with progress." },
+  { src: "/screenshots/adeera/inventory.png", alt: "ADEERA products and inventory with variations", caption: "Products, variations, and stock levels in one view." },
+  { src: "/screenshots/adeera/sales-history.png", alt: "ADEERA sales history with M-Pesa transaction IDs", caption: "Full transaction history, including split and M-Pesa payments." },
+  { src: "/screenshots/adeera/analytics.png", alt: "ADEERA analytics and profit insights", caption: "Analytics and profit insights by branch and product." },
+  { src: "/screenshots/adeera/reports.png", alt: "ADEERA reports", caption: "Exportable reports across sales, stock, and performance." },
+  { src: "/screenshots/adeera/credit.png", alt: "ADEERA customer credit tracking", caption: "Customer credit accounts and balances." },
+  { src: "/screenshots/adeera/settings.png", alt: "ADEERA business settings", caption: "Business info, branches, users, and permissions." },
+];
+
+const platformVideos = [
+  { title: "Setup tour", src: "/videos/adeera/setup-tour.mp4", poster: "/videos/adeera/setup-tour-poster.png" },
+  { title: "Architecture tour", src: "/videos/adeera/architecture-tour.mp4", poster: "/videos/adeera/architecture-tour-poster.png" },
+  { title: "Extended tour", src: "/videos/adeera/extended-tour.mp4", poster: "/videos/adeera/extended-tour-poster.png" },
+];
+
 const Platform = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5">
@@ -102,7 +120,7 @@ const Platform = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="rounded-2xl border border-muted/20 bg-card p-8 md:p-10"
+            className="rounded-2xl border border-muted/20 bg-card p-8 md:p-10 mb-16"
           >
             <h2 className="text-xl font-semibold mb-6 text-foreground">Platform capabilities</h2>
             <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -113,6 +131,49 @@ const Platform = () => {
                 </li>
               ))}
             </ul>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.35 }}
+            className="mb-16"
+          >
+            <h2 className="text-xl font-semibold mb-4 text-foreground text-center md:text-left">
+              The real dashboard
+            </h2>
+            <p className="text-sm text-muted-foreground mb-6 max-w-3xl">
+              No mockups — these are screenshots of a live ADEERA Business OS account.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {dashboardScreens.map((s) => (
+                <div key={s.src} className="space-y-2">
+                  <img src={s.src} alt={s.alt} className="rounded-xl border border-muted/30 shadow-sm w-full" />
+                  <p className="text-xs text-muted-foreground">{s.caption}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="mb-4"
+          >
+            <h2 className="text-xl font-semibold mb-6 text-foreground text-center md:text-left">
+              Video tours
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {platformVideos.map((v) => (
+                <div key={v.src} className="space-y-2">
+                  <video controls poster={v.poster} className="w-full rounded-xl border border-muted/30 shadow-sm">
+                    <source src={v.src} type="video/mp4" />
+                  </video>
+                  <p className="text-xs font-medium text-foreground">{v.title}</p>
+                </div>
+              ))}
+            </div>
           </motion.div>
 
           <div className="mt-12 text-center flex flex-col sm:flex-row gap-4 justify-center">

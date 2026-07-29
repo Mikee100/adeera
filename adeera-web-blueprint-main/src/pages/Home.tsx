@@ -1,47 +1,25 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import {
   ArrowRight,
   Check,
   Zap,
-  BarChart,
-  Lock,
-  MessageCircle,
   Smartphone,
   Building2,
-  TrendingUp,
   Database,
-  Users,
-  Shield,
   Layout,
-  Globe,
   Star,
-  Quote,
-  Mail,
-  ChevronRight,
-  Award,
-  Play,
-  Cpu,
-  Globe2,
-  Rocket,
-  ShieldCheck,
-  Wifi,
-  Headphones,
-  Server,
-  Cloud
+  WifiOff,
+  UtensilsCrossed,
+  Bot,
+  Wallet,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import SEO from "@/components/SEO";
-import HeroDashboard from "../../images/Screenshot 2026-03-11 195212.png";
-import InventoryFeature from "../../images/Screenshot 2026-03-11 195157.png";
+
+const HeroDashboard = "/screenshots/adeera/dashboard.png";
+const InventoryFeature = "/screenshots/adeera/inventory.png";
 
 const FeatureCard = ({ icon: Icon, title, description, delay }) => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
@@ -102,69 +80,31 @@ const Home = () => {
   const services = [
     {
       icon: Smartphone,
-      title: "Adeera Smart POS",
-      description: "Seamless sales across desktop and mobile with offline support and barcode scanning tailored for retail.",
+      title: "Adeera POS — Retail",
+      description: "Fast checkout with product search, variations, and offline support. Cash, M-Pesa, and credit in one flow.",
+    },
+    {
+      icon: UtensilsCrossed,
+      title: "Adeera POS — Restaurant",
+      description: "A dedicated table-service mode: waiter check-in, floor plan, kitchen dispatch, and reservations.",
     },
     {
       icon: Database,
       title: "Real-Time Inventory",
-      description: "Master your stock across all branches with automated alerts and multi-variation support.",
+      description: "Products, variations, and stock levels synced across every branch, with low-stock alerts.",
     },
     {
-      icon: Zap,
+      icon: Wallet,
       title: "Integrated Payments",
-      description: "Accept M-Pesa, Credit Cards, and Cash directly into your unified business dashboard.",
-    },
-    {
-      icon: Cpu,
-      title: "Adeera AI Assistant",
-      description: "Automate customer bookings and get data-driven insights to scale your operations efficiently.",
+      description: "Accept M-Pesa, cash, and credit, with automatic reconciliation in your dashboard.",
     },
   ];
 
-  const stats = [
-    {
-      value: 20,
-      suffix: "K+",
-      label: "Businesses Scaled",
-      icon: <Users className="h-6 w-6" />,
-    },
-    {
-      value: 99.99,
-      suffix: "%",
-      label: "System Reliability",
-      icon: <Server className="h-6 w-6" />,
-    },
-    {
-      value: 45,
-      suffix: "%+",
-      label: "Efficiency Gain",
-      icon: <Zap className="h-6 w-6" />,
-    },
-    {
-      value: 24,
-      suffix: "/7",
-      label: "Local Support",
-      icon: <Headphones className="h-6 w-6" />,
-    },
-  ];
-
-  const techStack = [
-    {
-      icon: Cloud,
-      name: "Cloud Infrastructure",
-      description: "AWS, Azure, Google Cloud with local edge computing",
-    },
-    {
-      icon: Shield,
-      name: "Security & Compliance",
-      description: "SOC 2, GDPR, local data protection standards",
-    },
-    {
-      icon: Database,
-      name: "Data Management",
-      description: "Real-time analytics and business intelligence",
-    },
+  const whyAdeera = [
+    { icon: WifiOff, title: "Works offline", desc: "The retail and restaurant tills keep taking sales without internet, then sync when you're back online." },
+    { icon: Building2, title: "Multi-branch, multi-tenant", desc: "Run several locations from one account, with role-based permissions per user." },
+    { icon: Wallet, title: "M-Pesa native", desc: "Accept and reconcile mobile money at the till, not through a bolted-on plugin." },
+    { icon: Bot, title: "AI assistant, in-app", desc: "Ask questions about your sales data in plain language and get chart suggestions back." },
   ];
 
   return (
@@ -244,34 +184,10 @@ const Home = () => {
                 </div>
                 <div className="flex items-center gap-2 text-muted-foreground font-medium">
                   <Check className="text-primary w-5 h-5" />
-                  <span>99.99% Uptime</span>
+                  <span>Works offline</span>
                 </div>
               </div>
             </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="relative z-20 -mt-10 mb-20">
-        <div className="container mx-auto px-4">
-          <div className="bg-white/80 backdrop-blur-xl p-8 md:p-12 rounded-[2.5rem] shadow-2xl border border-white/40 grid grid-cols-1 md:grid-cols-4 gap-12 text-center items-center">
-            {stats.map((stat, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="flex flex-col gap-2"
-              >
-                <div className="flex items-center justify-center mb-2">
-                   <div className="text-primary/40 group-hover:text-primary transition-colors">{stat.icon}</div>
-                </div>
-                <span className="text-4xl md:text-5xl font-black text-primary">{stat.value}{stat.suffix}</span>
-                <span className="text-sm font-bold text-muted-foreground uppercase tracking-widest">{stat.label}</span>
-              </motion.div>
-            ))}
           </div>
         </div>
       </section>
@@ -308,7 +224,8 @@ const Home = () => {
           <div className="flex flex-col items-center text-center mb-16 px-4">
             <h2 className="text-4xl md:text-6xl font-black mb-8 tracking-tight text-gradient">Your Business at Your Fingertips.</h2>
             <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
-              Experience the power of ADEERA's intuitive dashboard on any device. Manage sales, track inventory, and get real-time insights globally.
+              This is a real screenshot from a live ADEERA account — revenue, sales targets, low-stock
+              items, and today's priorities in one dashboard.
             </p>
           </div>
 
@@ -322,36 +239,19 @@ const Home = () => {
             <div className="relative bg-white p-4 rounded-[2.5rem] shadow-2xl border border-white/40 overflow-hidden">
               <img
                 src={HeroDashboard}
-                alt="ADEERA dashboard preview"
+                alt="Real ADEERA dashboard showing today's revenue, sales, and priorities"
                 className="rounded-[1.5rem] w-full shadow-inner border border-white/20"
               />
             </div>
-
-            {/* Floating Elements */}
-            <motion.div
-              animate={{ y: [0, -15, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -top-10 -right-4 md:right-10 w-32 md:w-48 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-white/40 hidden md:block"
-            >
-              <div className="flex items-center gap-3 mb-2">
-                <TrendingUp className="text-primary w-5 h-5" />
-                <span className="text-[10px] font-extrabold text-muted-foreground uppercase tracking-wider">Growth Rate</span>
-              </div>
-              <div className="text-2xl font-black text-primary">+24.5%</div>
-            </motion.div>
-
-            <motion.div
-              animate={{ y: [0, 15, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -bottom-10 -left-4 md:left-10 w-32 md:w-48 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-white/40 hidden md:block"
-            >
-              <div className="flex items-center gap-3 mb-2">
-                <Users className="text-primary w-5 h-5" />
-                <span className="text-[10px] font-extrabold text-muted-foreground uppercase tracking-wider">New Customers</span>
-              </div>
-              <div className="text-2xl font-black text-primary">1,280</div>
-            </motion.div>
           </motion.div>
+
+          <div className="mt-8 text-center">
+            <Button variant="link" className="text-primary" asChild>
+              <Link to="/platform" className="flex items-center gap-1 justify-center">
+                See the full dashboard and video tours <ArrowRight className="w-4 h-4" />
+              </Link>
+            </Button>
+          </div>
         </div>
       </section>
 
@@ -440,64 +340,20 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Tech Stack */}
+      {/* Why Adeera */}
       <section className="py-24 md:py-32 bg-white">
         <div className="container mx-auto px-4">
           <SectionHeader
-            badge="Engineering"
-            title="Built on Global Standards."
-            description="We leverage the same infrastructure as global giants to ensure your data stays fast, reliable, and secure."
+            badge="Why Adeera"
+            title="Built for how African retail actually runs."
+            description="No vendor-name-dropping — just what the product actually does."
           />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {techStack.map((tech, i) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {whyAdeera.map((item, i) => (
               <div key={i} className="p-8 rounded-3xl border border-slate-100 bg-slate-50/50 hover:bg-white hover:shadow-xl transition-all group">
-                <tech.icon className="h-10 w-10 text-primary mb-6 group-hover:scale-110 transition-transform" />
-                <h3 className="text-xl font-bold mb-3">{tech.name}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{tech.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="py-24 md:py-32 bg-slate-50">
-        <div className="container mx-auto px-4">
-          <SectionHeader
-            badge="Community"
-            title="Trusted by Visionary Owners."
-            description="Hear from business leaders who have transformed their operations with the Adeera Ecosystem."
-          />
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                quote: "M-Pesa integration is a game-changer. Reconciling my sales used to take houts, now it's instant.",
-                author: "Sarah Mwangi",
-                role: "CEO, TechStart Retail",
-                initials: "SM"
-              },
-              {
-                quote: "The multi-branch dashboard allows me to manage my 5 stores in Eldoret from Nairobi with zero friction.",
-                author: "David Ouma",
-                role: "Founder, QuickMart Plus",
-                initials: "DO"
-              },
-              {
-                quote: "Adeera AI predicted my stock-out two days before it happened. Best decision for my business.",
-                author: "Grace Akinyi",
-                role: "Operations, Retail Chain",
-                initials: "GA"
-              }
-            ].map((t, i) => (
-              <div key={i} className="bg-white p-10 rounded-[2.5rem] shadow-lg shadow-black/5 border border-slate-100 flex flex-col justify-between hover:-translate-y-1 transition-all">
-                <p className="text-xl leading-relaxed italic text-foreground mb-10">"{t.quote}"</p>
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-2xl bg-primary flex items-center justify-center font-bold text-white shadow-lg shadow-primary/20">{t.initials}</div>
-                  <div>
-                    <h4 className="font-black text-lg">{t.author}</h4>
-                    <p className="text-xs font-bold text-muted-foreground uppercase tracking-wider">{t.role}</p>
-                  </div>
-                </div>
+                <item.icon className="h-10 w-10 text-primary mb-6 group-hover:scale-110 transition-transform" />
+                <h3 className="text-xl font-bold mb-3">{item.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
