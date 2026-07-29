@@ -1,7 +1,7 @@
 import SEO from '@/components/SEO';
 
 const TermsOfService = () => (
-  <div className="container mx-auto px-4 py-16 max-w-3xl">
+  <div className="container mx-auto px-4 pt-32 pb-16 md:pt-40 max-w-3xl">
     <SEO 
       title="Terms of Service | ADEERA UNITECH | Service Agreement"
       description="ADEERA UNITECH terms of service and service agreement. Understand our service terms, conditions, and user agreements for SaaS solutions."
@@ -48,7 +48,7 @@ const TermsOfService = () => (
     </p>
     <h2 className="text-xl font-semibold mt-8 mb-2">Contact Us</h2>
     <p>
-      If you have any questions about these Terms, contact us at <a href="mailto:contact@adeeraunitech.com" className="text-primary underline">contact@adeeraunitech.com</a>.
+      If you have any questions about these Terms, contact us at <a href="mailto:adeeraunitech@gmail.com" className="text-primary underline">adeeraunitech@gmail.com</a>.
     </p>
     <p className="mt-8 text-sm text-muted-foreground">Last updated: June 2025</p>
   </div>

@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Menu, X, ChevronDown, ArrowRight } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 const LANGUAGES = [
@@ -58,75 +57,44 @@ const Header = () => {
   }, [location]);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 8);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
-        ? 'glass shadow-lg border-b border-border/10'
-        : 'bg-transparent'
+      className={`fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm transition-shadow ${isScrolled ? 'border-b border-border' : 'border-b border-transparent'
         }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          {/* Logo */}
-          <Link
-            to="/"
-            className="flex items-center gap-3 group"
-            aria-label="Home"
-          >
-            <div className="relative">
-              <div className="absolute inset-0 bg-primary/20 rounded-full blur-md group-hover:bg-primary/40 transition-colors" />
-              <img
-                src="/Adeera_logo.jpg"
-                alt="Adeera Logo"
-                className="relative h-10 w-10 object-contain rounded-full border border-white/20 shadow-sm bg-white"
-                style={{ minWidth: 40 }}
-              />
-            </div>
-            <div className="flex flex-col leading-none">
-              <div className="text-2xl font-black tracking-tighter text-gradient">
-                ADEERA
-              </div>
-              <div className="text-[10px] uppercase tracking-[0.2em] font-bold text-muted-foreground opacity-70">
-                Unitech Limited
-              </div>
-            </div>
+        <div className="flex h-16 items-center justify-between">
+          <Link to="/" className="flex items-center gap-2" aria-label="Home">
+            <img src="/Adeera_logo.jpg" alt="Adeera" className="h-7 w-7 rounded-full" />
+            <span className="text-base font-semibold tracking-tight text-foreground">ADEERA</span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-2">
+          <nav className="hidden lg:flex items-center gap-1">
             {NAV_ITEMS.map((item) => (
               <div key={item.key} className="relative group">
                 <Link
                   to={item.href}
-                  className={`flex items-center px-4 py-2 text-sm font-semibold rounded-full transition-all duration-300 ${location.pathname === item.href
-                    ? 'bg-primary/10 text-primary'
-                    : 'text-foreground/70 hover:text-primary hover:bg-primary/5'
+                  className={`flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-md transition-colors ${location.pathname === item.href
+                    ? 'text-primary'
+                    : 'text-muted-foreground hover:text-foreground'
                     }`}
                 >
                   {t(`nav.${item.key}`)}
-                  {item.subItems && (
-                    <ChevronDown className="ml-1 h-3 w-3 transition-transform group-hover:rotate-180" />
-                  )}
+                  {item.subItems && <ChevronDown className="h-3.5 w-3.5" />}
                 </Link>
-                {/* Dropdown menu */}
                 {item.subItems && (
-                  <div className="absolute left-0 mt-2 w-56 origin-top-left rounded-2xl glass shadow-2xl ring-1 ring-border/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 p-2">
-                    <div className="space-y-1">
+                  <div className="absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity">
+                    <div className="w-48 rounded-lg border border-border bg-popover shadow-md p-1">
                       {item.subItems.map((subItem) => (
                         <Link
                           key={subItem.key}
                           to={subItem.href}
-                          className={`block px-4 py-2.5 text-sm font-medium rounded-xl transition-colors ${location.pathname === subItem.href
-                            ? 'bg-primary/10 text-primary'
-                            : 'text-muted-foreground hover:bg-primary/5 hover:text-primary'
-                            }`}
+                          className="block rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
                         >
                           {t(`nav.${subItem.key}`)}
                         </Link>
@@ -138,144 +106,77 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Language Switcher & Auth */}
-          <div className="hidden lg:flex items-center gap-6">
+          <div className="hidden lg:flex items-center gap-4">
             <select
               value={language}
               onChange={e => handleLanguageChange(e.target.value)}
-              className="bg-transparent border-none text-sm font-bold text-muted-foreground hover:text-primary transition-colors focus:outline-none cursor-pointer"
+              className="bg-transparent text-sm text-muted-foreground hover:text-foreground focus:outline-none cursor-pointer"
               aria-label="Select language"
             >
               {LANGUAGES.map(lang => (
                 <option key={lang.code} value={lang.code}>{lang.label}</option>
               ))}
             </select>
-          </div>
-
-          {/* CTA Button */}
-          <div className="hidden md:flex items-center gap-4">
-            <Button asChild variant="ghost" className="rounded-full font-bold px-6">
-              <Link to="/contact">Log in</Link>
+            <Button variant="ghost" size="sm" asChild>
+              <a href={import.meta.env.VITE_APP_URL ? `${String(import.meta.env.VITE_APP_URL).replace(/\/$/, '')}/login` : '/contact'}>
+                {t('login')}
+              </a>
             </Button>
-            <Button size="lg" variant="secondary" className="rounded-full px-12 text-lg font-bold shadow-2xl animate-pulse" asChild>
-              <Link to="/contact" className="flex items-center gap-1">
-                {t ? t('getStarted') : 'Get Started'}
-                <ArrowRight className="h-4 w-4" />
-              </Link>
+            <Button size="sm" asChild>
+              <Link to="/demo">{t('getStarted')}</Link>
             </Button>
           </div>
 
-          {/* Mobile menu button */}
           <Button
             variant="ghost"
             size="icon"
-            className="lg:hidden rounded-full hover:bg-primary/5"
+            className="lg:hidden"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
-            {isMenuOpen ? (
-              <X className="h-6 w-6 text-primary" />
-            ) : (
-              <Menu className="h-6 w-6 text-primary" />
-            )}
+            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </Button>
         </div>
 
-
-        {/* Mobile Navigation */}
-        <AnimatePresence>
-          {isMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.2, ease: "easeInOut" }}
-              className="md:hidden overflow-hidden shadow-lg"
-            >
-              <nav className="flex flex-col space-y-1 py-2 border-t border-border/20 bg-background/95 backdrop-blur-sm">
-                {NAV_ITEMS.map((item) => (
-                  <div key={item.key} className="px-2">
-                    <Link
-                      to={item.href}
-                      className={`flex items-center justify-between px-4 py-3 text-base font-medium rounded-lg transition-colors ${location.pathname === item.href
-                        ? 'bg-primary/10 text-primary font-semibold'
-                        : 'text-foreground/90 hover:bg-muted/50'
-                        }`}
-                      onClick={() => item.subItems ? null : setIsMenuOpen(false)}
-                    >
-                      <div className="flex items-center gap-3">
-                        {t(`nav.${item.key}`)}
-                      </div>
-                      {item.subItems && (
-                        <ChevronDown className="h-4 w-4 transition-transform duration-200" />
-                      )}
-                    </Link>
-
-                    {/* Mobile submenu */}
-                    {item.subItems && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        transition={{ duration: 0.15 }}
-                        className="pl-2 overflow-hidden"
+        {isMenuOpen && (
+          <nav className="lg:hidden border-t border-border py-3">
+            {NAV_ITEMS.map((item) => (
+              <div key={item.key}>
+                <Link
+                  to={item.href}
+                  className="block px-2 py-2.5 text-sm font-medium text-foreground"
+                  onClick={() => !item.subItems && setIsMenuOpen(false)}
+                >
+                  {t(`nav.${item.key}`)}
+                </Link>
+                {item.subItems && (
+                  <div className="ml-4 border-l border-border pl-3">
+                    {item.subItems.map((subItem) => (
+                      <Link
+                        key={subItem.key}
+                        to={subItem.href}
+                        className="block py-2 text-sm text-muted-foreground"
+                        onClick={() => setIsMenuOpen(false)}
                       >
-                        <div className="ml-2 pl-4 border-l border-muted/40 space-y-1 py-1">
-                          {item.subItems.map((subItem) => (
-                            <Link
-                              key={subItem.key}
-                              to={subItem.href}
-                              className={`block px-4 py-2.5 text-sm rounded-lg transition-colors ${location.pathname === subItem.href
-                                ? 'bg-primary/10 text-primary font-medium'
-                                : 'text-foreground/80 hover:bg-muted/30'
-                                }`}
-                              onClick={() => setIsMenuOpen(false)}
-                            >
-                              {t(`nav.${subItem.key}`)}
-                            </Link>
-                          ))}
-                        </div>
-                      </motion.div>
-                    )}
+                        {t(`nav.${subItem.key}`)}
+                      </Link>
+                    ))}
                   </div>
-                ))}
-
-                {/* Language selector */}
-                <div className="px-4 py-3 border-t border-muted/20 mt-1">
-                  <div className="relative">
-                    <select
-                      value={language}
-                      onChange={e => handleLanguageChange(e.target.value)}
-                      className="w-full bg-muted/10 border border-muted/20 rounded-lg px-4 py-2 text-foreground appearance-none focus:ring-2 focus:ring-primary/50 focus:outline-none"
-                      aria-label="Select language"
-                    >
-                      {LANGUAGES.map(lang => (
-                        <option key={lang.code} value={lang.code}>
-                          {lang.label}
-                        </option>
-                      ))}
-                    </select>
-                    <ChevronDown className="h-4 w-4 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
-                  </div>
-                </div>
-
-                {/* Mobile CTA Button */}
-                <div className="px-4 py-3 space-y-3">
-                  {import.meta.env.VITE_APP_URL && (
-                    <a href={`${String(import.meta.env.VITE_APP_URL).replace(/\/$/, '')}/login`} target="_blank" rel="noopener noreferrer" className="block w-full text-center py-2.5 text-sm font-medium text-muted-foreground hover:text-foreground" onClick={() => setIsMenuOpen(false)}>
-                      {t ? t('login') : 'Log in'}
-                    </a>
-                  )}
-                  <Button size="lg" className="w-full rounded-full px-12 shadow-2xl font-bold text-lg" asChild>
-                    <Link to="/contact" className="flex items-center justify-center gap-2" onClick={() => setIsMenuOpen(false)}>
-                      {t ? t('getStarted') : 'Get Started'}
-                      <ArrowRight className="h-4 w-4" />
-                    </Link>
-                  </Button>
-                </div>
-              </nav>
-            </motion.div>
-          )}
-        </AnimatePresence>
+                )}
+              </div>
+            ))}
+            <div className="mt-3 flex gap-2 px-2">
+              <Button variant="outline" size="sm" className="flex-1" asChild>
+                <a href={import.meta.env.VITE_APP_URL ? `${String(import.meta.env.VITE_APP_URL).replace(/\/$/, '')}/login` : '/contact'}>
+                  {t('login')}
+                </a>
+              </Button>
+              <Button size="sm" className="flex-1" asChild>
+                <Link to="/demo" onClick={() => setIsMenuOpen(false)}>{t('getStarted')}</Link>
+              </Button>
+            </div>
+          </nav>
+        )}
       </div>
     </header>
   );

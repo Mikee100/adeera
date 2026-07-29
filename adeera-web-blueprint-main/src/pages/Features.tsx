@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
 import {
   ShoppingCart,
   Package,
@@ -112,7 +111,7 @@ const featureSections = [
 
 const Features = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5">
+    <div>
       <SEO
         title="Features | POS, Inventory, Sales, Reports & AI | ADEERA Platform"
         description="Every tool you need in one place: POS, inventory, sales history, M-Pesa, reports, analytics, AI assistant, expenses, credit, multi-branch, and billing."
@@ -127,59 +126,43 @@ const Features = () => {
         }}
       />
 
-      <section className="py-20 md:py-28">
+      <section className="pt-32 pb-20 md:pt-40">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="max-w-3xl mx-auto text-center mb-16"
-          >
-            <span className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary mb-4">
-              All features
-            </span>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-foreground">
+          <div className="mx-auto max-w-xl text-center mb-16">
+            <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight text-foreground">
               Everything in one platform
             </h1>
-            <p className="text-lg text-muted-foreground">
+            <p className="mt-4 text-lg text-muted-foreground">
               From point of sale to inventory, reports, AI, and billing — no more juggling multiple tools.
             </p>
-          </motion.div>
+          </div>
 
-          <div className="space-y-12">
-            {featureSections.map((section, i) => (
-              <motion.section
-                key={section.title}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4 }}
-                className="rounded-2xl border border-muted/20 bg-card p-6 md:p-8"
-              >
-                <div className="flex flex-col md:flex-row md:items-start gap-6">
-                  <div className="flex-shrink-0 h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                    <section.icon className="h-6 w-6 text-primary" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex flex-wrap items-center gap-3 mb-2">
-                      <h2 className="text-xl font-semibold text-foreground">{section.title}</h2>
-                      {section.href && (
-                        <Button variant="link" className="p-0 h-auto text-primary" asChild>
-                          <Link to={section.href}>Learn more <ArrowRight className="ml-1 h-4 w-4 inline" /></Link>
-                        </Button>
-                      )}
-                    </div>
-                    <p className="text-muted-foreground mb-4">{section.description}</p>
-                    <ul className="space-y-2">
-                      {section.items.map((item, j) => (
-                        <li key={j} className="flex items-start gap-2 text-sm text-muted-foreground">
-                          <Check className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+          <div className="divide-y divide-border border-t border-border">
+            {featureSections.map((section) => (
+              <div key={section.title} className="py-10 flex flex-col md:flex-row md:items-start gap-6">
+                <div className="flex-shrink-0">
+                  <section.icon className="h-5 w-5 text-primary" strokeWidth={1.75} />
                 </div>
-              </motion.section>
+                <div className="flex-1">
+                  <div className="flex flex-wrap items-center gap-3 mb-1.5">
+                    <h2 className="text-base font-semibold text-foreground">{section.title}</h2>
+                    {section.href && (
+                      <Button variant="link" className="p-0 h-auto text-primary text-sm" asChild>
+                        <Link to={section.href}>Learn more <ArrowRight className="ml-1 h-3.5 w-3.5 inline" /></Link>
+                      </Button>
+                    )}
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-4">{section.description}</p>
+                  <ul className="space-y-2">
+                    {section.items.map((item, j) => (
+                      <li key={j} className="flex items-start gap-2 text-sm text-muted-foreground">
+                        <Check className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             ))}
           </div>
 

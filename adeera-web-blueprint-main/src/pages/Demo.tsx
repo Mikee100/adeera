@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import SEO from '@/components/SEO';
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import { Play, Check, Zap, Users, BarChart2, Cloud, Lock, Mail } from "lucide-react";
+import { Play, Check, ShoppingCart, Package, LayoutDashboard, Bot } from "lucide-react";
 
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
@@ -12,7 +12,6 @@ const Demo = () => {
   const [activeTab, setActiveTab] = useState("features");
   const [videoPlaying, setVideoPlaying] = useState(false);
   const [open, setOpen] = useState(false);
-
 
   const [formData, setFormData] = useState({
     name: "",
@@ -24,54 +23,44 @@ const Demo = () => {
 
   const coreFeatures = [
     {
-      icon: <BarChart2 className="w-6 h-6" />,
+      icon: ShoppingCart,
       title: "Point of Sale",
       description: "Fast checkout with cart, receipts, and sales history. Cash, M-Pesa, and credit.",
-      benefit: "Ring up sales in seconds"
     },
     {
-      icon: <Users className="w-6 h-6" />,
+      icon: Package,
       title: "Inventory & Reports",
       description: "Unified products, suppliers, and 11+ reports from stock levels to valuation.",
-      benefit: "One place for stock and insights"
     },
     {
-      icon: <Cloud className="w-6 h-6" />,
+      icon: LayoutDashboard,
       title: "Dashboard & Analytics",
       description: "Revenue charts, trends, customer growth, and sales targets at a glance.",
-      benefit: "See how your business is doing"
     },
     {
-      icon: <Lock className="w-6 h-6" />,
+      icon: Bot,
       title: "AI Assistant",
       description: "Ask questions in plain language. Get answers and charts from your data.",
-      benefit: "Insights without the spreadsheet"
     }
   ];
 
   const useCases = [
-    {
-      industry: "Retail & Shops",
-      solution: "POS, inventory, and receipts. M-Pesa and cash at the till."
-    },
-    {
-      industry: "Multi-Branch",
-      solution: "One platform for all locations. Sales history and stock per branch."
-    },
-    {
-      industry: "Growing Business",
-      solution: "From Basic to Pro to Enterprise. Add users, branches, and reports as you scale."
-    },
-    {
-      industry: "Reports & Insights",
-      solution: "Dashboard, AI assistant, and 11+ inventory reports. No more guesswork."
-    }
+    { industry: "Retail & Shops", solution: "POS, inventory, and receipts. M-Pesa and cash at the till." },
+    { industry: "Multi-Branch", solution: "One platform for all locations. Sales history and stock per branch." },
+    { industry: "Growing Business", solution: "From Basic to Pro to Enterprise. Add users, branches, and reports as you scale." },
+    { industry: "Reports & Insights", solution: "Dashboard, AI assistant, and 11+ inventory reports. No more guesswork." },
   ];
 
   const productVideos = [
     { title: "Retail till — making a sale", src: "/videos/adeera-pos-general/making-a-sale.mp4", poster: "/videos/adeera-pos-general/making-a-sale-poster.png" },
     { title: "Restaurant till — table service", src: "/videos/adeera-pos-restaurant/table-service-flow.mp4", poster: "/videos/adeera-pos-restaurant/table-service-flow-poster.png" },
     { title: "Dashboard setup tour", src: "/videos/adeera/setup-tour.mp4", poster: "/videos/adeera/setup-tour-poster.png" },
+  ];
+
+  const tabs = [
+    { id: "features", label: "Key features" },
+    { id: "usecases", label: "Use cases" },
+    { id: "watch", label: "Watch it live" },
   ];
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -110,13 +99,13 @@ const Demo = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20 pt-24 md:pt-32">
+    <div>
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="sm:max-w-md">
           <DialogTitle>Request a demo</DialogTitle>
           {submitSuccess ? (
-            <div className="py-6 text-center text-green-600 dark:text-green-400">
-              <Check className="h-12 w-12 mx-auto mb-2" />
+            <div className="py-6 text-center text-primary">
+              <Check className="h-10 w-10 mx-auto mb-2" />
               <p className="font-medium">Thank you! We&apos;ll be in touch within 24 hours.</p>
             </div>
           ) : (
@@ -141,7 +130,7 @@ const Demo = () => {
                 <Label htmlFor="demo-message">Message (optional)</Label>
                 <textarea id="demo-message" name="message" value={formData.message} onChange={handleInputChange} rows={3} className="mt-1 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" />
               </div>
-              {submitError && <p className="text-sm text-red-600 dark:text-red-400">{submitError}</p>}
+              {submitError && <p className="text-sm text-destructive">{submitError}</p>}
               <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
                 {isSubmitting ? 'Sending...' : 'Send request'}
               </Button>
@@ -159,17 +148,8 @@ const Demo = () => {
           "@type": "Service",
           "name": "SaaS Demo Request",
           "description": "Free demo and consultation for SaaS solutions",
-          "provider": {
-            "@type": "Organization",
-            "name": "ADEERA UNITECH LIMITED",
-            "url": "https://www.adeeraunitech.com"
-          },
-          "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "KES",
-            "description": "Free consultation and demo"
-          },
+          "provider": { "@type": "Organization", "name": "ADEERA UNITECH LIMITED", "url": "https://www.adeeraunitech.com" },
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KES", "description": "Free consultation and demo" },
           "about": {
             "@type": "SoftwareApplication",
             "name": "ADEERA Platform",
@@ -180,32 +160,30 @@ const Demo = () => {
         }}
       />
 
-      <div className="container mx-auto px-4 text-center">
-        <div className="max-w-4xl mx-auto">
-          <span className="inline-block px-3 py-1 text-sm font-medium rounded-full bg-primary/10 text-primary mb-4">
-            No credit card required
-          </span>
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
-            See the <span className="text-primary">ADEERA Platform</span> in action
-          </h1>
-          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            POS, inventory, sales, reports, M-Pesa & AI — one platform. Book a demo or start your free trial.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12">
-            <Button size="lg" className="bg-primary hover:bg-primary/90" onClick={() => setVideoPlaying(true)}>
-              <Play className="w-4 h-4 mr-2" /> Live Demo
-            </Button>
-            <Button size="lg" variant="outline" onClick={() => setOpen(true)}>
-              <Zap className="w-4 h-4 mr-2" /> Quick Tour
-            </Button>
+      {/* Hero */}
+      <section className="pt-32 pb-12 md:pt-40 text-center">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl mx-auto">
+            <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight text-foreground">
+              See the ADEERA Platform in action
+            </h1>
+            <p className="mt-4 text-lg text-muted-foreground">
+              POS, inventory, sales, reports, M-Pesa & AI — one platform. Book a demo or watch it live.
+            </p>
+            <div className="mt-8 flex flex-col sm:flex-row justify-center gap-3">
+              <Button size="lg" onClick={() => setVideoPlaying(true)}>
+                <Play className="w-4 h-4 mr-2" /> Watch demo
+              </Button>
+              <Button size="lg" variant="outline" onClick={() => setOpen(true)}>
+                Request a demo
+              </Button>
+            </div>
           </div>
 
-
-          {/* Real product video */}
-          <div className="relative rounded-xl border border-gray-200 bg-white shadow-lg overflow-hidden">
+          <div className="mt-12 max-w-3xl mx-auto overflow-hidden rounded-xl border border-border shadow-sm">
             {!videoPlaying ? (
               <div
-                className="aspect-video bg-gray-100 flex items-center justify-center bg-cover bg-center"
+                className="relative aspect-video bg-cover bg-center"
                 style={{ backgroundImage: `url(${productVideos[0].poster})` }}
               >
                 <button
@@ -213,11 +191,11 @@ const Demo = () => {
                   className="absolute inset-0 flex items-center justify-center bg-black/20 hover:bg-black/30 transition-colors"
                   aria-label="Play product video"
                 >
-                  <div className="w-16 h-16 rounded-full bg-primary/90 flex items-center justify-center hover:bg-primary transition-all">
-                    <Play className="w-6 h-6 text-white" />
+                  <div className="w-14 h-14 rounded-full bg-primary flex items-center justify-center">
+                    <Play className="w-5 h-5 text-primary-foreground" />
                   </div>
                 </button>
-                <div className="absolute bottom-4 left-4 bg-white/90 px-3 py-1 rounded-md text-sm font-medium">
+                <div className="absolute bottom-3 left-3 bg-background/90 px-3 py-1 rounded-md text-sm font-medium text-foreground">
                   {productVideos[0].title}
                 </div>
               </div>
@@ -228,174 +206,139 @@ const Demo = () => {
             )}
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Demo Navigation */}
-      <div className="sticky top-[72px] md:top-[80px] z-10 bg-white border-b">
-        <div className="max-w-6xl mx-auto px-4">
-          <nav className="flex overflow-x-auto py-4">
-            {[
-              { id: "features", label: "Key Features" },
-              { id: "usecases", label: "Use Cases" },
-              { id: "watch", label: "Watch it live" },
-              { id: "pricing", label: "Pricing" },
-              { id: "integrations", label: "Integrations" }
-            ].map((tab) => (
+      {/* Tabs */}
+      <div className="sticky top-16 z-10 bg-background/95 backdrop-blur-sm border-y border-border">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <nav className="flex gap-1 overflow-x-auto">
+            {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`px-4 py-2 whitespace-nowrap font-medium ${activeTab === tab.id ? "text-primary border-b-2 border-primary" : "text-gray-500 hover:text-gray-700"}`}
+                className={`px-4 py-3 whitespace-nowrap text-sm font-medium border-b-2 transition-colors ${activeTab === tab.id ? "text-primary border-primary" : "text-muted-foreground border-transparent hover:text-foreground"}`}
               >
                 {tab.label}
               </button>
             ))}
+            <Link to="/pricing" className="px-4 py-3 text-sm font-medium text-muted-foreground hover:text-foreground">
+              Pricing
+            </Link>
+            <Link to="/integrations" className="px-4 py-3 text-sm font-medium text-muted-foreground hover:text-foreground">
+              Integrations
+            </Link>
           </nav>
         </div>
       </div>
 
-      {/* Dynamic Content Sections */}
-      <div className="max-w-7xl mx-auto px-4 py-16">
-        {/* Features Section */}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {activeTab === "features" && (
           <section>
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">What You Get with the Platform</h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <div className="max-w-xl mx-auto text-center mb-12">
+              <h2 className="text-2xl font-semibold text-foreground">What you get with the platform</h2>
+              <p className="mt-3 text-muted-foreground">
                 POS, inventory, reports, M-Pesa, and an AI assistant — all in one place.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-              {coreFeatures.map((feature, index) => (
-                <div key={index} className="bg-white p-6 rounded-xl border border-gray-200 hover:border-primary transition-all shadow-sm hover:shadow-md">
-                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 text-primary">
-                    {feature.icon}
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2 text-gray-900">{feature.title}</h3>
-                  <p className="text-gray-600 mb-3">{feature.description}</p>
-                  <p className="text-sm font-medium text-primary flex items-center">
-                    <Check className="w-4 h-4 mr-1" /> {feature.benefit}
-                  </p>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-10 mb-16">
+              {coreFeatures.map((feature) => (
+                <div key={feature.title}>
+                  <feature.icon className="h-5 w-5 text-primary" strokeWidth={1.75} />
+                  <h3 className="mt-4 text-sm font-semibold text-foreground">{feature.title}</h3>
+                  <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
                 </div>
               ))}
             </div>
 
-            <div className="bg-primary/5 border border-primary/20 rounded-xl p-8">
-              <div className="md:flex items-center">
-                <div className="md:w-1/2 mb-6 md:mb-0">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3">Ready to see it in action?</h3>
-                  <p className="text-gray-700 mb-4">
-                    Our product specialists can walk you through a personalized demo tailored to your business needs.
-                  </p>
-                  <Button size="lg" className="bg-primary hover:bg-primary/90" onClick={() => setOpen(true)}>
-                    Schedule a Custom Demo
-                  </Button>
-                </div>
-                <div className="md:w-1/2 md:pl-8">
-                  <div className="bg-white p-4 rounded-lg border border-gray-200">
-                    <div className="flex items-start mb-3">
-                      <div className="bg-green-100 p-2 rounded-full mr-3">
-                        <Check className="w-5 h-5 text-green-600" />
-                      </div>
-                      <div>
-                        <h4 className="font-semibold">What's included:</h4>
-                        <ul className="list-disc list-inside text-sm text-gray-600 mt-1 pl-1">
-                          <li>30-minute 1-on-1 session</li>
-                          <li>Answers to your specific questions</li>
-                          <li>Custom workflow demonstration</li>
-                          <li>Free trial setup assistance</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+            <div className="border-t border-border pt-10 flex flex-col md:flex-row items-start justify-between gap-6">
+              <div>
+                <h3 className="text-lg font-semibold text-foreground mb-2">Ready to see it in action?</h3>
+                <p className="text-sm text-muted-foreground max-w-md">
+                  A 30-minute session, answers to your specific questions, and a custom workflow demonstration.
+                </p>
               </div>
+              <Button onClick={() => setOpen(true)}>Schedule a custom demo</Button>
             </div>
           </section>
         )}
 
-        {/* Use Cases Section */}
         {activeTab === "usecases" && (
           <section>
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Built for Your Business</h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <div className="max-w-xl mx-auto text-center mb-12">
+              <h2 className="text-2xl font-semibold text-foreground">Built for your business</h2>
+              <p className="mt-3 text-muted-foreground">
                 Retail, multi-branch, or growing — the platform scales with you.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8 mb-12">
-              {useCases.map((useCase, index) => (
-                <div key={index} className="bg-white p-6 rounded-xl border border-gray-200 hover:shadow-md transition-shadow">
-                  <h3 className="text-xl font-semibold mb-3 text-gray-900">{useCase.industry}</h3>
-                  <p className="text-gray-600 mb-4">{useCase.solution}</p>
+            <div className="grid sm:grid-cols-2 gap-x-8 gap-y-10 mb-16">
+              {useCases.map((useCase) => (
+                <div key={useCase.industry}>
+                  <h3 className="text-sm font-semibold text-foreground">{useCase.industry}</h3>
+                  <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">{useCase.solution}</p>
                 </div>
               ))}
             </div>
 
-            <div className="bg-gray-50 rounded-xl p-8 text-center">
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">Don't see your specific use case?</h3>
-              <p className="text-gray-700 mb-6 max-w-2xl mx-auto">
+            <div className="border-t border-border pt-10 text-center">
+              <h3 className="text-lg font-semibold text-foreground mb-2">Don't see your specific use case?</h3>
+              <p className="text-sm text-muted-foreground max-w-md mx-auto mb-6">
                 Tell us about your business and we'll walk you through how the platform fits.
               </p>
-              <Button size="lg" className="bg-primary hover:bg-primary/90" onClick={() => setOpen(true)}>
-                Contact Our Solutions Team
-              </Button>
+              <Button onClick={() => setOpen(true)}>Contact our solutions team</Button>
             </div>
           </section>
         )}
 
-        {/* Watch it live Section */}
         {activeTab === "watch" && (
           <section>
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Watch it live</h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <div className="max-w-xl mx-auto text-center mb-12">
+              <h2 className="text-2xl font-semibold text-foreground">Watch it live</h2>
+              <p className="mt-3 text-muted-foreground">
                 Real screen recordings of the retail till, the restaurant till, and the dashboard —
                 no actors, no staged footage.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8 mb-12">
+            <div className="grid md:grid-cols-3 gap-6 mb-12">
               {productVideos.map((v) => (
-                <div key={v.src} className="bg-white rounded-xl border border-gray-200 overflow-hidden">
+                <div key={v.src} className="rounded-xl border border-border overflow-hidden">
                   <video controls poster={v.poster} className="aspect-video w-full bg-black">
                     <source src={v.src} type="video/mp4" />
                   </video>
-                  <p className="p-4 font-medium text-gray-900">{v.title}</p>
+                  <p className="p-3 text-sm font-medium text-foreground">{v.title}</p>
                 </div>
               ))}
             </div>
 
-            <div className="text-center flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="outline" size="lg" asChild>
+            <div className="text-center flex flex-col sm:flex-row gap-3 justify-center">
+              <Button variant="outline" asChild>
                 <Link to="/pos">See the POS in depth</Link>
               </Button>
-              <Button variant="outline" size="lg" asChild>
+              <Button variant="outline" asChild>
                 <Link to="/platform">See the dashboard in depth</Link>
               </Button>
             </div>
           </section>
         )}
-
-        {/* CTA Section */}
-        <section className="mt-24 bg-primary rounded-2xl text-white p-8 md:p-12">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to run your business from one platform?</h2>
-            <p className="text-xl text-primary-foreground/90 mb-8 max-w-3xl mx-auto">
-              Start your free trial or book a demo. No credit card required.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Button size="lg" className="bg-white text-primary hover:bg-white/90" asChild>
-                <Link to="/demo">Start Free Trial</Link>
-              </Button>
-              <Button size="lg" variant="secondary" asChild>
-                <Link to="/contact"><Mail className="w-4 h-4 mr-2" /> Contact Sales</Link>
-              </Button>
-            </div>
-          </div>
-        </section>
       </div>
+
+      {/* CTA */}
+      <section className="py-16 border-t border-border">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-foreground">
+            Ready to run your business from one platform?
+          </h2>
+          <p className="mt-3 text-muted-foreground">No credit card required</p>
+          <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+            <Button size="lg" onClick={() => setOpen(true)}>Request a demo</Button>
+            <Button size="lg" variant="outline" asChild>
+              <Link to="/contact">Contact sales</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
