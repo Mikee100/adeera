@@ -14,10 +14,12 @@ const Layout = () => {
         Skip to main content
       </a>
       <Header />
-      <main id="main-content" className="flex-1" tabIndex={-1}>
+      <main id="main-content" className="flex-1 px-4 sm:px-6 lg:px-8" tabIndex={-1}>
         <Outlet />
       </main>
-      <Footer />
+      <div className="px-4 sm:px-6 lg:px-8">
+        <Footer />
+      </div>
       <LiveChat />
     </div>
   );
