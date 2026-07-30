@@ -137,23 +137,16 @@ const Features = () => {
             </p>
           </div>
 
-          <div className="divide-y divide-border border-t border-border">
+          <div className="max-w-3xl mx-auto divide-y divide-border border-t border-border">
             {featureSections.map((section) => (
-              <div key={section.title} className="py-10 flex flex-col md:flex-row md:items-start gap-6">
-                <div className="flex-shrink-0">
+              <div key={section.title} className="py-10 flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-8">
+                <div className="sm:w-48 flex-shrink-0 flex items-center gap-2.5 sm:block">
                   <section.icon className="h-5 w-5 text-primary" strokeWidth={1.75} />
+                  <h2 className="sm:mt-3 text-base font-semibold text-foreground">{section.title}</h2>
                 </div>
                 <div className="flex-1">
-                  <div className="flex flex-wrap items-center gap-3 mb-1.5">
-                    <h2 className="text-base font-semibold text-foreground">{section.title}</h2>
-                    {section.href && (
-                      <Button variant="link" className="p-0 h-auto text-primary text-sm" asChild>
-                        <Link to={section.href}>Learn more <ArrowRight className="ml-1 h-3.5 w-3.5 inline" /></Link>
-                      </Button>
-                    )}
-                  </div>
                   <p className="text-sm text-muted-foreground mb-4">{section.description}</p>
-                  <ul className="space-y-2">
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2">
                     {section.items.map((item, j) => (
                       <li key={j} className="flex items-start gap-2 text-sm text-muted-foreground">
                         <Check className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
@@ -161,6 +154,11 @@ const Features = () => {
                       </li>
                     ))}
                   </ul>
+                  {section.href && (
+                    <Button variant="link" className="p-0 h-auto text-primary text-sm mt-3" asChild>
+                      <Link to={section.href}>Learn more <ArrowRight className="ml-1 h-3.5 w-3.5 inline" /></Link>
+                    </Button>
+                  )}
                 </div>
               </div>
             ))}
