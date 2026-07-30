@@ -108,28 +108,17 @@ const Header = () => {
             ))}
           </nav>
 
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden lg:flex items-center">
             <select
               value={language}
               onChange={e => handleLanguageChange(e.target.value)}
-              className="bg-transparent text-sm text-muted-foreground hover:text-foreground focus:outline-none cursor-pointer mr-1"
+              className="bg-transparent text-sm text-muted-foreground hover:text-foreground focus:outline-none cursor-pointer"
               aria-label="Select language"
             >
               {LANGUAGES.map(lang => (
                 <option key={lang.code} value={lang.code}>{lang.label}</option>
               ))}
             </select>
-            <Button variant="ghost" size="sm" asChild>
-              <a href={import.meta.env.VITE_APP_URL ? `${String(import.meta.env.VITE_APP_URL).replace(/\/$/, '')}/login` : '/contact'}>
-                {t('login')}
-              </a>
-            </Button>
-            <Button variant="outline" size="sm" asChild>
-              <Link to="/demo">Book demo</Link>
-            </Button>
-            <Button size="sm" asChild>
-              <Link to="/demo">Start free</Link>
-            </Button>
           </div>
 
           <Button
@@ -170,16 +159,6 @@ const Header = () => {
                 )}
               </div>
             ))}
-            <div className="mt-3 flex gap-2 px-2">
-              <Button variant="outline" size="sm" className="flex-1" asChild>
-                <a href={import.meta.env.VITE_APP_URL ? `${String(import.meta.env.VITE_APP_URL).replace(/\/$/, '')}/login` : '/contact'}>
-                  {t('login')}
-                </a>
-              </Button>
-              <Button size="sm" className="flex-1" asChild>
-                <Link to="/demo" onClick={() => setIsMenuOpen(false)}>Start free</Link>
-              </Button>
-            </div>
           </nav>
         )}
       </div>
