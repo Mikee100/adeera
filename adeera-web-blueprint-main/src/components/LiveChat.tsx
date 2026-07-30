@@ -1,14 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
-import { 
-  X, 
-  Send, 
-  ChevronRight, 
+import {
+  X,
+  Send,
+  ChevronRight,
   MessageCircle,
   BrainCircuit,
   MessageSquareMore,
   CheckCheck,
-  Plus,
   Info
 } from 'lucide-react';
 import { Input } from '@/components/ui/input';
@@ -30,48 +29,45 @@ interface QuickReply {
 }
 
 const AI_RESPONSES: { [key: string]: string } = {
-  hello: "Habari! I'm your Adeera Guide. I'm here to help you navigate the unified ecosystem for your business. How can I assist you today?",
-  hi: "Hello there! Welcome to Adeera. Ready to scale your business with Africa's most intelligent product suite? What can I tell you about?",
-  pos: "Our **Smart POS** is offline-ready and built for speed. It handles sales, receipts, and X/Z reports seamlessly. It's the heartbeat of your store. Would you like to see the POS features section?",
-  inventory: "Adeera **Inventory Management** synchronizes your stock across all branches in real-time. No more stock-outs or guest-work. It even handles multi-variant products like color/size.",
-  payments: "We offer **Integrated Payments** directly at the checkout. Accept M-Pesa STK push, cards, and cash with instant reconciliation. Bank settlements are T+1.",
-  mpesa: "Our M-Pesa integration is world-class. We support instant STK push—meaning your customers just enter their PIN on their phone. No manual paybill entries required!",
-  ai: "I'm part of the **AI Business Assistant** suite! Beyond our chat, we offer WhatsApp booking automation and predictive sales forecasting for your business.",
-  pricing: "Adeera offers modular pricing, so you only pay for what you use. \n\n• Smart POS: Competitive Monthly/Annual rates\n• Inventory: Scales with branch count\n• AI Assistant: Usage-based\n\nShould I connect you with a specialist for a custom quote?",
-  support: "We provide 24/7 local support based in Nairobi. You can chat with us here, or call us at +254 700 000 000. For complex issues, I recommend our WhatsApp support channel.",
-  whatsapp: "Need to speak with a human? [Click here to chat on WhatsApp](https://wa.me/254700000000) or Type 'Human' and I'll notify my team.",
-  human: "I've alerted our team! In the meantime, you can jump into a live WhatsApp thread here: [Adeera WhatsApp Support](https://wa.me/254700000000).",
-  demo: "I'd love to show you the ecosystem! You can schedule a 1-on-1 demo [here](/contact) or ask me for a quick overview of a specific module.",
-  thank: "You're very welcome! I'm here 24/7 if you need more help growing your business with Adeera. Kwaheri! 😊",
-  thanks: "No problem at all! Feel free to ask anything else about our POS, Inventory, or Payment solutions.",
-  security: "Your data's safety is a massive priority for us. 🔒 We use multi-tenant isolation so your data is completely walled off, and we give you granular role-based permissions so your staff only see what they need to see.",
-  cloud: "Yep, we're 100% cloud-based! ☁️ That means you can log in and see your live sales, inventory updates, and AI reports from anywhere in the world on any device.",
-  marketplace: "Currently we're focused laser-sharp on the merchant side—giving you the best POS, inventory, and M-Pesa tools. A SaaS marketplace is something we're exploring for the future though!",
-  platform: "The ADEERA Platform is designed to be your all-in-one business hub: Smart POS, Cloud Inventory, and Integrated Payments. Everything reconciled in one place."
+  hello: "Habari! I can point you to the right page for POS, inventory, payments, or pricing. What are you looking for?",
+  hi: "Hello! I can point you to the right page for POS, inventory, payments, or pricing. What are you looking for?",
+  pos: "The Adeera POS runs as a retail till or a restaurant till, and keeps working offline. Take a look at the screenshots and video tours.",
+  inventory: "Adeera syncs products, variations, and stock levels across every branch in real time.",
+  payments: "Adeera accepts M-Pesa, cash, and credit at the till, with billing handled through Stripe.",
+  mpesa: "M-Pesa is built into checkout — customers pay by STK push at the till.",
+  ai: "There's an in-app AI assistant on the dashboard that answers questions about your sales data and can generate charts.",
+  pricing: "Adeera has Basic, Pro, and Enterprise plans. Take a look at the pricing page, or ask to be connected for a custom quote.",
+  support: "You can reach the team through the contact page, and we'll get back to you.",
+  demo: "You can book a demo or watch the product videos on the demo page.",
+  thank: "You're welcome! Let me know if there's anything else you'd like to know about Adeera.",
+  thanks: "No problem — feel free to ask about POS, inventory, or payments.",
+  security: "Adeera uses multi-tenant isolation so each business's data is walled off, with role-based permissions for staff.",
+  cloud: "The dashboard is cloud-based — you can check sales and inventory from anywhere.",
+  platform: "The ADEERA Platform brings POS, inventory, accounting, payroll, CRM, and payments together in one place.",
 };
 
 const QUICK_REPLIES: QuickReply[] = [
-  { id: '1', text: 'Smart POS', category: 'pos' },
-  { id: '2', text: 'M-Pesa Pay', category: 'mpesa' },
-  { id: '3', text: 'Cloud Stock', category: 'inventory' },
+  { id: '1', text: 'Point of sale', category: 'pos' },
+  { id: '2', text: 'M-Pesa payments', category: 'mpesa' },
+  { id: '3', text: 'Inventory', category: 'inventory' },
   { id: '4', text: 'Pricing', category: 'pricing' },
-  { id: '5', text: 'Human Support', category: 'human' },
+  { id: '5', text: 'Talk to the team', category: 'support' },
 ];
 
 const getAIResponse = (message: string): { text: string; link?: { text: string; url: string; icon: any } } => {
   const lower = message.toLowerCase();
-  
-  if (lower.includes('pos') || lower.includes('checkout')) return { text: AI_RESPONSES.pos, link: { text: "Learn POS", url: "/services/pos", icon: Info } };
-  if (lower.includes('stock') || lower.includes('inventory')) return { text: AI_RESPONSES.inventory, link: { text: "Stock Sync", url: "/services/inventory", icon: Info } };
-  if (lower.includes('pay') || lower.includes('mpesa')) return { text: AI_RESPONSES.mpesa, link: { text: "M-Pesa Setup", url: "/services/payments", icon: Info } };
+
+  if (lower.includes('pos') || lower.includes('checkout') || lower.includes('till')) return { text: AI_RESPONSES.pos, link: { text: "See the POS", url: "/pos", icon: Info } };
+  if (lower.includes('stock') || lower.includes('inventory')) return { text: AI_RESPONSES.inventory, link: { text: "See the platform", url: "/platform", icon: Info } };
+  if (lower.includes('pay') || lower.includes('mpesa')) return { text: AI_RESPONSES.mpesa, link: { text: "See pricing", url: "/pricing", icon: Info } };
   if (lower.includes('security')) return { text: AI_RESPONSES.security };
   if (lower.includes('cloud')) return { text: AI_RESPONSES.cloud };
   if (lower.includes('hello') || lower.includes('hi')) return { text: AI_RESPONSES.hello };
-  if (lower.includes('whatsapp') || lower.includes('human')) return { text: AI_RESPONSES.whatsapp, link: { text: "Chat on WhatsApp", url: "https://wa.me/254700000000", icon: MessageCircle } };
-  if (lower.includes('pricing') || lower.includes('cost')) return { text: AI_RESPONSES.pricing };
-  if (lower.includes('demo')) return { text: AI_RESPONSES.demo, link: { text: "Schedule Demo", url: "/contact", icon: Info } };
-  
-  return { text: "I'm your Adeera Guide. I can help with POS, Inventory, and Payments. What would you like to explore?" };
+  if (lower.includes('talk') || lower.includes('team') || lower.includes('human') || lower.includes('support')) return { text: AI_RESPONSES.support, link: { text: "Contact us", url: "/contact", icon: MessageCircle } };
+  if (lower.includes('pricing') || lower.includes('cost')) return { text: AI_RESPONSES.pricing, link: { text: "See pricing", url: "/pricing", icon: Info } };
+  if (lower.includes('demo')) return { text: AI_RESPONSES.demo, link: { text: "Book a demo", url: "/demo", icon: Info } };
+
+  return { text: "I can help you find the right page for POS, inventory, payments, or pricing. What would you like to know?" };
 };
 
 export const LiveChat = () => {
@@ -102,7 +98,7 @@ export const LiveChat = () => {
         setIsTyping(false);
         setMessages([{
           id: Date.now(),
-          text: "Jambo! I'm your Adeera Guide. Ready to scale your business?",
+          text: "Habari! I can help you find the right page for POS, inventory, payments, or pricing.",
           sender: 'ai',
           timestamp: new Date()
         }]);
@@ -149,43 +145,35 @@ export const LiveChat = () => {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="w-16 h-16 rounded-full bg-primary shadow-2xl flex items-center justify-center text-white border-2 border-white/20 relative z-[70]"
+        className="w-14 h-14 rounded-full bg-primary shadow-sm flex items-center justify-center text-primary-foreground relative z-[70]"
       >
-        <div className="absolute inset-0 bg-gradient-to-tr from-primary to-blue-600 rounded-full"></div>
-        {isOpen ? <X className="h-7 w-7 relative z-10" /> : <MessageSquareMore className="h-7 w-7 relative z-10" />}
+        {isOpen ? <X className="h-6 w-6" /> : <MessageSquareMore className="h-6 w-6" />}
       </motion.button>
 
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 20, transformOrigin: 'bottom right' }}
+            initial={{ opacity: 0, scale: 0.96, y: 12, transformOrigin: 'bottom right' }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="fixed bottom-24 right-10 w-[420px] max-w-[calc(100vw-40px)] h-[min(680px,80vh)] bg-white dark:bg-slate-950 rounded-[2.5rem] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.2)] border border-slate-200 dark:border-slate-800 flex flex-col overflow-hidden backdrop-blur-2xl z-[65]"
+            exit={{ opacity: 0, scale: 0.96, y: 12 }}
+            transition={{ duration: 0.2 }}
+            className="fixed bottom-24 right-10 w-[380px] max-w-[calc(100vw-40px)] h-[min(600px,75vh)] bg-background rounded-xl shadow-lg border border-border flex flex-col overflow-hidden z-[65]"
           >
-            {/* Slim Header */}
-            <div className="px-6 py-4 bg-gradient-to-r from-primary to-blue-600 flex items-center gap-4 text-white">
-               <div className="relative">
-                  <div className="p-2 bg-white/20 rounded-xl backdrop-blur-md border border-white/20">
-                     <BrainCircuit className="h-6 w-6" />
-                  </div>
-                  <span className="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-green-400 rounded-full border-2 border-primary"></span>
+            {/* Header */}
+            <div className="px-5 py-4 border-b border-border flex items-center gap-3">
+               <div className="p-2 bg-primary/10 rounded-lg">
+                  <BrainCircuit className="h-5 w-5 text-primary" />
                </div>
-               <div>
-                  <h3 className="font-bold text-lg leading-tight">Adeera Guide</h3>
-                  <div className="flex items-center gap-1.5 opacity-80">
-                     <span className="text-[10px] font-bold uppercase tracking-widest">Always Online</span>
-                  </div>
-               </div>
-               <button onClick={() => setIsOpen(false)} className="ml-auto opacity-60 hover:opacity-100 transition-opacity">
-                  <X className="h-5 w-5" />
+               <h3 className="font-semibold text-sm text-foreground">Ask about Adeera</h3>
+               <button onClick={() => setIsOpen(false)} className="ml-auto text-muted-foreground hover:text-foreground transition-colors">
+                  <X className="h-4 w-4" />
                </button>
             </div>
 
             {/* Scrollable Chat Area */}
-            <div 
+            <div
               ref={scrollRef}
-              className="flex-1 overflow-y-auto px-6 py-8 space-y-6 scroll-smooth scrollbar-thin scrollbar-thumb-slate-200 dark:scrollbar-thumb-slate-800"
+              className="flex-1 overflow-y-auto px-5 py-6 space-y-4 scroll-smooth"
             >
               {messages.map((msg) => (
                 <motion.div
@@ -195,76 +183,72 @@ export const LiveChat = () => {
                   className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
                   <div className="max-w-[85%]">
-                    <div className={`p-4 rounded-3xl text-sm leading-relaxed ${
+                    <div className={`p-3.5 rounded-lg text-sm leading-relaxed ${
                       msg.sender === 'user'
-                        ? 'bg-primary text-white rounded-tr-none'
-                        : 'bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-100 rounded-tl-none border border-slate-200/50 dark:border-slate-800'
+                        ? 'bg-primary text-primary-foreground'
+                        : 'bg-muted text-foreground border border-border'
                     }`}>
                       {msg.text}
                       {msg.link && (
-                         <a href={msg.link.url} className="mt-3 flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 hover:shadow-md transition-all group">
+                         <a href={msg.link.url} className="mt-3 flex items-center justify-between p-2.5 bg-background rounded-md border border-border hover:border-primary/40 transition-colors group">
                             <div className="flex items-center gap-2">
                                <msg.link.icon className="h-4 w-4 text-primary" />
-                               <span className="text-xs font-bold">{msg.link.text}</span>
+                               <span className="text-xs font-medium">{msg.link.text}</span>
                             </div>
-                            <ChevronRight className="h-4 w-4 text-slate-400 group-hover:translate-x-0.5 transition-transform" />
+                            <ChevronRight className="h-4 w-4 text-muted-foreground group-hover:translate-x-0.5 transition-transform" />
                          </a>
                       )}
                     </div>
-                    <div className="flex items-center gap-1.5 mt-1.5 px-1 opacity-40 text-[10px]">
+                    <div className="flex items-center gap-1.5 mt-1.5 px-1 opacity-50 text-[10px]">
                        <span>{msg.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
                        {msg.sender === 'user' && msg.status === 'read' && <CheckCheck className="h-3 w-3" />}
                     </div>
                   </div>
                 </motion.div>
               ))}
-              
+
               {isTyping && (
-                <div className="flex gap-1.5 px-4 py-3 bg-slate-100 rounded-2xl w-14 h-9 items-center justify-center">
-                   {[0,1,2].map(i => <motion.div key={i} animate={{ scale: [1, 1.4, 1] }} transition={{ repeat: Infinity, duration: 1, delay: i*0.2 }} className="w-1 h-1 bg-slate-400 rounded-full" />)}
+                <div className="flex gap-1.5 px-4 py-3 bg-muted rounded-lg w-14 h-9 items-center justify-center">
+                   {[0,1,2].map(i => <motion.div key={i} animate={{ scale: [1, 1.4, 1] }} transition={{ repeat: Infinity, duration: 1, delay: i*0.2 }} className="w-1 h-1 bg-muted-foreground rounded-full" />)}
                 </div>
               )}
 
               {/* In-Body Quick Replies */}
               {!isTyping && messages.length > 0 && messages[messages.length - 1].sender === 'ai' && (
-                <div className="flex flex-wrap gap-2 pt-4">
+                <div className="flex flex-wrap gap-2 pt-2">
                    {QUICK_REPLIES.map(reply => (
                      <button
                        key={reply.id}
                        onClick={() => handleSendMessage(reply.text)}
-                       className="px-4 py-2 border border-slate-200 dark:border-slate-800 rounded-full text-xs font-bold bg-white dark:bg-slate-900 hover:border-primary hover:text-primary transition-all shadow-sm"
+                       className="px-3 py-1.5 border border-border rounded-full text-xs font-medium bg-background hover:border-primary hover:text-primary transition-colors"
                      >
                        {reply.text}
                      </button>
                    ))}
                 </div>
               )}
-              <div className="h-4" /> {/* Bottom Spacing */}
             </div>
 
-            {/* Seamless Floating Input */}
-            <div className="p-6 pt-2 bg-gradient-to-t from-white dark:from-slate-950 via-white dark:via-slate-950 to-transparent">
-               <div className="relative flex items-center gap-2 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-1.5 rounded-3xl focus-within:ring-2 focus-within:ring-primary/20 transition-all">
-                  <button className="p-2.5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors">
-                     <Plus className="h-5 w-5" />
-                  </button>
+            {/* Input */}
+            <div className="p-4 border-t border-border">
+               <div className="relative flex items-center gap-2 bg-muted border border-border p-1 rounded-lg focus-within:ring-2 focus-within:ring-ring transition-all">
                   <Input
                     ref={inputRef}
                     value={newMessage}
                     onChange={e => setNewMessage(e.target.value)}
                     placeholder="Type a message..."
-                    className="border-none shadow-none focus-visible:ring-0 bg-transparent h-10 text-sm"
+                    className="border-none shadow-none focus-visible:ring-0 bg-transparent h-9 text-sm"
                     onKeyDown={e => e.key === 'Enter' && handleSendMessage()}
                   />
-                  <Button 
+                  <Button
                     onClick={() => handleSendMessage()}
                     disabled={!newMessage.trim() || isTyping}
-                    className="w-10 h-10 p-0 rounded-2xl shadow-lg shrink-0"
+                    size="icon"
+                    className="w-8 h-8 shrink-0"
                   >
-                    <Send className="h-5 w-5" />
+                    <Send className="h-4 w-4" />
                   </Button>
                </div>
-               <p className="mt-4 text-center text-[10px] font-bold text-slate-300 dark:text-slate-700 uppercase tracking-[0.2em]">Adeera Unified AI</p>
             </div>
           </motion.div>
         )}

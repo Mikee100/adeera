@@ -70,7 +70,7 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased selection:bg-primary/20;
+    @apply bg-background text-foreground antialiased selection:bg-primary/20 font-sans;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
