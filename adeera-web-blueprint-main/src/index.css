@@ -6,7 +6,7 @@
 
 @layer base {
   :root {
-    --primary: 221 83% 53%;           /* Adeera Blue */
+    --primary: 212 100% 16%;          /* Adeera Navy */
     --primary-foreground: 210 40% 98%;
 
     --background: 0 0% 100%;
@@ -30,7 +30,7 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --ring: 221.2 83.2% 53.3%;
+    --ring: 212 100% 16%;
 
     --radius: 0.75rem;
   }
@@ -51,7 +51,7 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
 
-    --primary: 217 91% 60%;
+    --primary: 212 90% 55%;
     --primary-foreground: 222 47% 11%;
 
     --accent: 217.2 32.6% 17.5%;
@@ -60,7 +60,7 @@
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --ring: 221 83% 53%;
+    --ring: 212 90% 55%;
   }
 }
 
@@ -72,6 +72,10 @@
   body {
     @apply bg-background text-foreground antialiased selection:bg-primary/20 font-sans;
     font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1, h2, h3 {
+    @apply font-heading tracking-tight;
   }
 }
 
